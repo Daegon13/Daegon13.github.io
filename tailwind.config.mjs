@@ -61,12 +61,12 @@ export default {
         "4xl": "2rem",
       },
       boxShadow: {
-        soft: "0 6px 30px -12px rgba(0,0,0,0.25)",
-        glow: "0 24px 80px -32px rgba(34, 211, 238, 0.45)",
+        soft: "0 0.375rem 1.875rem -0.75rem rgba(0,0,0,0.25)",
+        glow: "0 1.5rem 5rem -2rem rgba(34, 211, 238, 0.45)",
         premium:
-          "0 28px 90px -40px rgba(15, 23, 42, 0.95), 0 0 0 1px rgba(148, 163, 184, 0.10)",
+          "0 1.75rem 5.625rem -2.5rem rgba(15, 23, 42, 0.95), 0 0 0 0.0625rem rgba(148, 163, 184, 0.10)",
         "premium-hover":
-          "0 34px 110px -42px rgba(34, 211, 238, 0.35), 0 0 0 1px rgba(148, 163, 184, 0.18)",
+          "0 2.125rem 6.875rem -2.625rem rgba(34, 211, 238, 0.35), 0 0 0 0.0625rem rgba(148, 163, 184, 0.18)",
       },
       backgroundImage: {
         "radial-cyan":
@@ -74,7 +74,7 @@ export default {
         "radial-violet":
           "radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.16), transparent 32%)",
         "premium-grid":
-          "linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px)",
+          "linear-gradient(rgba(148, 163, 184, 0.055) 0.0625rem, transparent 0.0625rem), linear-gradient(90deg, rgba(148, 163, 184, 0.055) 0.0625rem, transparent 0.0625rem)",
         "brand-gradient":
           "linear-gradient(135deg, #22D3EE 0%, #3B82F6 52%, #8B5CF6 100%)",
         "surface-glow":

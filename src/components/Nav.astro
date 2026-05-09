@@ -22,7 +22,7 @@ const current = Astro.url.pathname;
       </span>
       <span class="leading-tight">
         <span class="block text-sm tracking-wide">Marin.dev</span>
-        <span class="hidden text-[11px] font-medium uppercase tracking-[0.22em] text-muted sm:block">Digital studio</span>
+        <span class="hidden text-xs font-medium uppercase tracking-[0.22em] text-muted sm:block">Digital studio</span>
       </span>
     </a>
 
@@ -35,7 +35,7 @@ const current = Astro.url.pathname;
               href={l.href}
               class={`inline-flex rounded-full px-3.5 py-2 transition ${
                 isActive
-                  ? 'bg-cyan-electric/10 text-cyan-100 shadow-[inset_0_0_0_1px_rgba(34,211,238,0.22)]'
+                  ? 'bg-cyan-electric/10 text-cyan-100 ring-1 ring-cyan-electric/20'
                   : 'text-muted-soft hover:bg-white/5 hover:text-slate-50'
               }`}
               aria-current={isActive ? 'page' : undefined}
@@ -66,10 +66,10 @@ const current = Astro.url.pathname;
       aria-expanded="false"
       data-open="false"
     >
-      <svg id="icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <svg id="icon-open" class="size-5" viewBox="0 0 24 24" fill="none">
         <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </svg>
-      <svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" class="hidden">
+      <svg id="icon-close" class="hidden size-5" viewBox="0 0 24 24" fill="none">
         <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </svg>
     </button>
@@ -90,13 +90,13 @@ const current = Astro.url.pathname;
     <div class="flex h-16 items-center justify-between border-b border-line px-4 pt-[env(safe-area-inset-top)]">
       <span class="text-sm font-semibold uppercase tracking-[0.18em] text-muted-soft">Menú</span>
       <button id="nav-close" class="inline-flex items-center justify-center rounded-xl border border-line bg-white/5 p-2 text-slate-100" aria-label="Cerrar menú">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none">
           <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
       </button>
     </div>
 
-    <ul class="space-y-2 p-4 pb-[calc(env(safe-area-inset-bottom)+16px)]">
+    <ul class="space-y-2 p-4 pb-[calc(env(safe-area-inset-bottom)+1rem)]">
       {links.map((l) => {
         const isActive = current === l.href || (l.href !== '/' && current.startsWith(l.href));
         return (
@@ -138,9 +138,11 @@ const current = Astro.url.pathname;
 
     const lockBody = () => {
       scrollY = window.scrollY || window.pageYOffset || 0;
+      const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      const scrollOffsetRem = scrollY / rootFontSize;
       const b = document.body.style;
       b.position = 'fixed';
-      b.top = `-${scrollY}px`;
+      b.top = `-${scrollOffsetRem}rem`;
       b.left = '0';
       b.right = '0';
       b.width = '100%';
