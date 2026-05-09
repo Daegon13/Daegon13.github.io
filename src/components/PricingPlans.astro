@@ -1,103 +1,172 @@
 ---
-import { SERVICE_WHATSAPP_MESSAGE, waLink } from "../lib/contact";
-/* PricingPlans.astro
-   - Componente de “servicios productizables” (3 paquetes)
-   - No requiere cambios en tailwind.config
-   - Botones abren WhatsApp con un mensaje comercial por paquete
-*/
+import Badge from './Badge.astro';
+import GlowCard from './GlowCard.astro';
+import SectionHeader from './SectionHeader.astro';
+import { SERVICE_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
+
 const plans = [
   {
-    name: "Web Express",
-    price: "USD 50–290",
-    lead: "Página rápida para presentar tu negocio y recibir consultas.",
+    name: 'Demo Comercial Express',
+    badge: 'Validar rápido',
+    price: 'USD 150–290',
+    time: '3–5 días hábiles',
+    forWho: 'Para leads, preventas, ideas nuevas o negocios que necesitan visualizar una propuesta antes de construir algo grande.',
+    solves: 'Convierte una idea o Instagram en una demo concreta, compartible y orientada a conversación comercial.',
     deliverables: [
-      "Inicio claro + servicios + botón a WhatsApp",
-      "Textos base para que la página se entienda mejor",
-      "Medición básica de visitas",
-      "Entrega en 3–5 días hábiles"
+      'Estructura de landing/demo de una página',
+      'Copy base orientado a consulta o reserva',
+      'CTA a WhatsApp con mensaje guiado',
+      'Mockup visual o bloques de producto/servicio',
+      'Deploy estático listo para compartir',
     ],
-    idealFor: "Emprendedores que necesitan presencia inmediata",
-    planId: "web-express",
+    comparison: 'Demo para mostrar valor',
+    cta: 'Quiero validar una demo',
   },
   {
-    name: "Web para Negocio",
-    price: "USD 390–690",
-    lead: "Sitio de varias páginas para explicar mejor tu negocio y generar confianza.",
+    name: 'Landing de Conversión',
+    badge: 'Recomendado',
+    price: 'USD 390–690',
+    time: '7–12 días hábiles',
+    forWho: 'Para campañas, profesionales, servicios y negocios locales que ya reciben tráfico o quieren empezar a vender mejor.',
+    solves: 'Ordena el mensaje, reduce dudas y guía al visitante hacia consultas, reservas o ventas con una estructura clara.',
     deliverables: [
-      "Hasta 5 páginas: Inicio, Servicios, Sobre mí, Contacto, Blog",
-      "Configuración básica para buscadores y redes",
-      "Imágenes optimizadas y carga rápida",
-      "Entrega en 7–12 días hábiles"
+      'Hero con promesa y CTA principal',
+      'Secciones de confianza, servicios, proceso y FAQs',
+      'Optimización básica para SEO y redes sociales',
+      'WhatsApp, formulario o link de reserva integrado',
+      'Medición básica y página rápida responsive',
     ],
-    idealFor: "Negocios que necesitan explicar más servicios y crecer con el tiempo",
+    comparison: 'Captación de consultas',
+    cta: 'Consultar landing',
     featured: true,
-    planId: "web-corporativa",
   },
   {
-    name: "Zona editable + Conexiones",
-    price: "USD 690–1.190",
-    lead: "Contenido editable y formularios para ordenar consultas.",
+    name: 'Web con WhatsApp / Agenda',
+    badge: 'Reservas claras',
+    price: 'USD 590–990',
+    time: '10–15 días hábiles',
+    forWho: 'Para gimnasios, barberías, veterinarias, clínicas, restaurantes y servicios que necesitan ordenar consultas o turnos.',
+    solves: 'Evita mensajes incompletos y lleva a cada visitante al canal correcto con contexto, servicio elegido y próximo paso.',
     deliverables: [
-      "Zona simple para editar contenidos",
-      "Formularios guardados y avisos por email",
-      "Web publicada online",
-      "Entrega en 10–20 días hábiles"
+      'Páginas o secciones por servicio/plan',
+      'CTAs por intención: consultar, reservar o pedir presupuesto',
+      'Mensajes de WhatsApp prearmados por flujo',
+      'Integración con agenda externa si ya existe',
+      'Guía simple para mantener links y contenidos',
     ],
-    idealFor: "Negocios que necesitan ordenar consultas o datos",
-    planId: "zona editable-conexiones",
+    comparison: 'Consultas y reservas guiadas',
+    cta: 'Ordenar mis reservas',
+  },
+  {
+    name: 'Sistema simple / Panel Admin',
+    badge: 'Operación interna',
+    price: 'USD 790–1.490+',
+    time: '15–25 días hábiles',
+    forWho: 'Para negocios que ya necesitan gestionar contenido, stock, leads, reservas o información operativa sin depender de planillas sueltas.',
+    solves: 'Centraliza una operación acotada en un panel simple, pensado para usarlo de verdad sin prometer un backend corporativo complejo.',
+    deliverables: [
+      'Alcance funcional definido por hitos',
+      'Panel o flujo interno para datos clave',
+      'Estados simples para leads, reservas o stock',
+      'Roles/accesos básicos si el alcance lo permite',
+      'Documentación breve para operar el sistema',
+    ],
+    comparison: 'Gestión simple de datos',
+    cta: 'Consultar panel simple',
   },
 ];
+
+const comparisonItems = [
+  'Demo rápida para vender una idea',
+  'Landing para captar consultas',
+  'WhatsApp/agenda para ordenar reservas',
+  'Panel simple para operación acotada',
+];
 ---
-<section class="py-12 md:py-16">
-  <!-- Título y descripción de la sección -->
-  <header class="text-center max-w-2xl mx-auto">
-    <h2 class="text-2xl md:text-3xl font-semibold">Servicios y paquetes</h2>
-    <p class="mt-2 text-gray-500">Elegí un punto de partida. Si necesitás algo a medida, lo adaptamos.</p>
-  </header>
+<section class="py-14 md:py-20">
+  <SectionHeader
+    eyebrow="Servicios productizados"
+    title="Elegí un punto de partida, no un molde cerrado."
+    description="Cada plan parte de un problema comercial concreto: validar una propuesta, convertir visitas, ordenar reservas o simplificar una operación interna. Ajustamos el alcance antes de cotizar final."
+    align="center"
+  />
 
-  <!-- Grid de planes -->
-  <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-    {plans.map((p) => (
-      <article
-        class={`rounded-2xl border p-6 shadow-soft transition hover:shadow-lg ${p.featured ? 'border-gray-900 dark:border-gray-100' : 'border-gray-200/70 dark:border-gray-700/70'}`}
-      >
-        <!-- Encabezado del plan -->
-        <div class="mb-4">
-          <h3 class="text-lg font-semibold">{p.name}</h3>
-          <p class="mt-1 text-sm text-gray-500">{p.lead}</p>
+  <div class="mx-auto mt-8 grid max-w-5xl gap-3 rounded-3xl border border-line bg-surface-glass p-3 text-sm text-muted-soft shadow-premium backdrop-blur sm:grid-cols-2 lg:grid-cols-4">
+    {comparisonItems.map((item, index) => (
+      <div class="flex items-center gap-3 rounded-2xl border border-line bg-ink/35 px-4 py-3">
+        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cyan-electric/10 text-xs font-bold text-cyan-electric">
+          {index + 1}
+        </span>
+        <span>{item}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-4">
+    {plans.map((plan) => (
+      <GlowCard class={`flex h-full flex-col ${plan.featured ? 'border-cyan-electric/40 shadow-glow' : ''}`}>
+        <div class="flex items-start justify-between gap-3">
+          <Badge label={plan.badge} tone={plan.featured ? 'success' : 'cyan'} />
+          {plan.featured && (
+            <span class="rounded-full border border-brand-success/30 bg-brand-success/10 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-emerald-100">
+              Más elegido
+            </span>
+          )}
         </div>
 
-        <!-- Precio (rango para transparencia) -->
-        <div class="mb-4">
-          <div class="text-xl font-semibold">{p.price}</div>
-          <p class="text-xs text-gray-500">Precio estimado. Cotización final según alcance.</p>
+        <div class="mt-5">
+          <h3 class="text-2xl font-semibold tracking-tight text-slate-50">{plan.name}</h3>
+          <div class="mt-4 flex flex-wrap items-end gap-x-3 gap-y-1">
+            <p class="text-2xl font-semibold text-slate-50">{plan.price}</p>
+            <p class="pb-1 text-xs text-muted">estimado</p>
+          </div>
+          <p class="mt-1 text-xs text-muted-soft">Cotización final según alcance, contenido e integraciones.</p>
         </div>
 
-        <!-- Lista de entregables -->
-        <ul class="space-y-2 text-sm">
-          {p.deliverables.map((d) => <li class="pl-5 relative">
-            <span class="absolute left-0 top-1.5 w-1.5 h-1.5 rounded-full bg-current"></span>{d}
-          </li>)}
-        </ul>
+        <dl class="mt-5 space-y-4 text-sm leading-6">
+          <div>
+            <dt class="font-semibold text-slate-50">Para quién es</dt>
+            <dd class="mt-1 text-muted-soft">{plan.forWho}</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-50">Qué problema resuelve</dt>
+            <dd class="mt-1 text-muted-soft">{plan.solves}</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-50">Tiempo estimado</dt>
+            <dd class="mt-1 text-muted-soft">{plan.time}</dd>
+          </div>
+        </dl>
 
-        <!-- Para quién es ideal -->
-        <p class="mt-4 text-xs text-gray-500"><strong>Ideal para:</strong> {p.idealFor}</p>
+        <div class="mt-6 rounded-2xl border border-line bg-ink/40 p-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-electric">Entregables</p>
+          <ul class="mt-3 space-y-3 text-sm text-muted-soft">
+            {plan.deliverables.map((deliverable) => (
+              <li class="flex gap-3">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-success" aria-hidden="true"></span>
+                <span>{deliverable}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        <!-- CTA comercial hacia WhatsApp -->
-        <div class="mt-6">
+        <div class="mt-auto pt-6">
+          <p class="mb-3 text-xs font-medium text-muted-soft">Enfoque: {plan.comparison}</p>
           <a
-            href={waLink(SERVICE_WHATSAPP_MESSAGE(p.name))}
+            href={waLink(SERVICE_WHATSAPP_MESSAGE(plan.name))}
             target="_blank"
             rel="noopener noreferrer"
-            class={`inline-flex items-center justify-center w-full rounded-xl px-4 py-2 text-sm font-medium transition
-                    ${p.featured ? 'bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white'
-                                 : 'border border-gray-300/70 dark:border-gray-700/70 hover:opacity-90'}`}
-            aria-label={`Consultar este paquete ${p.name}`}
+            class={`inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
+              plan.featured
+                ? 'bg-brand-gradient text-white shadow-glow hover:shadow-premium-hover'
+                : 'border border-line bg-surface-glass text-slate-50 hover:border-line-strong hover:text-cyan-electric'
+            }`}
+            aria-label={`Consultar el plan ${plan.name} por WhatsApp`}
           >
-            Consultar este paquete
+            {plan.cta}
           </a>
         </div>
-      </article>
+      </GlowCard>
     ))}
   </div>
 </section>
