@@ -1,0 +1,9 @@
+---
+const { label, value, tone = 'cyan' } = Astro.props;
+const dotTone = tone === 'success' ? 'bg-brand-success' : tone === 'violet' ? 'bg-violet-electric' : 'bg-cyan-electric';
+---
+<div class="inline-flex items-center gap-3 rounded-full border border-line bg-surface-glass px-4 py-2 shadow-soft backdrop-blur">
+  <span class={`h-2 w-2 rounded-full ${dotTone} shadow-[0_0_1rem_currentColor]`} aria-hidden="true"></span>
+  <span class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{label}</span>
+  {value && <span class="text-sm font-semibold text-slate-50">{value}</span>}
+</div>

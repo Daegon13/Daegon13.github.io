@@ -1,0 +1,33 @@
+---
+import Badge from './Badge.astro';
+import GlowCard from './GlowCard.astro';
+import SectionHeader from './SectionHeader.astro';
+import { verticalDemos } from '../data/verticals';
+---
+<section class="py-14 md:py-20">
+  <SectionHeader
+    eyebrow="Demos por rubro"
+    title="Una demo concreta vende mejor que una explicación abstracta."
+    description="La idea es mostrarle al negocio una experiencia parecida a la que podría usar: con CTA, reservas, panel o flujo operativo según el rubro."
+  />
+  <div class="mt-8 grid gap-5 md:grid-cols-2">
+    {verticalDemos.map((demo) => (
+      <GlowCard>
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p class="text-sm font-semibold text-cyan-electric">{demo.name}</p>
+            <h3 class="mt-2 text-xl font-semibold tracking-tight text-slate-50">Problema → solución visible</h3>
+          </div>
+          <span class="rounded-full border border-line bg-ink/45 px-3 py-1 text-xs font-semibold text-muted-bright">Demo comercial</span>
+        </div>
+        <div class="mt-5 grid gap-3 text-sm leading-6 text-muted-soft">
+          <p class="rounded-2xl border border-line bg-ink/35 p-3"><strong class="text-slate-50">Fricción:</strong> {demo.problem}</p>
+          <p class="rounded-2xl border border-line bg-ink/35 p-3"><strong class="text-slate-50">Demo:</strong> {demo.solution}</p>
+        </div>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {demo.features.map((feature) => <Badge label={feature} tone="cyan" />)}
+        </div>
+      </GlowCard>
+    ))}
+  </div>
+</section>

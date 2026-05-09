@@ -1,0 +1,45 @@
+---
+import BrowserMockup from './BrowserMockup.astro';
+import MetricPill from './MetricPill.astro';
+import { heroSignals } from '../data/site';
+import { waLink, DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
+---
+<section class="relative overflow-hidden py-20 md:py-28">
+  <div class="absolute left-1/2 top-10 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
+  <div class="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+    <div>
+      <p class="inline-flex rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100">
+        Marin.dev · demos, webs y sistemas comerciales
+      </p>
+      <h1 class="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
+        Demos web y sistemas simples para negocios que quieren convertir visitas en consultas, reservas o ventas.
+      </h1>
+      <p class="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
+        Diseño y desarrollo landings, demos comerciales, agendas, paneles básicos e integraciones con WhatsApp para mostrar valor rápido y vender con menos fricción.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={waLink(DEMO_WHATSAPP_MESSAGE)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover"
+        >
+          Quiero una demo para mi negocio
+        </a>
+        <a
+          href="#casos"
+          class="inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 backdrop-blur transition hover:-translate-y-0.5 hover:border-line-strong"
+        >
+          Ver casos destacados
+        </a>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        {heroSignals.map((signal, index) => <MetricPill label={signal.label} value={signal.value} tone={index === 1 ? 'success' : 'cyan'} />)}
+      </div>
+    </div>
+
+    <BrowserMockup />
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+import { waLink, AUDIT_WHATSAPP_MESSAGE } from '../lib/contact';
+---
+<section class="py-16 text-center md:py-24">
+  <div class="relative overflow-hidden rounded-[2rem] border border-line bg-surface-glow p-8 shadow-premium backdrop-blur md:p-12">
+    <div class="absolute inset-x-10 -top-20 h-40 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-electric">CTA final</p>
+      <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-5xl">Mandame tu web o Instagram y te digo qué mejoraría.</h2>
+      <p class="mt-4 text-base leading-7 text-muted-soft">Te respondo con una mirada concreta: fricciones, oportunidades y qué demo o landing tendría más sentido para vender con menos vueltas.</p>
+      <a
+        href={waLink(AUDIT_WHATSAPP_MESSAGE)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover"
+      >
+        Mandame mi web o Instagram
+      </a>
+    </div>
+  </div>
+</section>

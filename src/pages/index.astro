@@ -1,13 +1,17 @@
 ---
-// Home: hero directo + skills + proyectos destacados + CTA
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import PricingPlans from "../components/PricingPlans.astro";
+import ContactCTA from '../components/ContactCTA.astro';
+import FAQs from '../components/FAQs.astro';
+import FeaturedCases from '../components/FeaturedCases.astro';
+import HeroV2 from '../components/HeroV2.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import ProductizedServices from '../components/ProductizedServices.astro';
+import SocialProofStrip from '../components/SocialProofStrip.astro';
+import VerticalDemos from '../components/VerticalDemos.astro';
+import GlowCard from '../components/GlowCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 import { getCollection } from 'astro:content';
-import FAQs from "../components/FAQs.astro";
-import { waLink, DEFAULT_WHATSAPP_MESSAGE } from "../lib/contact";
 
-// Cargar la colección de proyectos y ordenarlos por fecha descendente
 let proyectos = await getCollection('proyectos');
 proyectos = proyectos.sort((a, b) => {
   if (Boolean(a.data.featured) !== Boolean(b.data.featured)) {
@@ -17,112 +21,53 @@ proyectos = proyectos.sort((a, b) => {
   return priorityDiff || (a.data.fecha < b.data.fecha ? 1 : -1);
 });
 const destacados = proyectos.slice(0, 3);
+
+const outcomes = [
+  {
+    title: 'Más consultas calificadas',
+    description: 'CTAs claros, WhatsApp con mensaje guiado y secciones que responden dudas antes del primer contacto.',
+  },
+  {
+    title: 'Más confianza para decidir',
+    description: 'Estructura visual premium, casos de negocio y pruebas concretas en vez de una lista genérica de tecnologías.',
+  },
+  {
+    title: 'Menos fricción operativa',
+    description: 'Agendas, paneles simples y flujos pensados para ordenar reservas, servicios o leads sin inflar el proyecto.',
+  },
+  {
+    title: 'Demo lista para vender',
+    description: 'Una pieza navegable para validar propuesta, mostrar valor y compartir por WhatsApp antes de invertir de más.',
+  },
+];
 ---
-<BaseLayout title="Desarrollador Web Freelance" description="Soluciones rápidas, claras y a medida para tu negocio.">
-<section class="py-20 md:py-28 text-center">
-  <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
-    Webs que convierten visitas en consultas (y te dejan listo para escalar)
-  </h1>
-  <p class="mt-4 text-base md:text-lg text-gray-600">
-    Landing, web corporativa o e-commerce con performance, SEO base y CTAs a WhatsApp. Entregables por escrito, cronograma claro y soporte post-lanzamiento.
-  </p>
+<BaseLayout
+  title="Marin.dev | Demos web y sistemas simples para vender mejor"
+  description="Demos web, landings y sistemas simples para negocios que quieren convertir visitas en consultas, reservas o ventas."
+>
+  <HeroV2 />
+  <SocialProofStrip />
 
-  <!-- CTAs -->
-  <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-    <a
-      href={waLink(DEFAULT_WHATSAPP_MESSAGE)}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white transition"
-    >
-      Cotizar por WhatsApp
-    </a>
-    <a
-      href="#planes"
-      class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium border border-gray-300/70 dark:border-gray-700/70 hover:opacity-90 transition"
-    >
-      Ver paquetes y entregables
-    </a>
-    <a
-      href="/proyectos"
-      class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium border border-gray-300/70 dark:border-gray-700/70 hover:opacity-90 transition"
-    >
-      Ver casos reales
-    </a>
-  </div>
-
-  <!-- Prueba social simple: no requiere íconos -->
-  <p class="mt-6 text-sm text-gray-500">
-    Propuesta en 24h • pagos por hitos • entrega con repo + deploy
-  </p>
-</section>
-
-  <!-- QUÉ RESUELVO: enfocado a negocio (CRO) -->
-  <section class="py-8">
-    <h2 class="text-xl font-semibold mb-6">Qué resuelvo (sin humo)</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="rounded-xl border p-4">
-        <h3 class="font-semibold">Más consultas</h3>
-        <p class="text-sm text-gray-600">CTAs claros, WhatsApp guiado y secciones que responden objeciones.</p>
-      </div>
-      <div class="rounded-xl border p-4">
-        <h3 class="font-semibold">Más confianza</h3>
-        <p class="text-sm text-gray-600">Estructura institucional + prueba social + mensajes de seguridad.</p>
-      </div>
-      <div class="rounded-xl border p-4">
-        <h3 class="font-semibold">Más velocidad</h3>
-        <p class="text-sm text-gray-600">Carga rápida y base SEO para que no dependas solo de ads.</p>
-      </div>
-      <div class="rounded-xl border p-4">
-        <h3 class="font-semibold">Menos fricción</h3>
-        <p class="text-sm text-gray-600">Formulario, integraciones y handoff prolijo (repo + deploy).</p>
-      </div>
+  <section class="py-14 md:py-20">
+    <SectionHeader
+      eyebrow="Qué construyo"
+      title="Piezas digitales con intención comercial, no decoración suelta."
+      description="Cada bloque tiene una tarea: explicar valor, reducir dudas, ordenar la acción y facilitar que el cliente escriba, reserve o compre."
+    />
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {outcomes.map((item) => (
+        <GlowCard class="h-full">
+          <h3 class="text-lg font-semibold text-slate-50">{item.title}</h3>
+          <p class="mt-3 text-sm leading-6 text-muted-soft">{item.description}</p>
+        </GlowCard>
+      ))}
     </div>
   </section>
 
-  <!-- PROYECTOS DESTACADOS: prioriza casos con mayor fuerza comercial -->
-  <section id="casos" class="py-12 scroll-mt-24">
-    <h2 class="text-xl font-semibold mb-2">Casos destacados</h2>
-    <p class="mb-6 max-w-2xl text-sm leading-6 text-muted-soft">Proyectos seleccionados por claridad comercial, capacidad demostrable y facilidad para entender el problema que resuelven.</p>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        destacados.map((p) => {
-          return (
-            <ProjectCard
-              title={p.data.title}
-              resumen={p.data.resumen}
-              stack={p.data.stack}
-              slug={p.slug}
-              cover={p.data.cover}
-              resultado={p.data.resultado}
-              problema={p.data.problema}
-              solucion={p.data.solucion}
-              tipo={p.data.tipo}
-              sector={p.data.sector}
-              status={p.data.status}
-              features={p.data.features}
-              impacto={p.data.impacto}
-              ctaLabel={p.data.ctaLabel}
-            />
-          );
-        })
-      }
-    </div>
-  </section>
-
-  {/* Sección de planes anclada */}
-  <section id="planes" class="scroll-mt-24">
-    <PricingPlans />
-  </section>
-
+  <FeaturedCases projects={destacados} />
+  <VerticalDemos />
+  <ProcessSteps />
+  <ProductizedServices />
   <FAQs />
-
-  <!-- CTA FINAL: invita al contacto -->
-  <section class="py-16 text-center">
-    <div class="rounded-2xl border p-8">
-      <h3 class="text-lg font-semibold">¿Listo para empezar?</h3>
-      <p class="text-sm text-gray-600 mt-1">Tengo cupos limitados por mes. Contame tu idea y vemos el mejor camino.</p>
-      <a href={waLink("Hola Diego, quiero una propuesta.\n\nRubro: [Rubro]\nObjetivo: [más consultas / reservas / ventas]\nTengo: [web/no web]\nPresupuesto estimado: [USD]\nDetalles: [breve]\n")} target="_blank" rel="noopener noreferrer" class="inline-block mt-4 rounded-lg bg-brand px-5 py-2.5 text-white">Enviar mensaje guiado</a>
-    </div>
-  </section>
+  <ContactCTA />
 </BaseLayout>
