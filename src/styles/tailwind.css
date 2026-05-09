@@ -1,9 +1,151 @@
-/* src/styles/tailwind.css */
-/* ------------------------ */
-/* 1) Directivas de Tailwind: generan el CSS final */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 2) Aquí puedes extender utilidades globales (opcional) */
-/* Ej.: .container custom, tipografías, etc. */
+@layer base {
+  :root {
+    color-scheme: dark;
+    --color-ink: #070a12;
+    --color-surface: #0d1222;
+    --color-line: rgba(148, 163, 184, 0.14);
+    --color-text: #f8fafc;
+    --color-muted: #94a3b8;
+    --color-brand: #22d3ee;
+  }
+
+  html {
+    min-width: 320px;
+    background: var(--color-ink);
+  }
+
+  body {
+    min-width: 320px;
+    overflow-x: hidden;
+    background:
+      radial-gradient(
+        circle at 14% 0%,
+        rgba(34, 211, 238, 0.18),
+        transparent 28rem
+      ),
+      radial-gradient(
+        circle at 86% 18%,
+        rgba(139, 92, 246, 0.13),
+        transparent 30rem
+      ),
+      linear-gradient(180deg, #050816 0%, #070a12 42%, #080b14 100%);
+    color: var(--color-text);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.3);
+    color: #f8fafc;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .v2-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .v2-shell::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.65),
+      transparent 72%
+    );
+  }
+
+  .v2-shell::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at 20% 8%,
+        rgba(34, 211, 238, 0.16),
+        transparent 24rem
+      ),
+      radial-gradient(
+        circle at 78% 32%,
+        rgba(59, 130, 246, 0.1),
+        transparent 28rem
+      ),
+      radial-gradient(
+        circle at 50% 100%,
+        rgba(139, 92, 246, 0.08),
+        transparent 30rem
+      );
+  }
+
+  .prose-dark {
+    color: #cbd5e1;
+  }
+
+  .prose-dark :where(h1, h2, h3, h4, strong) {
+    color: #f8fafc;
+  }
+
+  .prose-dark :where(a) {
+    color: #67e8f9;
+  }
+}
+
+/* Compatibility layer: mantiene páginas existentes legibles mientras se rediseñan por patches. */
+.theme-v2 .text-gray-900,
+.theme-v2 .text-gray-800,
+.theme-v2 .text-gray-700 {
+  color: #f8fafc;
+}
+
+.theme-v2 .text-gray-600,
+.theme-v2 .text-gray-500 {
+  color: #cbd5e1;
+}
+
+.theme-v2 .border,
+.theme-v2 .border-gray-200\/70,
+.theme-v2 .border-gray-300\/70,
+.theme-v2 .border-gray-700\/70 {
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+.theme-v2 input,
+.theme-v2 textarea,
+.theme-v2 select {
+  background-color: rgba(15, 23, 42, 0.58);
+  color: #f8fafc;
+}
+
+.theme-v2 input::placeholder,
+.theme-v2 textarea::placeholder {
+  color: #94a3b8;
+}
