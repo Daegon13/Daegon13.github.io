@@ -3,6 +3,7 @@ import Badge from './Badge.astro';
 import GlowCard from './GlowCard.astro';
 import SectionHeader from './SectionHeader.astro';
 import { verticalDemos } from '../data/verticals';
+import { waLink } from '../lib/contact';
 ---
 <section class="py-14 md:py-20">
   <SectionHeader
@@ -27,6 +28,14 @@ import { verticalDemos } from '../data/verticals';
         <div class="mt-5 flex flex-wrap gap-2">
           {demo.features.map((feature) => <Badge label={feature} tone="cyan" />)}
         </div>
+        <a
+          href={waLink(`Hola Diego, quiero una demo para este rubro: ${demo.name}.\n\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nLink de referencia: [Instagram o web]`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex w-fit items-center gap-2 rounded-2xl border border-line bg-surface-glass px-4 py-2 text-sm font-semibold text-slate-50 transition hover:-translate-y-0.5 hover:border-cyan-electric/35 hover:text-cyan-electric"
+        >
+          Pedir demo de {demo.name} <span aria-hidden="true">→</span>
+        </a>
       </GlowCard>
     ))}
   </div>
