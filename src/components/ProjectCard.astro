@@ -1,5 +1,6 @@
 ---
 import Badge from './Badge.astro';
+import { projectCoverImage } from '../lib/projectGallery';
 
 const FEATURE_LIMIT = 4;
 const {
@@ -8,6 +9,7 @@ const {
   stack = [],
   slug,
   cover = '/og-default.png',
+  thumbnail = '',
   resultado = '',
   problema = '',
   solucion = '',
@@ -35,7 +37,8 @@ const statusTone = {
 const chips = Array.isArray(features) && features.length > 0 ? features : stack;
 const commercialType = tipo || sector || 'Caso comercial';
 const benefit = impacto || resultado;
-const hasGenericCover = !cover || cover === '/og-default.png';
+const displayCover = projectCoverImage({ slug, thumbnail, cover });
+const hasGenericCover = !displayCover || displayCover === '/og-default.png';
 const isStarProject = Number(priority) >= 120;
 ---
 <a
@@ -66,7 +69,7 @@ const isStarProject = Number(priority) >= 120;
       </div>
     ) : (
       <img
-        src={cover}
+        src={displayCover}
         alt={`Portada de ${title}`}
         class="aspect-[16/10] w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100"
         loading="lazy"

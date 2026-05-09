@@ -15,6 +15,7 @@ const proyectos = defineCollection({
     repoUrl: z.string().url().optional(),
     demoUrl: z.string().url().optional(),
     cover: z.string().optional(),
+    thumbnail: z.string().optional(),
     tipo: z.string().optional(),
     idealPara: z.string().optional(),
     features: z.array(z.string()).optional(),

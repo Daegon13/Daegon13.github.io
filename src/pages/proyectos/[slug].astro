@@ -29,12 +29,15 @@ const {
   repoUrl,
   demoUrl,
   cover = '/og-default.png',
+  thumbnail = '',
   tipo,
   idealPara,
   features = [],
   impacto,
   status,
 } = proyecto.data;
+
+const previewImage = thumbnail || cover;
 
 const { Content } = await proyecto.render();
 const statusLabels = {
@@ -49,7 +52,7 @@ const statusTone = {
 };
 const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [web / demo / agenda / zona editable / no sé todavía]`;
 ---
-<BaseLayout title={`${title} | Caso Marin.dev`} description={resumen} image={cover} url={`/proyectos/${proyecto.slug}`}>
+<BaseLayout title={`${title} | Caso Marin.dev`} description={resumen} image={previewImage} url={`/proyectos/${proyecto.slug}`}>
   <Container class="py-12 sm:py-16">
     <article>
       <header class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_28rem] lg:items-center">
@@ -96,7 +99,7 @@ const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [ru
           </div>
         </div>
 
-        <ProjectLinkPreview title={title} url={demoUrl} cover={cover} slug={proyecto.slug} eager />
+        <ProjectLinkPreview title={title} url={demoUrl} cover={cover} thumbnail={thumbnail} slug={proyecto.slug} eager />
       </header>
 
       <section class="mt-12 grid gap-5 lg:grid-cols-3">

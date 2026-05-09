@@ -1,14 +1,18 @@
 ---
+import { projectCoverImage } from '../lib/projectGallery';
+
 const {
   title,
   url = '',
   cover = '/og-default.png',
+  thumbnail = '',
   slug = '',
   eager = false,
 } = Astro.props;
 
+const displayCover = projectCoverImage({ slug, thumbnail, cover });
 const hasPreviewUrl = typeof url === 'string' && url.length > 0;
-const hasCustomCover = cover && cover !== '/og-default.png';
+const hasCustomCover = displayCover && displayCover !== '/og-default.png';
 const previewHost = hasPreviewUrl ? new URL(url).host.replace(/^www\./, '') : `marin.dev/caso/${slug}`;
 ---
 <div class="relative">
@@ -43,7 +47,7 @@ const previewHost = hasPreviewUrl ? new URL(url).host.replace(/^www\./, '') : `m
           </a>
         </>
       ) : hasCustomCover ? (
-        <img src={cover} alt={`Mockup o portada de ${title}`} class="h-full w-full object-cover" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+        <img src={displayCover} alt={`Mockup o portada de ${title}`} class="h-full w-full object-cover" loading={eager ? 'eager' : 'lazy'} decoding="async" />
       ) : (
         <div class="relative flex h-full flex-col justify-between overflow-hidden p-5">
           <div class="absolute inset-0 bg-premium-grid bg-[length:2rem_2rem] opacity-45"></div>
