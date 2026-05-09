@@ -7,44 +7,44 @@ import { waLink } from "../lib/contact";
 */
 const plans = [
   {
-    name: "Landing Express",
+    name: "Web Express",
     price: "USD 50–290",
-    lead: "Página one-page rápida, enfocada en conversión.",
+    lead: "Página rápida para presentar tu negocio y recibir consultas.",
     deliverables: [
-      "Sección hero + servicios + CTA a WhatsApp",
-      "Copy base orientado a SEO on-page",
-      "Implementación analytics básica",
+      "Inicio claro + servicios + botón a WhatsApp",
+      "Textos base para que la página se entienda mejor",
+      "Medición básica de visitas",
       "Entrega en 3–5 días hábiles"
     ],
     idealFor: "Emprendedores que necesitan presencia inmediata",
-    planId: "landing-express",
+    planId: "web-express",
   },
   {
-    name: "Web Corporativa",
+    name: "Web para Negocio",
     price: "USD 390–690",
-    lead: "Sitio institucional multi-página con foco en confianza.",
+    lead: "Sitio de varias páginas para explicar mejor tu negocio y generar confianza.",
     deliverables: [
       "Hasta 5 páginas: Inicio, Servicios, Sobre mí, Contacto, Blog",
-      "Estructura SEO + OpenGraph + JSON-LD",
-      "Optimización de imágenes y performance",
+      "Configuración básica para buscadores y redes",
+      "Imágenes optimizadas y carga rápida",
       "Entrega en 7–12 días hábiles"
     ],
-    idealFor: "Negocios que requieren más profundidad y escalabilidad",
+    idealFor: "Negocios que necesitan explicar más servicios y crecer con el tiempo",
     featured: true,
     planId: "web-corporativa",
   },
   {
-    name: "Panel + Integraciones",
+    name: "Zona editable + Conexiones",
     price: "USD 690–1.190",
-    lead: "Admin básico y flujos de datos listos para crecer.",
+    lead: "Contenido editable y formularios para ordenar consultas.",
     deliverables: [
-      "Panel simple (Firebase/Firestore) para contenidos",
-      "Formularios con almacenamiento y alertas por email",
-      "Despliegue en GitHub Pages / Netlify / Vercel",
+      "Zona simple para editar contenidos",
+      "Formularios guardados y avisos por email",
+      "Web publicada online",
       "Entrega en 10–20 días hábiles"
     ],
-    idealFor: "Equipos que necesitan operativa y recolección de datos",
-    planId: "panel-integraciones",
+    idealFor: "Negocios que necesitan ordenar consultas o datos",
+    planId: "zona editable-conexiones",
   },
 ];
 ---
@@ -83,7 +83,7 @@ const plans = [
         <!-- Para quién es ideal -->
         <p class="mt-4 text-xs text-gray-500"><strong>Ideal para:</strong> {p.idealFor}</p>
 
-        <!-- CTA hacia Contacto con tracking simple -->
+        <!-- botón hacia Contacto con tracking simple -->
         <div class="mt-6">
           <a
             href={waLink(`Hola Diego, quiero el plan "${p.name}".\n\nMi rubro: [Rubro]\nObjetivo: [más consultas / reservas / ventas]\nTengo: [web/no web]\nPresupuesto estimado: [USD]\nDetalles: [breve]\n`)}

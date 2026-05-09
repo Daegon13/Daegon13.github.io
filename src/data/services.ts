@@ -3,37 +3,49 @@ export const productizedServices = [
     name: "Demo Comercial Express",
     tag: "Validar rápido",
     description:
-      "Una demo premium para transformar Instagram, una idea o un rubro en una pieza vendible.",
+      "Una primera versión cuidada para convertir tu Instagram, una idea o un rubro en una página lista para mostrar.",
     deliverables: [
-      "Hero + oferta",
-      "WhatsApp guiado",
-      "Mockup o flujo",
-      "Deploy compartible",
+      "Mensaje principal",
+      "WhatsApp preparado",
+      "Vista de ejemplo",
+      "Web para compartir",
     ],
   },
   {
-    name: "Landing de Conversión",
+    name: "Página para Vender Más",
     tag: "Más consultas",
     description:
-      "Página enfocada en claridad, confianza, objeciones y CTA para negocios que ya venden.",
+      "Una página clara para explicar qué ofrecés, generar confianza y guiar a la persona hacia una consulta o reserva.",
     deliverables: [
-      "Copy comercial",
-      "Secciones CRO",
-      "SEO base",
-      "Performance",
+      "Textos simples",
+      "Secciones claras",
+      "Vista para compartir",
+      "Carga rápida",
     ],
     featured: true,
   },
   {
-    name: "Web con Agenda / Panel",
-    tag: "Operar mejor",
+    name: "Web con WhatsApp / Agenda",
+    tag: "Reservar mejor",
     description:
-      "Sistema simple para mostrar servicios, ordenar reservas o editar contenido clave.",
+      "Una web para mostrar servicios, ordenar consultas y llevar al visitante a una reserva o conversación útil.",
     deliverables: [
+      "Botón por servicio",
+      "Mensaje preparado",
       "Agenda simple",
-      "Panel básico",
-      "Integraciones",
-      "Documentación",
+      "Consultas ordenadas",
+    ],
+  },
+  {
+    name: "Herramienta simple editable",
+    tag: "Ordenar mejor",
+    description:
+      "Una solución liviana para cambiar textos, servicios, precios, reservas o información clave sin depender siempre de alguien más.",
+    deliverables: [
+      "Contenido editable",
+      "Flujo simple",
+      "Datos ordenados",
+      "Guía de uso",
     ],
   },
 ];

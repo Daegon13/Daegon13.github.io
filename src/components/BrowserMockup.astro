@@ -2,28 +2,28 @@
 const leads = [
   { label: 'Nueva consulta', value: 'WhatsApp', detail: 'Rubro: gimnasio · objetivo: reservas' },
   { label: 'Reserva confirmada', value: 'Agenda', detail: 'Martes 18:30 · recordatorio listo' },
-  { label: 'Contenido editable', value: 'Panel', detail: 'Servicios, precios y FAQs' },
+  { label: 'Contenido editable', value: 'Servicios', detail: 'Textos, precios y preguntas frecuentes' },
 ];
 ---
-<div class="relative mx-auto max-w-xl" role="group" aria-label="Mockup de dashboard comercial">
+<div class="relative mx-auto max-w-xl" role="group" aria-label="Vista de ejemplo comercial">
   <div class="absolute -inset-6 rounded-[2rem] bg-brand-gradient opacity-20 blur-3xl" aria-hidden="true"></div>
   <div class="relative min-w-0 overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur">
     <div class="flex min-w-0 items-center gap-2 border-b border-line bg-ink/55 px-4 py-3">
       <span class="h-3 w-3 shrink-0 rounded-full bg-red-400/80" aria-hidden="true"></span>
       <span class="h-3 w-3 shrink-0 rounded-full bg-amber-300/80" aria-hidden="true"></span>
       <span class="h-3 w-3 shrink-0 rounded-full bg-emerald-300/80" aria-hidden="true"></span>
-      <div class="ml-3 min-w-0 flex-1 truncate rounded-full border border-line bg-ink/60 px-3 py-1 text-xs text-muted">marin.dev/demo-comercial</div>
-      <span class="hidden shrink-0 rounded-full bg-brand-success/10 px-2.5 py-1 text-xs font-semibold text-emerald-100 sm:inline-flex">Deploy activo</span>
+      <div class="ml-3 min-w-0 flex-1 truncate rounded-full border border-line bg-ink/60 px-3 py-1 text-xs text-muted">marin.dev/demo-para-negocio</div>
+      <span class="hidden shrink-0 rounded-full bg-brand-success/10 px-2.5 py-1 text-xs font-semibold text-emerald-100 sm:inline-flex">Publicado</span>
     </div>
 
     <div class="grid gap-4 p-4 sm:grid-cols-[1.1fr_0.9fr] sm:p-6">
       <section class="rounded-2xl border border-line bg-ink/45 p-5">
-        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-electric">Dashboard comercial</p>
-        <h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-50">Menos fricción → más consultas</h3>
-        <p class="mt-2 text-sm leading-6 text-muted-soft">Hero claro, servicios ordenados, agenda visible y WhatsApp con mensaje útil.</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-electric">Ejemplo de recorrido</p>
+        <h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-50">Todo claro → consulta al momento</h3>
+        <p class="mt-2 text-sm leading-6 text-muted-soft">Una portada clara, servicios ordenados, agenda visible y WhatsApp con mensaje preparado.</p>
 
         <div class="mt-5 grid grid-cols-3 gap-2">
-          {['CTA', 'Agenda', 'Panel'].map((item) => (
+          {['Botón', 'Agenda', 'Servicios'].map((item) => (
             <div class="rounded-2xl border border-line bg-surface-glass p-3 text-center">
               <p class="text-lg font-semibold text-slate-50">✓</p>
               <p class="text-xs text-muted-soft">{item}</p>
