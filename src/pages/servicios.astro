@@ -1,18 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PricingPlans from "../components/PricingPlans.astro";
-import FAQs from "../components/FAQs.astro";
+import ContactCTA from '../components/ContactCTA.astro';
+import FAQs from '../components/FAQs.astro';
+import PricingPlans from '../components/PricingPlans.astro';
+import { SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
 
-const title = "Servicios – Marin.dev";
-const description = "Paquetes claros, entregables definidos y tiempos de entrega reales.";
-const url = "https://daegon13.github.io/servicios";
-const image = "/og-default.png";
+const title = 'Servicios productizados – Marin.dev';
+const description = 'Demos, landings, webs con WhatsApp/agenda y sistemas simples para convertir visitas en consultas, reservas o ventas.';
+const url = 'https://daegon13.github.io/servicios';
+const image = '/og-default.png';
+
+const serviceHighlights = [
+  'Rangos claros antes de cotizar',
+  'Alcance definido por objetivo comercial',
+  'WhatsApp, agenda o panel cuando suma valor',
+];
 ---
 <BaseLayout {title} {description} {url} {image}>
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="absolute left-1/2 top-10 h-48 w-48 -translate-x-1/2 rounded-full bg-cyan-electric/15 blur-3xl" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-4xl text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-electric">Servicios Marin.dev</p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-50 md:text-6xl">
+        Productos digitales simples para vender, reservar u operar mejor.
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-soft md:text-lg">
+        No arranco desde “necesitás una web”. Arranco desde el objetivo: validar una idea, captar consultas, ordenar reservas o crear una herramienta interna liviana.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        {serviceHighlights.map((item) => (
+          <span class="rounded-full border border-line bg-surface-glass px-4 py-2 text-sm text-muted-soft shadow-sm backdrop-blur">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="grid gap-6 rounded-[2rem] border border-line bg-surface-glow p-6 shadow-premium backdrop-blur md:grid-cols-[0.9fr_1.1fr] md:p-8">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-electric">Cómo elegir</p>
+      <h2 class="mt-3 text-2xl font-semibold tracking-tight text-slate-50 md:text-4xl">
+        Elegí el punto de partida. Después ajustamos el alcance real.
+      </h2>
+    </div>
+    <div class="space-y-4 text-sm leading-6 text-muted-soft md:text-base">
+      <p>
+        Los planes no son moldes cerrados: son formas de ordenar la conversación para que sepas qué estás comprando, qué problema resuelve y qué entregables esperar.
+      </p>
+      <p>
+        Si tu negocio todavía necesita validar una propuesta, conviene una demo. Si ya tenés tráfico o campañas, una landing. Si el cuello de botella son turnos o mensajes incompletos, WhatsApp/agenda. Si el problema está adentro del negocio, un panel simple.
+      </p>
+    </div>
+  </section>
+
   <section id="planes" class="scroll-mt-24">
     <PricingPlans />
   </section>
 
-  <!-- FAQs debajo de los planes -->
   <FAQs />
+
+  <ContactCTA
+    eyebrow="¿No sabés cuál elegir?"
+    title="Mandame tu rubro, Instagram o web y te recomiendo el punto de partida."
+    description="Te respondo con una recomendación concreta: demo, landing, WhatsApp/agenda o panel simple, según el objetivo y el momento de tu negocio."
+    primaryLabel="Consultar mi caso por WhatsApp"
+    primaryMessage={SERVICE_WHATSAPP_MESSAGE('Servicios Marin.dev')}
+    secondaryLabel="Ver casos"
+    secondaryHref="/proyectos"
+  />
 </BaseLayout>
