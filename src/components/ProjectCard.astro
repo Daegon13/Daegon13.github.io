@@ -17,6 +17,7 @@ const {
   features = [],
   impacto = '',
   ctaLabel = 'Ver caso',
+  priority = 0,
 } = Astro.props;
 
 const statusLabels = {
@@ -34,13 +35,36 @@ const statusTone = {
 const chips = Array.isArray(features) && features.length > 0 ? features : stack;
 const commercialType = tipo || sector || 'Caso comercial';
 const benefit = impacto || resultado;
+const hasGenericCover = !cover || cover === '/og-default.png';
+const isStarProject = Number(priority) >= 120;
 ---
 <a
   href={`/proyectos/${slug}`}
   class="group block h-full overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-premium-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-electric"
 >
   <div class="relative overflow-hidden border-b border-line bg-ink/60">
-    {cover ? (
+    {hasGenericCover ? (
+      <div class="relative aspect-[16/10] overflow-hidden bg-ink">
+        <div class="absolute inset-0 bg-premium-grid bg-[length:2rem_2rem] opacity-45"></div>
+        <div class="absolute -left-16 top-6 h-40 w-40 rounded-full bg-cyan-electric/20 blur-3xl transition duration-500 group-hover:bg-cyan-electric/30"></div>
+        <div class="absolute -right-14 bottom-0 h-44 w-44 rounded-full bg-brand-violet/20 blur-3xl transition duration-500 group-hover:bg-brand-violet/30"></div>
+        <div class="relative flex h-full flex-col justify-between p-5">
+          <div class="flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-muted-soft">
+            <span class="h-2 w-2 rounded-full bg-brand-success shadow-[0_0_18px_rgba(52,211,153,0.85)]"></span>
+            Case preview
+          </div>
+          <div class="rounded-2xl border border-line bg-surface-glass p-4 shadow-premium backdrop-blur">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-electric">{commercialType}</p>
+            <p class="mt-2 line-clamp-2 text-lg font-semibold leading-tight text-slate-50">{title}</p>
+            <div class="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
+              <span class="h-2 rounded-full bg-cyan-electric/70"></span>
+              <span class="h-2 rounded-full bg-brand-blue/60"></span>
+              <span class="h-2 rounded-full bg-brand-violet/60"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ) : (
       <img
         src={cover}
         alt={`Portada de ${title}`}
@@ -48,15 +72,10 @@ const benefit = impacto || resultado;
         loading="lazy"
         decoding="async"
       />
-    ) : (
-      <div class="aspect-[16/10] bg-premium-grid bg-[length:2rem_2rem]">
-        <div class="flex h-full items-center justify-center bg-radial-cyan">
-          <span class="rounded-full border border-line bg-surface-glass px-4 py-2 text-sm font-semibold text-cyan-electric">Marin.dev case</span>
-        </div>
-      </div>
     )}
     <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/90 to-transparent"></div>
     <div class="absolute left-4 top-4 flex flex-wrap gap-2">
+      {isStarProject && <Badge label="Proyecto estrella" tone="success" />}
       <Badge label={commercialType} tone="cyan" />
       {status && <Badge label={statusLabels[status] ?? status} tone={statusTone[status] ?? 'default'} />}
     </div>
