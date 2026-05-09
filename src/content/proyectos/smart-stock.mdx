@@ -1,40 +1,51 @@
 ---
-title: "Smart Stock – Dashboard de inventario"
-tipo: "Sistema / dashboard operativo"
+title: "Smart Stock – Sistema funcional de inventario"
+tipo: "Proyecto estrella / sistema funcional"
 sector: "Inventario / Gestión interna"
-idealPara: "Negocios que necesitan visualizar stock, movimientos y datos operativos sin depender de planillas desordenadas."
+idealPara: "Comercios minoristas, minimarkets y operaciones con stock que necesitan pasar de planillas a un panel operativo navegable."
 rol: "Desarrollador Frontend"
 stack:
   - React
   - Tailwind
+  - TypeScript
+  - Prisma / PostgreSQL
   - Dashboard UI
-  - Gestión de datos
 features:
-  - Control de stock
   - Dashboard operativo
-  - Visualización de métricas
-  - Flujo para productos
+  - Control de stock
+  - Compras y órdenes
+  - Importación POS
 fecha: "2026-01"
-status: "concepto"
+status: "demo"
 featured: true
-priority: 90
-ctaLabel: "Ver sistema conceptual"
+priority: 140
+ctaLabel: "Abrir showcase funcional"
 resumen: >
-  Prototipo de inventario pensado para demostrar cómo un negocio puede pasar de planillas dispersas a una interfaz operativa más clara.
+  Showcase funcional de inventario para comercios: permite navegar dashboard, productos, stock, compras y señales operativas con datos ficticios en modo solo lectura.
 problema: >
-  Muchos negocios gestionan productos, cantidades y movimientos en planillas poco claras, lo que dificulta tomar decisiones rápidas y mantener orden interno.
+  Muchos comercios gestionan stock, ventas POS y reposición con planillas dispersas, poca trazabilidad y decisiones manuales sobre productos críticos.
 solucion: >
-  Se construyó una interfaz tipo dashboard con lectura rápida, módulos de stock y una base visual preparada para validar flujos antes de invertir en un sistema completo.
+  Se construyó un sistema navegable con dashboard, catálogo, movimientos, compras, importación POS y arquitectura preparada para auth, roles y multi-tenant.
 impacto: >
-  Muestra capacidad para diseñar paneles internos claros, validar procesos y convertir tareas manuales en una experiencia más ordenada para operación diaria.
+  Proyecto estrella del portfolio: demuestra capacidad para construir producto operativo real. Para ser completamente comercial faltan los módulos finales de autenticación, roles y hardening multi-tenant.
+demoUrl: "https://smart-stock-showcase.vercel.app/"
 repoUrl: "https://github.com/Daegon13/smart-stock"
 cover: "/og-default.png"
 ---
 
-### Nota sobre demo pública
+### Nota sobre estado comercial
 
-Este caso se incorpora como prototipo con repositorio confirmado. No se agrega URL de demo pública porque todavía no está confirmada.
+Smart Stock ya funciona como showcase público navegable y en modo solo lectura. No se presenta todavía como SaaS terminado: para venderlo como producto comercial faltan cerrar autenticación end-to-end, roles, aislamiento multi-tenant y hardening productivo.
 
 ### Enfoque del caso
 
-Smart Stock muestra una línea distinta del portfolio: sistemas simples y paneles que ayudan a ordenar operaciones internas. Es un ejemplo útil para comercios, depósitos o equipos que necesitan reemplazar procesos manuales por una interfaz más clara.
+Smart Stock muestra una línea fuerte del portfolio: sistemas simples y paneles que ayudan a ordenar operaciones internas. Es un ejemplo útil para comercios, depósitos o equipos que necesitan reemplazar procesos manuales por una interfaz clara, auditable y preparada para crecer.
+
+### Módulos demostrables
+
+- Dashboard del día con señales operativas.
+- Productos, categorías, mínimos, costos y precios.
+- Stock, movimientos y ajustes.
+- Compras, órdenes y recepción de mercadería.
+- Importación POS y reconciliación de productos.
+- Base preparada para copiloto, auditoría, auth y multi-tenant.

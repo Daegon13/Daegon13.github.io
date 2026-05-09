@@ -17,6 +17,7 @@ const {
   features = [],
   impacto = '',
   ctaLabel = 'Ver caso',
+  priority = 0,
 } = Astro.props;
 
 const statusLabels = {
@@ -35,6 +36,7 @@ const chips = Array.isArray(features) && features.length > 0 ? features : stack;
 const commercialType = tipo || sector || 'Caso comercial';
 const benefit = impacto || resultado;
 const hasGenericCover = !cover || cover === '/og-default.png';
+const isStarProject = Number(priority) >= 120;
 ---
 <a
   href={`/proyectos/${slug}`}
@@ -73,6 +75,7 @@ const hasGenericCover = !cover || cover === '/og-default.png';
     )}
     <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/90 to-transparent"></div>
     <div class="absolute left-4 top-4 flex flex-wrap gap-2">
+      {isStarProject && <Badge label="Proyecto estrella" tone="success" />}
       <Badge label={commercialType} tone="cyan" />
       {status && <Badge label={statusLabels[status] ?? status} tone={statusTone[status] ?? 'default'} />}
     </div>
