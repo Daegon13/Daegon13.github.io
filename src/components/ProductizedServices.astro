@@ -1,0 +1,42 @@
+---
+import Badge from './Badge.astro';
+import GlowCard from './GlowCard.astro';
+import SectionHeader from './SectionHeader.astro';
+import { productizedServices } from '../data/services';
+import { waLink, SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
+---
+<section id="planes" class="scroll-mt-24 py-14 md:py-20">
+  <SectionHeader
+    eyebrow="Servicios productizados"
+    title="Puntos de partida claros, ajustables al negocio."
+    description="No se trata de sumar secciones porque sí: cada paquete ordena una necesidad comercial concreta."
+  />
+  <div class="mt-8 grid gap-6 lg:grid-cols-3">
+    {productizedServices.map((service) => (
+      <GlowCard class={`h-full ${service.featured ? 'border-cyan-electric/35' : ''}`}>
+        <div class="flex items-center justify-between gap-3">
+          <Badge label={service.tag} tone={service.featured ? 'success' : 'cyan'} />
+          {service.featured && <span class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-success">Recomendado</span>}
+        </div>
+        <h3 class="mt-5 text-2xl font-semibold tracking-tight text-slate-50">{service.name}</h3>
+        <p class="mt-3 text-sm leading-6 text-muted-soft">{service.description}</p>
+        <ul class="mt-5 space-y-3 text-sm text-muted-soft">
+          {service.deliverables.map((item) => (
+            <li class="flex gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-electric" aria-hidden="true"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={waLink(SERVICE_WHATSAPP_MESSAGE(service.name))}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-slate-50 transition hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
+        >
+          Consultar este paquete
+        </a>
+      </GlowCard>
+    ))}
+  </div>
+</section>

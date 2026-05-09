@@ -1,0 +1,39 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import SectionHeader from './SectionHeader.astro';
+
+const { projects = [] } = Astro.props;
+---
+<section id="casos" class="scroll-mt-24 py-14 md:py-20">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <SectionHeader
+      eyebrow="Casos destacados"
+      title="Proyectos presentados como prueba comercial."
+      description="Seleccionados por claridad de negocio, capacidad demostrable y facilidad para entender el problema que resuelven."
+    />
+    <a href="/proyectos" class="inline-flex w-fit items-center gap-2 rounded-2xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-cyan-electric transition hover:-translate-y-0.5 hover:border-line-strong">
+      Ver portfolio completo <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {projects.map((p) => (
+      <ProjectCard
+        title={p.data.title}
+        resumen={p.data.resumen}
+        stack={p.data.stack}
+        slug={p.slug}
+        cover={p.data.cover}
+        resultado={p.data.resultado}
+        problema={p.data.problema}
+        solucion={p.data.solucion}
+        tipo={p.data.tipo}
+        sector={p.data.sector}
+        status={p.data.status}
+        features={p.data.features}
+        impacto={p.data.impacto}
+        ctaLabel={p.data.ctaLabel}
+      />
+    ))}
+  </div>
+</section>
