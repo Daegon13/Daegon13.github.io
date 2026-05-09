@@ -1,5 +1,13 @@
 ---
-// Insignia simple para tags/stack
-const { label } = Astro.props;
+// Insignia simple para tags/stack compatible con el tema oscuro V2
+const { label, tone = 'default' } = Astro.props;
+const tones = {
+  default: 'border-line bg-surface-glass text-muted-bright',
+  cyan: 'border-cyan-electric/30 bg-cyan-electric/10 text-cyan-100',
+  violet: 'border-violet-electric/30 bg-violet-electric/10 text-violet-100',
+  success: 'border-brand-success/30 bg-brand-success/10 text-emerald-100',
+  warning: 'border-brand-warning/30 bg-brand-warning/10 text-amber-100'
+};
+const classes = tones[tone] ?? tones.default;
 ---
-<span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700 border">{label}</span>
+<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium shadow-sm backdrop-blur ${classes}`}>{label}</span>
