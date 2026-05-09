@@ -1,13 +1,13 @@
 export const capabilityStrip = [
   "Demos por rubro",
-  "WhatsApp guiado",
+  "WhatsApp listo",
   "Agenda y reservas",
-  "Panel simple",
-  "Repo + deploy",
+  "Textos editables",
+  "Web publicada",
 ];
 
 export const heroSignals = [
-  { label: "Repo + deploy", value: "entrega lista" },
-  { label: "WhatsApp guiado", value: "consulta sin fricción" },
-  { label: "Por hitos", value: "alcance claro" },
+  { label: "Web publicada", value: "lista para compartir" },
+  { label: "WhatsApp listo", value: "consulta al momento" },
+  { label: "Paso a paso", value: "alcance claro" },
 ];

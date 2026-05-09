@@ -1,18 +1,18 @@
 export const faqs = [
   {
     q: "¿Necesito tener todo definido antes de pedir una demo?",
-    a: "No. Con tu Instagram, una web actual o una idea clara alcanza para detectar fricciones, ordenar la oferta y proponer una primera demo comercial.",
+    a: "No. Con tu Instagram, una web actual o una idea alcanza para ordenar la oferta y proponer una primera versión clara.",
   },
   {
-    q: "¿La demo sirve aunque todavía no quiera invertir en un sistema grande?",
-    a: "Sí. La demo funciona como una versión navegable para validar mensaje, estética y flujo de consulta antes de ampliar alcance o agregar integraciones.",
+    q: "¿La demo sirve si todavía no quiero una web grande?",
+    a: "Sí. Sirve para ver cómo se presentaría tu negocio, compartirlo por WhatsApp y decidir qué conviene mejorar después.",
   },
   {
-    q: "¿Podés integrar WhatsApp, agenda o un panel simple?",
-    a: "Sí. Puedo dejar CTAs con mensajes guiados, agenda/reserva según el caso y paneles básicos para editar contenido u ordenar información operativa.",
+    q: "¿Podés sumar WhatsApp, agenda o contenido editable?",
+    a: "Sí. Puedo dejar mensajes preparados, botones por servicio, reservas simples y zonas editables para actualizar información clave.",
   },
   {
-    q: "¿El código y el deploy quedan entregados?",
-    a: "Sí. Entrego el sitio publicado, repositorio y una documentación breve para que tengas control del proyecto y puedas pedir mejoras sin depender de cajas negras.",
+    q: "¿La web queda publicada y lista para usar?",
+    a: "Sí. Entrego la web online, los accesos necesarios y una guía breve para que tengas control del proyecto.",
   },
 ];

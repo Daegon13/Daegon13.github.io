@@ -11,10 +11,10 @@ export const WHATSAPP_NUMBER_E164 = "59897316092"; // UY (+598) + 97316092
 export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
 
 export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hola Diego, quiero una web/demo para mi negocio.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [landing / demo / agenda / panel / no sé todavía]\nLink de referencia: [Instagram o web]";
+  "Hola Diego, quiero una web/demo para mi negocio.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [web / demo / agenda / zona editable / no sé todavía]\nLink de referencia: [Instagram o web]";
 
 export const DEMO_WHATSAPP_MESSAGE =
-  "Hola Diego, quiero una demo/web para mi negocio.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [landing / demo / agenda / panel / no sé todavía]\nLink de referencia: [Instagram o web]";
+  "Hola Diego, quiero una demo/web para mi negocio.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [web / demo / agenda / zona editable / no sé todavía]\nLink de referencia: [Instagram o web]";
 
 export const AUDIT_WHATSAPP_MESSAGE =
   "Hola Diego, quiero que revises mi web o Instagram.\n\nLink: [pegá acá tu web o Instagram]\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nPrincipal problema hoy: [breve]";

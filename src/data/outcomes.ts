@@ -1,22 +1,22 @@
 export const outcomes = [
   {
-    title: "Más consultas calificadas",
+    title: "Más consultas claras",
     description:
-      "CTAs claros, WhatsApp con mensaje guiado y secciones que responden dudas antes del primer contacto.",
+      "Botones visibles, WhatsApp con mensaje preparado y secciones que responden las dudas más comunes antes del primer contacto.",
   },
   {
     title: "Más confianza para decidir",
     description:
-      "Estructura visual premium, casos de negocio y pruebas concretas en vez de una lista genérica de tecnologías.",
+      "Una presentación cuidada, ejemplos reales y mensajes simples para que la persona entienda rápido por qué elegirte.",
   },
   {
-    title: "Menos fricción operativa",
+    title: "Reservas y pedidos más ordenados",
     description:
-      "Agendas, paneles simples y flujos pensados para ordenar reservas, servicios o leads sin inflar el proyecto.",
+      "Agendas, listas de servicios y contenido editable para que cada consulta llegue con la información necesaria.",
   },
   {
-    title: "Demo lista para vender",
+    title: "Una demo lista para mostrar",
     description:
-      "Una pieza navegable para validar propuesta, mostrar valor y compartir por WhatsApp antes de invertir de más.",
+      "Una página navegable para compartir por WhatsApp, probar la idea y mostrar cómo se vería tu negocio online.",
   },
 ];
