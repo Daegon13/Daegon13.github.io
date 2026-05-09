@@ -14,12 +14,12 @@
   }
 
   html {
-    min-width: 320px;
+    min-width: 20rem;
     background: var(--color-ink);
   }
 
   body {
-    min-width: 320px;
+    min-width: 20rem;
     overflow-x: hidden;
     background:
       radial-gradient(
@@ -47,8 +47,8 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand);
-    outline-offset: 3px;
+    outline: 0.125rem solid var(--color-brand);
+    outline-offset: 0.1875rem;
   }
 
   img,
@@ -72,9 +72,9 @@
     z-index: -2;
     pointer-events: none;
     background-image:
-      linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(rgba(148, 163, 184, 0.045) 0.0625rem, transparent 0.0625rem),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.045) 0.0625rem, transparent 0.0625rem);
+    background-size: 3rem 3rem;
     mask-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.65),
