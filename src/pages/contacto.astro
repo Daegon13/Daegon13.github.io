@@ -1,107 +1,157 @@
 ---
 /* Página de Contacto (sin backend)
-   - Envía por mailto a damgmarin13@gmail.com armando el asunto y el cuerpo
+   - Arma un mensaje comercial para WhatsApp
    - Validación mínima con atributos HTML
-   - No depende de librerías, no toca tailwind.config
+   - No depende de librerías
 */
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { EMAIL, WHATSAPP_BASE_URL, WHATSAPP_NUMBER_E164 } from "../lib/contact";
+import Container from "../components/Container.astro";
+import {
+  AUDIT_WHATSAPP_MESSAGE,
+  EMAIL,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  WHATSAPP_BASE_URL,
+  WHATSAPP_NUMBER_E164,
+  waLink,
+} from "../lib/contact";
 
 const title = "Contacto – Marin.dev";
-const description = "Contame tu proyecto y recibí una estimación en 24 horas.";
+const description = "Mandame tu web o Instagram y te digo qué demo, landing o sistema simple puede ayudarte a recibir más consultas.";
 const url = "https://daegon13.github.io/contacto";
 const image = "/og-default.png";
 ---
 <BaseLayout {title} {description} {url} {image}>
-  <section class="py-12 md:py-16">
-    <h1 class="text-2xl md:text-3xl font-semibold">Contacto</h1>
-    <p class="mt-2 text-gray-500">Elegí un canal. Si querés ir rápido, mandame un WhatsApp con mensaje guiado y te respondo en menos de 24 horas.</p>
-
-    <form id="contacto" class="mt-8 max-w-xl space-y-4">
-      <!-- Nombre -->
-      <div>
-        <label for="nombre" class="block text-sm font-medium">Nombre:</label>
-        <input id="nombre" name="nombre" type="text" required
-               class="mt-1 w-full rounded-lg border border-gray-300/70 dark:border-gray-700/70 bg-transparent px-3 py-2" />
-      </div>
-
-      <!-- Email -->
-      <div>
-        <label for="email" class="block text-sm font-medium">Email:</label>
-        <input id="email" name="email" type="email" required
-               class="mt-1 w-full rounded-lg border border-gray-300/70 dark:border-gray-700/70 bg-transparent px-3 py-2" />
-      </div>
-
-      <!-- Presupuesto estimado -->
-      <div>
-        <label for="presupuesto" class="block text-sm font-medium">Presupuesto estimado - (USD):</label>
-        <input id="presupuesto" name="presupuesto" type="number" min="0" step="50"
-               class="mt-1 w-full rounded-lg border border-gray-300/70 dark:border-gray-700/70 bg-transparent px-3 py-2" />
-      </div>
-
-      <!-- Plazo estimado -->
-      <div>
-        <label for="plazo" class="block text-sm font-medium">Plazo requerido(si aplica) - (días):</label>
-        <input id="plazo" name="plazo" type="number" min="1" step="1" 
-               class="mt-1 w-full rounded-lg border border-gray-300/70 dark:border-gray-700/70 bg-transparent px-3 py-2" />
-      </div>
-
-      <!-- Mensaje -->
-      <div>
-        <label for="mensaje" class="block text-sm font-medium">Resumen de tu negocio:</label>
-        <textarea id="mensaje" name="mensaje" rows="5" required
-                  class="mt-1 w-full rounded-lg border border-gray-300/70 dark:border-gray-700/70 bg-transparent px-3 py-2"></textarea>
-      </div>
-
-      <!-- Acción -->
-      <div class="pt-2">
-        <button type="submit"
-                class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white transition">
-          Abrir WhatsApp con este mensaje
-        </button>
-      </div>
-
-      <!-- Fallback si JS está deshabilitado -->
-      <noscript>
-        <p class="mt-3 text-sm text-gray-500">
-          Si tu navegador no permite enviar el formulario, escribime a
-          <a class="underline" href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+  <Container class="py-12 md:py-16">
+    <section class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+      <div class="rounded-[2rem] border border-line bg-surface-glass p-6 shadow-premium backdrop-blur md:p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-electric">Contacto directo</p>
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-5xl">Mandame mi web o Instagram</h1>
+        <p class="mt-4 text-base leading-7 text-muted-soft">
+          Contame tu rubro, qué querés mejorar y qué tenés hoy. Te respondo con un camino concreto: landing, demo, agenda, panel o una opción más simple si alcanza.
         </p>
-      </noscript>
-    </form>
-  </section>
 
-  <!-- Script mínimo: arma un WhatsApp con los datos -->
-  <script>
+        <div class="mt-6 space-y-3 text-sm text-muted-soft">
+          <a class="block rounded-2xl border border-line bg-white/5 px-4 py-3 transition hover:border-cyan-electric/40 hover:text-cyan-100" href={waLink(AUDIT_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer">
+            Revisar mi web o Instagram por WhatsApp
+          </a>
+          <a class="block rounded-2xl border border-line bg-white/5 px-4 py-3 transition hover:border-cyan-electric/40 hover:text-cyan-100" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+            Instagram: {INSTAGRAM_HANDLE}
+          </a>
+          <a class="block rounded-2xl border border-line bg-white/5 px-4 py-3 transition hover:border-cyan-electric/40 hover:text-cyan-100" href={`mailto:${EMAIL}`}>
+            Email: {EMAIL}
+          </a>
+        </div>
+      </div>
+
+      <form id="contacto" class="rounded-[2rem] border border-line bg-surface/80 p-6 shadow-premium backdrop-blur md:p-8">
+        <div class="grid gap-4 md:grid-cols-2">
+          <div>
+            <label for="nombre" class="block text-sm font-medium text-slate-100">Nombre</label>
+            <input id="nombre" name="nombre" type="text" required class="mt-2 w-full rounded-2xl border border-line bg-ink/50 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Tu nombre" />
+          </div>
+
+          <div>
+            <label for="rubro" class="block text-sm font-medium text-slate-100">Rubro</label>
+            <input id="rubro" name="rubro" type="text" required class="mt-2 w-full rounded-2xl border border-line bg-ink/50 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Barbería, gimnasio, tienda..." />
+          </div>
+        </div>
+
+        <div class="mt-4 grid gap-4 md:grid-cols-2">
+          <div>
+            <label for="objetivo" class="block text-sm font-medium text-slate-100">Objetivo</label>
+            <select id="objetivo" name="objetivo" required class="mt-2 w-full rounded-2xl border border-line bg-ink/50 px-4 py-3 text-slate-50 outline-none transition focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20">
+              <option value="más consultas">Más consultas</option>
+              <option value="reservas">Reservas</option>
+              <option value="ventas">Ventas</option>
+              <option value="ordenar procesos">Ordenar procesos</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="hoy_tengo" class="block text-sm font-medium text-slate-100">Hoy tengo</label>
+            <select id="hoy_tengo" name="hoy_tengo" required class="mt-2 w-full rounded-2xl border border-line bg-ink/50 px-4 py-3 text-slate-50 outline-none transition focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20">
+              <option value="Instagram">Instagram</option>
+              <option value="web">Web</option>
+              <option value="nada">Nada todavía</option>
+              <option value="idea">Una idea para validar</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-4 grid gap-4 md:grid-cols-2">
+          <div>
+            <label for="interes" class="block text-sm font-medium text-slate-100">Me interesa</label>
+            <select id="interes" name="interes" required class="mt-2 w-full rounded-2xl border border-line bg-ink/50 px-4 py-3 text-slate-50 outline-none transition focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20">
+              <option value="landing">Landing</option>
+              <option value="demo">Demo</option>
+              <option value="agenda">Agenda</option>
+              <option value="panel">Panel</option>
+              <option value="no sé todavía">No sé todavía</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="referencia" class="block text-sm font-medium text-slate-100">Link de referencia</label>
+            <input id="referencia" name="referencia" type="url" class="mt-2 w-full rounded-2xl border border-line bg-ink/50 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Instagram o web" />
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="mensaje" class="block text-sm font-medium text-slate-100">Contexto breve</label>
+          <textarea id="mensaje" name="mensaje" rows="5" class="mt-2 w-full rounded-2xl border border-line bg-ink/50 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Qué vendés, qué querés mejorar y si tenés alguna referencia."></textarea>
+        </div>
+
+        <div class="mt-6">
+          <button type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto">
+            Mandame mi web o Instagram
+          </button>
+        </div>
+
+        <noscript>
+          <p class="mt-3 text-sm text-muted-soft">
+            Si tu navegador no permite enviar el formulario, escribime a
+            <a class="text-cyan-100 underline" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            o abrí WhatsApp en
+            <a class="text-cyan-100 underline" href={WHATSAPP_BASE_URL}>{WHATSAPP_BASE_URL}</a>.
+          </p>
+        </noscript>
+      </form>
+    </section>
+  </Container>
+
+  <script define:vars={{ WHATSAPP_NUMBER_E164 }}>
     const form = document.getElementById('contacto');
-    const WA = "59897316092"; // UY (+598) + 97316092
 
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
       const data = new FormData(form);
 
       const nombre = String(data.get('nombre') || '').trim();
-      const email = String(data.get('email') || '').trim();
-      const presupuesto = String(data.get('presupuesto') || '').trim();
-      const plazo = String(data.get('plazo') || '').trim();
+      const rubro = String(data.get('rubro') || '').trim();
+      const objetivo = String(data.get('objetivo') || '').trim();
+      const hoyTengo = String(data.get('hoy_tengo') || '').trim();
+      const interes = String(data.get('interes') || '').trim();
+      const referencia = String(data.get('referencia') || '').trim();
       const mensaje = String(data.get('mensaje') || '').trim();
 
-      const params = new URLSearchParams(window.location.search);
-      const plan = params.get('plan');
-
       const lines = [
-        `Hola Diego, soy ${nombre || '[Nombre]'}.`,
-        plan ? `Quiero el plan: ${plan}` : '',
-        email ? `Email: ${email}` : '',
-        presupuesto ? `Presupuesto estimado: USD ${presupuesto}` : '',
-        plazo ? `Plazo requerido: ${plazo} días` : '',
+        `Hola Diego, quiero una demo/web para mi negocio.`,
         '',
-        'Resumen:',
-        mensaje || '[Contame tu negocio y qué objetivo buscás]',
-      ].filter(Boolean);
+        nombre ? `Soy: ${nombre}` : null,
+        `Rubro: ${rubro || '[rubro]'}`,
+        `Objetivo: ${objetivo || '[más consultas / reservas / ventas]'}`,
+        `Hoy tengo: ${hoyTengo || '[Instagram / web / nada]'}`,
+        `Me interesa: ${interes || '[landing / demo / agenda / panel / no sé todavía]'}`,
+        `Link de referencia: ${referencia || '[Instagram o web]'}`,
+      ].filter((line) => line !== null);
+
+      if (mensaje) {
+        lines.push('', `Contexto: ${mensaje}`);
+      }
 
       const text = lines.join(String.fromCharCode(10));
-      const href = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+      const href = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(text)}`;
       window.open(href, '_blank', 'noopener,noreferrer');
     });
   </script>
