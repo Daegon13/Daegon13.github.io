@@ -25,13 +25,25 @@ export const productizedServices = [
     featured: true,
   },
   {
-    name: "Web con Agenda / Panel",
+    name: "Web con WhatsApp / Agenda",
+    tag: "Reservar mejor",
+    description:
+      "Web comercial para mostrar servicios, ordenar consultas y llevar al visitante a una reserva o conversación útil.",
+    deliverables: [
+      "CTA por servicio",
+      "Mensaje precargado",
+      "Agenda simple",
+      "Medición base",
+    ],
+  },
+  {
+    name: "Sistema simple / panel admin",
     tag: "Operar mejor",
     description:
-      "Sistema simple para mostrar servicios, ordenar reservas o editar contenido clave.",
+      "Herramienta liviana para gestionar contenido, stock, reservas o información operativa sin armar un producto gigante.",
     deliverables: [
-      "Agenda simple",
       "Panel básico",
+      "Flujo operativo",
       "Integraciones",
       "Documentación",
     ],

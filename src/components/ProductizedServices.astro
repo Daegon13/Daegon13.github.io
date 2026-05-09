@@ -11,7 +11,7 @@ import { waLink, SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
     title="Puntos de partida claros, ajustables al negocio."
     description="No se trata de sumar secciones porque sí: cada paquete ordena una necesidad comercial concreta."
   />
-  <div class="mt-8 grid gap-6 lg:grid-cols-3">
+  <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
     {productizedServices.map((service) => (
       <GlowCard class={`h-full ${service.featured ? 'border-cyan-electric/35' : ''}`}>
         <div class="flex items-center justify-between gap-3">
