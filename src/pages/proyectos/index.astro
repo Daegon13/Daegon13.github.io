@@ -1,17 +1,41 @@
 ---
-// Página de listado de proyectos
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/Container.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
 import { getCollection } from 'astro:content';
 
-// Obtener todos los proyectos ordenados por fecha
-let proyectos = await getCollection('proyectos');
-proyectos = proyectos.sort((a, b) => (a.data.fecha < b.data.fecha ? 1 : -1));
+const byCommercialPriority = (a, b) => {
+  if (Boolean(a.data.featured) !== Boolean(b.data.featured)) {
+    return a.data.featured ? -1 : 1;
+  }
+
+  const priorityDiff = (b.data.priority ?? 0) - (a.data.priority ?? 0);
+  if (priorityDiff !== 0) return priorityDiff;
+
+  return a.data.fecha < b.data.fecha ? 1 : -1;
+};
+
+const proyectos = (await getCollection('proyectos')).sort(byCommercialPriority);
 ---
-<BaseLayout title="Proyectos" description="Casos reales con soluciones concretas.">
-  <section class="py-12">
-    <h1 class="text-2xl font-bold mb-6">Proyectos</h1>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<BaseLayout
+  title="Casos, demos y sistemas | Marin.dev"
+  description="Portfolio comercial de Marin.dev: landings, webs corporativas y sistemas simples pensados para convertir visitas en consultas, reservas o ventas."
+>
+  <Container class="py-14 sm:py-20">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
+      <SectionHeader
+        eyebrow="Portfolio comercial"
+        title="Casos, demos y sistemas"
+        description="No es una lista de tecnologías: cada proyecto muestra para qué negocio sirve, qué fricción resuelve y cómo una web o sistema simple puede guiar mejor la consulta."
+      />
+      <div class="rounded-3xl border border-line bg-surface-glass p-5 text-sm leading-6 text-muted-soft shadow-premium backdrop-blur">
+        <p class="font-semibold text-slate-50">Criterio de orden</p>
+        <p class="mt-2">Primero aparecen los casos destacados y con mayor prioridad comercial; después, los más recientes.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {proyectos.map((p) => (
         <ProjectCard
           title={p.data.title}
@@ -20,8 +44,16 @@ proyectos = proyectos.sort((a, b) => (a.data.fecha < b.data.fecha ? 1 : -1));
           slug={p.slug}
           cover={p.data.cover}
           resultado={p.data.resultado}
+          problema={p.data.problema}
+          solucion={p.data.solucion}
+          tipo={p.data.tipo}
+          sector={p.data.sector}
+          status={p.data.status}
+          features={p.data.features}
+          impacto={p.data.impacto}
+          ctaLabel={p.data.ctaLabel}
         />
       ))}
     </div>
-  </section>
+  </Container>
 </BaseLayout>

@@ -9,7 +9,13 @@ import { waLink, DEFAULT_WHATSAPP_MESSAGE } from "../lib/contact";
 
 // Cargar la colección de proyectos y ordenarlos por fecha descendente
 let proyectos = await getCollection('proyectos');
-proyectos = proyectos.sort((a, b) => (a.data.fecha < b.data.fecha ? 1 : -1));
+proyectos = proyectos.sort((a, b) => {
+  if (Boolean(a.data.featured) !== Boolean(b.data.featured)) {
+    return a.data.featured ? -1 : 1;
+  }
+  const priorityDiff = (b.data.priority ?? 0) - (a.data.priority ?? 0);
+  return priorityDiff || (a.data.fecha < b.data.fecha ? 1 : -1);
+});
 const destacados = proyectos.slice(0, 3);
 ---
 <BaseLayout title="Desarrollador Web Freelance" description="Soluciones rápidas, claras y a medida para tu negocio.">
@@ -74,9 +80,10 @@ const destacados = proyectos.slice(0, 3);
     </div>
   </section>
 
-  <!-- PROYECTOS DESTACADOS: muestra los tres más recientes -->
-  <section class="py-12">
-    <h2 class="text-xl font-semibold mb-6">Proyectos recientes</h2>
+  <!-- PROYECTOS DESTACADOS: prioriza casos con mayor fuerza comercial -->
+  <section id="casos" class="py-12 scroll-mt-24">
+    <h2 class="text-xl font-semibold mb-2">Casos destacados</h2>
+    <p class="mb-6 max-w-2xl text-sm leading-6 text-muted-soft">Proyectos seleccionados por claridad comercial, capacidad demostrable y facilidad para entender el problema que resuelven.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         destacados.map((p) => {
@@ -88,6 +95,14 @@ const destacados = proyectos.slice(0, 3);
               slug={p.slug}
               cover={p.data.cover}
               resultado={p.data.resultado}
+              problema={p.data.problema}
+              solucion={p.data.solucion}
+              tipo={p.data.tipo}
+              sector={p.data.sector}
+              status={p.data.status}
+              features={p.data.features}
+              impacto={p.data.impacto}
+              ctaLabel={p.data.ctaLabel}
             />
           );
         })
