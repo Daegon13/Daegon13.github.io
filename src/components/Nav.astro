@@ -1,13 +1,7 @@
 ---
-import { waLink, DEFAULT_WHATSAPP_MESSAGE } from "../lib/contact";
-/* NAVBAR RESPONSIVE—FIXES MOVIL
-   Cambios clave:
-   1) Overlay full viewport con opacidad transicionada (nada de hidden que rompe stacking).
-   2) Panel usa h-dvh (altura dinámica móvil) + safe-area top/bottom.
-   3) Bloqueo de scroll del documento cuando el menú está abierto.
-   4) Sincronización de estados: aria-expanded, mostrar/ocultar hamburguesa según estado.
-   5) Colores explícitos en los links para buen contraste en dark y light.
-*/
+import Container from './Container.astro';
+import { waLink, DEFAULT_WHATSAPP_MESSAGE } from '../lib/contact';
+
 const links = [
   { href: '/', label: 'Inicio' },
   { href: '/proyectos', label: 'Proyectos' },
@@ -19,24 +13,30 @@ const links = [
 
 const current = Astro.url.pathname;
 ---
-<nav class="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-[#0b1220]/80 dark:supports-[backdrop-filter]:bg-[#0b1220]/60">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-        <!-- Marca -->
-    <a href="/" class="font-semibold flex items-center gap-2 text-gray-900 dark:text-white">
-      <img src="/logo.png" alt="Marin.dev" class="h-6 w-6 rounded-full object-cover" loading="eager" decoding="async" />
-      <span>Marin.dev</span>
+<nav class="sticky top-0 z-50 w-full border-b border-line bg-ink/80 shadow-soft backdrop-blur-xl supports-[backdrop-filter]:bg-ink/60">
+  <Container class="flex h-16 items-center justify-between">
+    <a href="/" class="group flex items-center gap-3 font-semibold text-slate-50" aria-label="Marin.dev inicio">
+      <span class="relative grid h-9 w-9 place-items-center overflow-hidden rounded-2xl border border-line bg-surface-glass shadow-premium">
+        <span class="absolute inset-0 bg-brand-gradient opacity-20 transition group-hover:opacity-35"></span>
+        <img src="/logo.png" alt="" class="relative h-7 w-7 rounded-xl object-cover" loading="eager" decoding="async" />
+      </span>
+      <span class="leading-tight">
+        <span class="block text-sm tracking-wide">Marin.dev</span>
+        <span class="hidden text-[11px] font-medium uppercase tracking-[0.22em] text-muted sm:block">Digital studio</span>
+      </span>
     </a>
 
-    <!-- Desktop nav -->
-    <ul class="hidden md:flex items-center gap-5 text-sm">
+    <ul class="hidden items-center gap-1 rounded-full border border-line bg-surface-glass p-1 text-sm shadow-soft backdrop-blur md:flex">
       {links.map((l) => {
         const isActive = current === l.href || (l.href !== '/' && current.startsWith(l.href));
         return (
           <li>
             <a
               href={l.href}
-              class={`hover:text-brand transition ${
-                isActive ? 'text-brand font-medium' : 'text-gray-800 dark:text-gray-200'
+              class={`inline-flex rounded-full px-3.5 py-2 transition ${
+                isActive
+                  ? 'bg-cyan-electric/10 text-cyan-100 shadow-[inset_0_0_0_1px_rgba(34,211,238,0.22)]'
+                  : 'text-muted-soft hover:bg-white/5 hover:text-slate-50'
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
@@ -47,66 +47,64 @@ const current = Astro.url.pathname;
       })}
     </ul>
 
-    <!-- CTA discreto en desktop -->
     <div class="hidden md:block">
-      <a href={waLink(DEFAULT_WHATSAPP_MESSAGE)} class="text-sm font-medium hover:text-brand" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
+      <a
+        href={waLink(DEFAULT_WHATSAPP_MESSAGE)}
+        class="inline-flex items-center justify-center rounded-full bg-brand-gradient px-4 py-2 text-sm font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Pedir demo
+      </a>
     </div>
 
-    <!-- Botón hamburguesa (solo móvil) -->
     <button
       id="nav-toggle"
-      class="md:hidden inline-flex items-center justify-center rounded-lg p-2 border border-gray-300/70 dark:border-gray-700/70"
+      class="inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass p-2.5 text-slate-100 shadow-soft backdrop-blur transition hover:border-line-strong hover:bg-white/5 md:hidden"
       aria-label="Abrir menú"
       aria-controls="mobile-menu"
       aria-expanded="false"
       data-open="false"
     >
-      <!-- Ícono hamburguesa -->
-      <svg id="icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-gray-800 dark:text-gray-200">
-        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <svg id="icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </svg>
-      <!-- Ícono cerrar (se oculta por defecto) -->
-      <svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" class="hidden text-gray-800 dark:text-gray-200">
-        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" class="hidden">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
       </svg>
     </button>
-  </div>
+  </Container>
 
-  <!-- Overlay de fondo: ocupa SIEMPRE el viewport, pero deshabilitado por opacidad/pointer-events -->
   <div
     id="mobile-overlay"
-    class="md:hidden fixed inset-0 z-40 opacity-0 pointer-events-none transition-opacity duration-200 bg-black/40"
+    class="fixed inset-0 z-40 bg-ink/75 opacity-0 backdrop-blur-sm transition-opacity duration-200 pointer-events-none md:hidden"
     aria-hidden="true"
   ></div>
 
-  <!-- Panel móvil: h-dvh para cubrir alto real; safe-area padding para no chocar barra del sistema -->
   <aside
-  id="mobile-menu"
-  class="md:hidden fixed top-0 right-0 z-50 h-dvh w-[min(20rem,92vw)] translate-x-full bg-white dark:bg-[#0b1220] border-l border-gray-200/70 dark:border-gray-700/70 shadow-xl transition-transform duration-200"
-  tabindex="-1"
-  aria-hidden="true"
->
-
-    <!-- Header del panel -->
-    <div class="h-14 px-4 flex items-center justify-between border-b border-gray-200/70 dark:border-gray-700/70 pt-[env(safe-area-inset-top)]">
-      <span class="font-semibold">Menú</span>
-      <button id="nav-close" class="inline-flex items-center justify-center rounded-lg p-2" aria-label="Cerrar menú">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-gray-800 dark:text-gray-200">
-          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    id="mobile-menu"
+    class="fixed right-0 top-0 z-50 h-dvh w-[min(21rem,92vw)] translate-x-full border-l border-line bg-surface/95 shadow-premium backdrop-blur-xl transition-transform duration-200 md:hidden"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="flex h-16 items-center justify-between border-b border-line px-4 pt-[env(safe-area-inset-top)]">
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-muted-soft">Menú</span>
+      <button id="nav-close" class="inline-flex items-center justify-center rounded-xl border border-line bg-white/5 p-2 text-slate-100" aria-label="Cerrar menú">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
       </button>
     </div>
 
-    <!-- Links -->
-    <ul class="p-4 space-y-2 pb-[calc(env(safe-area-inset-bottom)+16px)]">
+    <ul class="space-y-2 p-4 pb-[calc(env(safe-area-inset-bottom)+16px)]">
       {links.map((l) => {
         const isActive = current === l.href || (l.href !== '/' && current.startsWith(l.href));
         return (
           <li>
             <a
               href={l.href}
-              class={`block rounded-lg px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-white/10 ${
-                isActive ? 'text-brand font-medium' : 'text-gray-900 dark:text-gray-100'
+              class={`block rounded-2xl px-4 py-3 text-sm transition ${
+                isActive ? 'bg-cyan-electric/10 font-semibold text-cyan-100' : 'text-muted-soft hover:bg-white/5 hover:text-slate-50'
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
@@ -115,91 +113,84 @@ const current = Astro.url.pathname;
           </li>
         );
       })}
-      <li class="pt-2">
-        <a href="/contacto" class="block rounded-lg px-3 py-2 text-sm font-medium bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white text-center">
-          Pedir estimación
+      <li class="pt-3">
+        <a
+          href={waLink(DEFAULT_WHATSAPP_MESSAGE)}
+          class="block rounded-2xl bg-brand-gradient px-4 py-3 text-center text-sm font-semibold text-slate-950 shadow-glow"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Pedir demo por WhatsApp
         </a>
       </li>
     </ul>
   </aside>
 
-  <!-- Lógica de apertura/cierre y focus -->
   <script>
-  const $toggle = document.getElementById('nav-toggle');
-  const $iconOpen = document.getElementById('icon-open');
-  const $iconClose = document.getElementById('icon-close');
-  const $menu = document.getElementById('mobile-menu');
-  const $overlay = document.getElementById('mobile-overlay');
-  const $close = document.getElementById('nav-close');
+    const $toggle = document.getElementById('nav-toggle');
+    const $iconOpen = document.getElementById('icon-open');
+    const $iconClose = document.getElementById('icon-close');
+    const $menu = document.getElementById('mobile-menu');
+    const $overlay = document.getElementById('mobile-overlay');
+    const $close = document.getElementById('nav-close');
 
-  let scrollY = 0;
+    let scrollY = 0;
 
-  const lockBody = () => {
-    // Guardamos la posición vertical actual
-    scrollY = window.scrollY || window.pageYOffset || 0;
-    // Fijamos el body: esto evita que el viewport “se corra” al abrir el panel
-    const b = document.body.style;
-    b.position = 'fixed';
-    b.top = `-${scrollY}px`;
-    b.left = '0';
-    b.right = '0';
-    b.width = '100%';
-    b.overflow = 'hidden';
-  };
+    const lockBody = () => {
+      scrollY = window.scrollY || window.pageYOffset || 0;
+      const b = document.body.style;
+      b.position = 'fixed';
+      b.top = `-${scrollY}px`;
+      b.left = '0';
+      b.right = '0';
+      b.width = '100%';
+      b.overflow = 'hidden';
+    };
 
-  const unlockBody = () => {
-    const b = document.body.style;
-    b.position = '';
-    b.top = '';
-    b.left = '';
-    b.right = '';
-    b.width = '';
-    b.overflow = '';
-    // Restauramos la posición exacta anterior
-    window.scrollTo(0, scrollY);
-  };
+    const unlockBody = () => {
+      const b = document.body.style;
+      b.position = '';
+      b.top = '';
+      b.left = '';
+      b.right = '';
+      b.width = '';
+      b.overflow = '';
+      window.scrollTo(0, scrollY);
+    };
 
-  const setState = (open) => {
-    // Panel
-    $menu?.classList.toggle('translate-x-full', !open);
-    $menu?.setAttribute('aria-hidden', String(!open));
+    const setState = (open) => {
+      $menu?.classList.toggle('translate-x-full', !open);
+      $menu?.setAttribute('aria-hidden', String(!open));
+      $overlay?.classList.toggle('opacity-0', !open);
+      $overlay?.classList.toggle('pointer-events-none', !open);
+      $toggle?.setAttribute('aria-expanded', String(open));
+      $toggle?.setAttribute('data-open', String(open));
+      $iconOpen?.classList.toggle('hidden', open);
+      $iconClose?.classList.toggle('hidden', !open);
 
-    // Overlay
-    $overlay?.classList.toggle('opacity-0', !open);
-    $overlay?.classList.toggle('pointer-events-none', !open);
+      if (open) lockBody(); else unlockBody();
 
-    // Botón / iconos
-    $toggle?.setAttribute('aria-expanded', String(open));
-    $toggle?.setAttribute('data-open', String(open));
-    $iconOpen?.classList.toggle('hidden', open);
-    $iconClose?.classList.toggle('hidden', !open);
+      if (open) {
+        const firstLink = $menu?.querySelector('a');
+        firstLink && firstLink.focus({ preventScroll: true });
+      } else {
+        $toggle?.focus({ preventScroll: true });
+      }
+    };
 
-    // Lock/unlock body
-    if (open) lockBody(); else unlockBody();
+    const open = () => setState(true);
+    const close = () => setState(false);
 
-    // Enfoque accesible sin desplazar el viewport
-    if (open) {
-      const firstLink = $menu?.querySelector('a');
-      firstLink && firstLink.focus({ preventScroll: true });
-    } else {
-      $toggle?.focus({ preventScroll: true });
-    }
-  };
-
-  const open = () => setState(true);
-  const close = () => setState(false);
-
-  $toggle?.addEventListener('click', () => {
-    const isOpen = $toggle?.getAttribute('data-open') === 'true';
-    isOpen ? close() : open();
-  });
-  $close?.addEventListener('click', close);
-  $overlay?.addEventListener('click', close);
-  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-  $menu?.addEventListener('click', (e) => {
-    const t = e.target;
-    if (t && t.tagName === 'A') close();
-  });
-</script>
-
+    $toggle?.addEventListener('click', () => {
+      const isOpen = $toggle?.getAttribute('data-open') === 'true';
+      isOpen ? close() : open();
+    });
+    $close?.addEventListener('click', close);
+    $overlay?.addEventListener('click', close);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    $menu?.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t && t.tagName === 'A') close();
+    });
+  </script>
 </nav>
