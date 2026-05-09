@@ -8,8 +8,7 @@ import ProcessSteps from '../components/ProcessSteps.astro';
 import ProductizedServices from '../components/ProductizedServices.astro';
 import SocialProofStrip from '../components/SocialProofStrip.astro';
 import VerticalDemos from '../components/VerticalDemos.astro';
-import GlowCard from '../components/GlowCard.astro';
-import SectionHeader from '../components/SectionHeader.astro';
+import OutcomeGrid from '../components/OutcomeGrid.astro';
 import { getCollection } from 'astro:content';
 
 let proyectos = await getCollection('proyectos');
@@ -22,24 +21,6 @@ proyectos = proyectos.sort((a, b) => {
 });
 const destacados = proyectos.slice(0, 3);
 
-const outcomes = [
-  {
-    title: 'Más consultas calificadas',
-    description: 'CTAs claros, WhatsApp con mensaje guiado y secciones que responden dudas antes del primer contacto.',
-  },
-  {
-    title: 'Más confianza para decidir',
-    description: 'Estructura visual premium, casos de negocio y pruebas concretas en vez de una lista genérica de tecnologías.',
-  },
-  {
-    title: 'Menos fricción operativa',
-    description: 'Agendas, paneles simples y flujos pensados para ordenar reservas, servicios o leads sin inflar el proyecto.',
-  },
-  {
-    title: 'Demo lista para vender',
-    description: 'Una pieza navegable para validar propuesta, mostrar valor y compartir por WhatsApp antes de invertir de más.',
-  },
-];
 ---
 <BaseLayout
   title="Marin.dev | Demos web y sistemas simples para vender mejor"
@@ -48,21 +29,7 @@ const outcomes = [
   <HeroV2 />
   <SocialProofStrip />
 
-  <section class="py-14 md:py-20">
-    <SectionHeader
-      eyebrow="Qué construyo"
-      title="Piezas digitales con intención comercial, no decoración suelta."
-      description="Cada bloque tiene una tarea: explicar valor, reducir dudas, ordenar la acción y facilitar que el cliente escriba, reserve o compre."
-    />
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {outcomes.map((item) => (
-        <GlowCard class="h-full">
-          <h3 class="text-lg font-semibold text-slate-50">{item.title}</h3>
-          <p class="mt-3 text-sm leading-6 text-muted-soft">{item.description}</p>
-        </GlowCard>
-      ))}
-    </div>
-  </section>
+  <OutcomeGrid />
 
   <FeaturedCases projects={destacados} />
   <VerticalDemos />
