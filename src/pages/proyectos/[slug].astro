@@ -1,6 +1,9 @@
 ---
-// Página de detalle para cada proyecto
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/Badge.astro';
+import Container from '../../components/Container.astro';
+import GlowCard from '../../components/GlowCard.astro';
+import { waLink } from '../../lib/contact';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -12,7 +15,6 @@ export async function getStaticPaths() {
 }
 
 const { proyecto } = Astro.props;
-// Desestructurar campos del frontmatter del MDX
 const {
   title,
   resumen,
@@ -26,43 +28,157 @@ const {
   repoUrl,
   demoUrl,
   cover = '/og-default.png',
+  tipo,
+  idealPara,
+  features = [],
+  impacto,
+  status,
 } = proyecto.data;
-// Obtener el componente Content para renderizar el cuerpo MDX
+
 const { Content } = await proyecto.render();
+const statusLabels = {
+  real: 'Real',
+  demo: 'Demo',
+  concepto: 'Concepto',
+};
+const statusTone = {
+  real: 'success',
+  demo: 'cyan',
+  concepto: 'violet',
+};
+const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [landing / demo / agenda / panel / no sé todavía]`;
 ---
-<BaseLayout title={title} description={resumen} image={cover} url={`/proyectos/${proyecto.slug}`}>
-  <article class="py-12 prose prose-slate max-w-none">
-    <!-- Encabezado del proyecto -->
-    <header class="not-prose mb-6">
-      <h1 class="text-3xl font-bold mb-2">{title}</h1>
-      {resumen && <p class="text-gray-600">{resumen}</p>}
-      <div class="mt-2 text-sm text-gray-500">
-        {sector}{sector && ' · '}{rol}{(sector || rol) && ' · '}{fecha}
-      </div>
-      {Array.isArray(stack) && stack.length > 0 && (
-        <div class="mt-3 flex flex-wrap gap-2">
-          {stack.map((s) => <span class="rounded bg-gray-100 px-2 py-0.5 text-xs">{s}</span>)}
+<BaseLayout title={`${title} | Caso Marin.dev`} description={resumen} image={cover} url={`/proyectos/${proyecto.slug}`}>
+  <Container class="py-12 sm:py-16">
+    <article>
+      <header class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_28rem] lg:items-center">
+        <div>
+          <div class="flex flex-wrap gap-2">
+            {(tipo || sector) && <Badge label={tipo || sector} tone="cyan" />}
+            {status && <Badge label={statusLabels[status] ?? status} tone={statusTone[status] ?? 'default'} />}
+          </div>
+          <h1 class="mt-5 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">{title}</h1>
+          {resumen && <p class="mt-5 max-w-3xl text-lg leading-8 text-muted-soft">{resumen}</p>}
+
+          <dl class="mt-7 grid gap-3 text-sm text-muted-soft sm:grid-cols-3">
+            {sector && (
+              <div class="rounded-2xl border border-line bg-surface-glass p-4">
+                <dt class="font-semibold text-slate-50">Rubro</dt>
+                <dd class="mt-1">{sector}</dd>
+              </div>
+            )}
+            {rol && (
+              <div class="rounded-2xl border border-line bg-surface-glass p-4">
+                <dt class="font-semibold text-slate-50">Rol</dt>
+                <dd class="mt-1">{rol}</dd>
+              </div>
+            )}
+            {fecha && (
+              <div class="rounded-2xl border border-line bg-surface-glass p-4">
+                <dt class="font-semibold text-slate-50">Fecha</dt>
+                <dd class="mt-1">{fecha}</dd>
+              </div>
+            )}
+          </dl>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            {demoUrl && (
+              <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl bg-brand-gradient px-5 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5">
+                Ver demo
+              </a>
+            )}
+            {repoUrl && (
+              <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-slate-50 transition hover:border-line-strong hover:bg-surface-850">
+                Ver repositorio
+              </a>
+            )}
+          </div>
         </div>
-      )}
-      <div class="mt-4 flex gap-3">
-        {demoUrl && <a href={demoUrl} class="rounded border px-3 py-1.5 hover:border-brand"> Ver Demo</a>}
-        {repoUrl && <a href={repoUrl} class="rounded border px-3 py-1.5 hover:border-brand">Ver Repositorio</a>}
-      </div>
-      
-    </header>
 
-    <!-- Sección de contexto: problema, solución y resultados -->
-    {(problema || solucion || resultado) && (
-      <section class="not-prose mt-8">
-        {problema && <p><strong>Problema:</strong> {problema}</p>}
-        {solucion && <p><strong>Solución:</strong> {solucion}</p>}
-        {resultado && <p><strong>Resultado:</strong> {resultado}</p>}
+        <div class="relative">
+          <div class="absolute -inset-4 rounded-[2rem] bg-cyan-electric/10 blur-3xl"></div>
+          <div class="relative overflow-hidden rounded-3xl border border-line bg-surface-glow p-3 shadow-premium">
+            <div class="flex items-center gap-2 border-b border-line px-2 pb-3">
+              <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/80"></span>
+              <span class="ml-2 truncate rounded-full border border-line bg-ink/60 px-3 py-1 text-xs text-muted">marin.dev/caso/{proyecto.slug}</span>
+            </div>
+            <img src={cover} alt={`Mockup o portada de ${title}`} class="mt-3 aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" decoding="async" />
+          </div>
+        </div>
+      </header>
+
+      <section class="mt-12 grid gap-5 lg:grid-cols-3">
+        {idealPara && (
+          <GlowCard>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Contexto</p>
+            <h2 class="mt-3 text-xl font-semibold text-slate-50">Para qué negocio sirve</h2>
+            <p class="mt-3 text-sm leading-6 text-muted-soft">{idealPara}</p>
+          </GlowCard>
+        )}
+        {problema && (
+          <GlowCard>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Problema</p>
+            <h2 class="mt-3 text-xl font-semibold text-slate-50">Fricción detectada</h2>
+            <p class="mt-3 text-sm leading-6 text-muted-soft">{problema}</p>
+          </GlowCard>
+        )}
+        {solucion && (
+          <GlowCard>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Solución</p>
+            <h2 class="mt-3 text-xl font-semibold text-slate-50">Qué se construyó</h2>
+            <p class="mt-3 text-sm leading-6 text-muted-soft">{solucion}</p>
+          </GlowCard>
+        )}
       </section>
-    )}
 
-    <!-- Render del cuerpo MDX adicional del proyecto -->
-    <div class="mt-8">
-      <Content />
-    </div>
-  </article>
+      {(features.length > 0 || impacto || resultado) && (
+        <section class="mt-8 grid gap-5 lg:grid-cols-[minmax(0,1fr)_24rem]">
+          {features.length > 0 && (
+            <div class="rounded-3xl border border-line bg-surface-glass p-6 shadow-premium backdrop-blur">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Funcionalidades clave</p>
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                {features.map((feature) => (
+                  <div class="rounded-2xl border border-line bg-ink/35 p-4 text-sm font-medium text-muted-bright">{feature}</div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {(impacto || resultado) && (
+            <div class="rounded-3xl border border-brand-success/20 bg-brand-success/10 p-6 shadow-premium">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Impacto / resultado</p>
+              {resultado && <p class="mt-4 text-2xl font-semibold text-slate-50">{resultado}</p>}
+              {impacto && <p class="mt-4 text-sm leading-6 text-emerald-50/90">{impacto}</p>}
+            </div>
+          )}
+        </section>
+      )}
+
+      {stack.length > 0 && (
+        <section class="mt-8 rounded-3xl border border-line bg-surface-glass p-6 shadow-premium backdrop-blur">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Stack técnico</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {stack.map((s) => <Badge label={s} />)}
+          </div>
+        </section>
+      )}
+
+      <section class="prose-dark mt-10 max-w-none rounded-3xl border border-line bg-surface-glass p-6 leading-7 shadow-premium backdrop-blur">
+        <Content />
+      </section>
+
+      <section class="mt-10 rounded-3xl border border-line bg-brand-gradient p-[1px] shadow-glow">
+        <div class="rounded-3xl bg-ink/90 p-6 text-center sm:p-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100">CTA final</p>
+          <h2 class="mt-3 text-2xl font-semibold text-slate-50">¿Querés algo parecido para tu negocio?</h2>
+          <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-soft">Mandame tu rubro, tu Instagram o web actual y el objetivo comercial. Te digo qué demo, landing o sistema simple tendría más sentido construir primero.</p>
+          <a href={waLink(whatsappText)} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center justify-center rounded-xl bg-slate-50 px-5 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-white">
+            Quiero algo parecido
+          </a>
+        </div>
+      </section>
+    </article>
+  </Container>
 </BaseLayout>
