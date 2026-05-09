@@ -1,21 +1,42 @@
 ---
 import { waLink, AUDIT_WHATSAPP_MESSAGE } from '../lib/contact';
+
+const {
+  eyebrow = 'Último paso',
+  title = 'Mandame tu web o Instagram y te digo qué mejoraría.',
+  description = 'Te respondo con ideas concretas: qué mejorar, qué mostrar primero y qué demo o web tendría más sentido para recibir consultas al momento.',
+  primaryLabel = 'Mandame mi web o Instagram',
+  primaryMessage = AUDIT_WHATSAPP_MESSAGE,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
 ---
 <section class="py-16 text-center md:py-24">
   <div class="relative overflow-hidden rounded-[2rem] border border-line bg-surface-glow p-8 shadow-premium backdrop-blur md:p-12">
     <div class="absolute inset-x-10 -top-20 h-40 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
+    <div class="absolute -bottom-24 right-0 h-44 w-44 rounded-full bg-brand-violet/20 blur-3xl" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-3xl">
-      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-electric">Último paso</p>
-      <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-5xl">Mandame tu web o Instagram y te digo qué mejoraría.</h2>
-      <p class="mt-4 text-base leading-7 text-muted-soft">Te respondo con ideas concretas: qué mejorar, qué mostrar primero y qué demo o web tendría más sentido para recibir consultas al momento.</p>
-      <a
-        href={waLink(AUDIT_WHATSAPP_MESSAGE)}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-8 inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover"
-      >
-        Mandame mi web o Instagram
-      </a>
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-electric">{eyebrow}</p>
+      <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-5xl">{title}</h2>
+      <p class="mt-4 text-base leading-7 text-muted-soft">{description}</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a
+          href={waLink(primaryMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover"
+        >
+          {primaryLabel}
+        </a>
+        {secondaryLabel && secondaryHref && (
+          <a
+            href={secondaryHref}
+            class="inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 transition hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
+          >
+            {secondaryLabel}
+          </a>
+        )}
+      </div>
     </div>
   </div>
 </section>
