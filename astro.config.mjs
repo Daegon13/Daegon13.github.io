@@ -8,9 +8,12 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
+const site = process.env.PUBLIC_SITE_URL ?? 'https://daegon13.github.io';
+
 export default defineConfig({
-  // URL pública del sitio (correcta para user/org pages)
-  site: 'https://daegon13.github.io',
+  // URL pública del sitio. Por defecto mantiene GitHub Pages; en Vercel puede
+  // sobreescribirse con PUBLIC_SITE_URL cuando exista dominio final.
+  site,
   // 3) Registro de integraciones (sin esto no compila el CSS de Tailwind ni los MDX)
   integrations: [
     tailwind({
