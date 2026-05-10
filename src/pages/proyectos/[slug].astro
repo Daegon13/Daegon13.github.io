@@ -30,6 +30,7 @@ const {
   demoUrl,
   cover = '/og-default.png',
   thumbnail = '',
+  image = '',
   tipo,
   idealPara,
   features = [],
@@ -37,7 +38,7 @@ const {
   status,
 } = proyecto.data;
 
-const previewImage = thumbnail || cover;
+const previewImage = image || thumbnail || cover;
 
 const { Content } = await proyecto.render();
 const statusLabels = {
@@ -99,7 +100,7 @@ const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [ru
           </div>
         </div>
 
-        <ProjectLinkPreview title={title} url={demoUrl} cover={cover} thumbnail={thumbnail} slug={proyecto.slug} eager />
+        <ProjectLinkPreview title={title} url={demoUrl} cover={image || cover} thumbnail={thumbnail} slug={proyecto.slug} eager />
       </header>
 
       <section class="mt-12 grid gap-5 lg:grid-cols-3">

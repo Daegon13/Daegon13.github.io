@@ -16,6 +16,16 @@ const proyectos = defineCollection({
     demoUrl: z.string().url().optional(),
     cover: z.string().optional(),
     thumbnail: z.string().optional(),
+    image: z.string().optional(),
+    category: z.string().optional(),
+    businessType: z.string().optional(),
+    resultLabel: z.string().optional(),
+    highlight: z.string().optional(),
+    visualTone: z
+      .enum(["cyan", "violet", "emerald", "amber", "rose", "neutral"])
+      .optional(),
+    badges: z.array(z.string()).optional(),
+    caseUrl: z.string().optional(),
     tipo: z.string().optional(),
     idealPara: z.string().optional(),
     features: z.array(z.string()).optional(),
