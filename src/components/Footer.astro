@@ -1,25 +1,40 @@
 ---
 import Container from './Container.astro';
+import Icon from './Icon.astro';
 import { EMAIL, GITHUB_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, LINKEDIN_URL, waLink } from '../lib/contact';
+
+const footerLinks = [
+  { label: 'Privacidad', href: '/politica-de-privacidad', icon: 'shield' },
+  { label: 'WhatsApp', href: waLink(), icon: 'message', external: true },
+  { label: `Instagram ${INSTAGRAM_HANDLE}`, href: INSTAGRAM_URL, icon: 'external', external: true },
+  { label: 'Email', href: `mailto:${EMAIL}`, icon: 'mail' },
+  { label: 'GitHub', href: GITHUB_URL, icon: 'code', external: true },
+  { label: 'LinkedIn', href: LINKEDIN_URL, icon: 'briefcase', external: true },
+].filter((link) => Boolean(link.href));
 ---
-<footer class="mt-20 border-t border-line bg-ink/70">
+<footer class="mt-20 border-t border-line bg-ink/75 backdrop-blur">
   <Container class="py-10 text-sm text-muted-soft">
-    <div class="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
+    <div class="grid gap-8 md:grid-cols-[1.05fr_1fr] md:items-center">
       <div>
         <p class="text-base font-semibold text-slate-50">Marin.dev</p>
         <p class="mt-2 max-w-xl leading-6">
-          Webs rápidas, claras y listas para compartir por WhatsApp.
+          Demos web, landings y sistemas simples para convertir visitas en consultas, reservas o ventas.
         </p>
       </div>
 
-      <div class="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
-        <a href="/politica-de-privacidad" class="transition hover:text-cyan-100">Privacidad</a>
-        <a href={waLink()} class="transition hover:text-cyan-100" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a href={INSTAGRAM_URL} class="transition hover:text-cyan-100" target="_blank" rel="noopener noreferrer">Instagram {INSTAGRAM_HANDLE}</a>
-        <a href={`mailto:${EMAIL}`} class="transition hover:text-cyan-100">Email</a>
-        <a href={GITHUB_URL} class="transition hover:text-cyan-100" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href={LINKEDIN_URL} class="transition hover:text-cyan-100" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
+      <nav class="flex flex-wrap gap-2 md:justify-end" aria-label="Links de contacto y sitio">
+        {footerLinks.map((link) => (
+          <a
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+            class="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-glass px-3 py-1.5 text-xs font-medium transition hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-100"
+          >
+            <Icon name={link.icon} size="sm" />
+            <span>{link.label}</span>
+          </a>
+        ))}
+      </nav>
     </div>
 
     <div class="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
