@@ -4,45 +4,45 @@ import VisualBadge from './VisualBadge.astro';
 import VisualCard from './VisualCard.astro';
 import { outcomes } from '../data/outcomes';
 
-const outcomeVisuals = [
-  { icon: 'message', tone: 'cyan' },
-  { icon: 'shield', tone: 'violet' },
-  { icon: 'flow', tone: 'emerald' },
-  { icon: 'rocket', tone: 'amber' },
-];
-
-const outcomeBadges = [
-  { label: 'CTA claro', icon: 'target', tone: 'cyan' },
-  { label: 'Menos dudas', icon: 'friction', tone: 'violet' },
-  { label: 'Más confianza', icon: 'shield', tone: 'emerald' },
+const supportingBadges = [
+  { label: 'claridad', icon: 'target', tone: 'cyan' },
+  { label: 'velocidad', icon: 'zap', tone: 'amber' },
+  { label: 'conversión', icon: 'message', tone: 'emerald' },
 ];
 ---
 
 <section id="que-resuelvo" class="relative scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
   <div class="absolute -left-28 top-10 -z-10 h-56 w-56 rounded-full bg-cyan-electric/10 blur-3xl" aria-hidden="true"></div>
-  <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-    <SectionHeader
-      eyebrow="Problemas que resolvemos"
-      title="Menos fricción, más consultas"
-      description="Ordeno la web para que el visitante entienda rápido qué ofrecés, por qué confiar y cuál es el próximo paso: escribir, reservar o comprar."
-      icon="target"
-    />
-    <div class="flex flex-wrap gap-2 lg:max-w-sm lg:justify-end">
-      {outcomeBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
-    </div>
-  </div>
-  <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="absolute -right-32 bottom-10 -z-10 h-64 w-64 rounded-full bg-violet-electric/10 blur-3xl" aria-hidden="true"></div>
+
+  <SectionHeader
+    eyebrow="Qué resuelvo"
+    title="Tu web no debería solo verse bien: debería ayudarte a vender"
+    description="Ordeno el mensaje, reduzco la fricción y diseño caminos claros para que la visita termine en consulta, reserva o venta."
+    icon="target"
+  />
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
     {
-      outcomes.map((item, index) => (
+      outcomes.map((item) => (
         <VisualCard
-          class="h-full"
+          class="min-h-[13rem]"
           title={item.title}
           description={item.description}
-          badge={item.goal}
-          icon={outcomeVisuals[index]?.icon ?? 'target'}
-          tone={outcomeVisuals[index]?.tone ?? 'cyan'}
+          badge={item.badge}
+          icon={item.icon}
+          tone={item.tone}
         />
       ))
     }
+  </div>
+
+  <div class="mt-6 flex flex-col gap-3 rounded-3xl border border-line bg-surface-glass px-4 py-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:px-5">
+    <p class="text-sm leading-6 text-muted-soft">
+      Cada bloque está pensado para que el cliente entienda rápido qué hacer después.
+    </p>
+    <div class="flex flex-wrap gap-2">
+      {supportingBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
+    </div>
   </div>
 </section>

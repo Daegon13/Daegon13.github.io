@@ -1,26 +1,34 @@
 export const outcomes = [
   {
-    goal: "Consulta",
-    title: "Más consultas claras",
+    title: "Más consultas",
     description:
-      "Botones visibles, WhatsApp con mensaje preparado y secciones que responden las dudas más comunes antes del primer contacto.",
+      "CTAs claros, WhatsApp guiado y secciones que responden objeciones antes del primer mensaje.",
+    badge: "WhatsApp CTA",
+    icon: "message",
+    tone: "cyan",
   },
   {
-    goal: "Confianza",
-    title: "Más confianza para decidir",
+    title: "Más confianza",
     description:
-      "Una presentación cuidada, casos concretos y mensajes simples para que la persona entienda rápido por qué elegirte.",
+      "Estructura institucional, prueba social y mensajes de seguridad para que elegirte sea más fácil.",
+    badge: "Confianza",
+    icon: "shield",
+    tone: "violet",
   },
   {
-    goal: "Operación",
-    title: "Reservas y pedidos más ordenados",
+    title: "Más velocidad",
     description:
-      "Agendas, listas de servicios y contenido editable para que cada consulta llegue con la información necesaria.",
+      "Carga rápida, base SEO y una experiencia fluida para no perder visitas en el camino.",
+    badge: "Performance",
+    icon: "zap",
+    tone: "amber",
   },
   {
-    goal: "Validación",
-    title: "Una demo lista para mostrar",
+    title: "Menos fricción",
     description:
-      "Una página navegable para compartir por WhatsApp, probar la idea y mostrar cómo se vería tu negocio online.",
+      "Formularios, integraciones y entrega prolija con repositorio, deploy y próximos pasos claros.",
+    badge: "Repo + deploy",
+    icon: "flow",
+    tone: "emerald",
   },
 ];
