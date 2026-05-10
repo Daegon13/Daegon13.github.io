@@ -1,17 +1,30 @@
 ---
 import ProjectCard from './ProjectCard.astro';
 import SectionHeader from './SectionHeader.astro';
+import VisualBadge from './VisualBadge.astro';
 
 const { projects = [] } = Astro.props;
+const projectBadges = [
+  { label: 'Landing', icon: 'layout', tone: 'cyan' },
+  { label: 'Admin panel', icon: 'database', tone: 'violet' },
+  { label: 'Web corporativa', icon: 'briefcase', tone: 'emerald' },
+  { label: 'Demo comercial', icon: 'rocket', tone: 'amber' },
+];
 ---
-<section id="casos" class="scroll-mt-24 py-14 md:py-20">
+<section id="casos" class="relative scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
+  <div class="absolute -right-28 top-8 -z-10 h-60 w-60 rounded-full bg-violet-electric/10 blur-3xl" aria-hidden="true"></div>
   <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-    <SectionHeader
-      eyebrow="Casos destacados"
-      title="Proyectos presentados como prueba comercial."
-      description="Proyectos elegidos para mostrar rubro, problema, solución y una próxima acción clara: ver la demo, entender el caso o pedir algo parecido."
-      icon="folder"
-    />
+    <div class="space-y-5">
+      <SectionHeader
+        eyebrow="Casos y demos"
+        title="Proyectos que muestran criterio comercial"
+        description="No son solo piezas visuales: cada caso está pensado para explicar un negocio, resolver una fricción y acercar al visitante a una acción concreta."
+        icon="folder"
+      />
+      <div class="flex flex-wrap gap-2">
+        {projectBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
+      </div>
+    </div>
     <a href="/proyectos" class="premium-button inline-flex w-fit items-center gap-2 rounded-2xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-cyan-electric hover:-translate-y-0.5 hover:border-line-strong">
       Ver portfolio completo <span aria-hidden="true">→</span>
     </a>

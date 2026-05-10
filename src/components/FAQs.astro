@@ -1,14 +1,26 @@
 ---
 import SectionHeader from './SectionHeader.astro';
+import VisualBadge from './VisualBadge.astro';
 import { faqs } from '../data/faqs';
+
+const faqBadges = [
+  { label: 'Tiempos claros', icon: 'speed', tone: 'cyan' },
+  { label: 'Alcance definido', icon: 'check', tone: 'emerald' },
+  { label: 'Sin backend innecesario', icon: 'shield', tone: 'violet' },
+];
 ---
-<section class="py-14 md:py-20">
+<section class="relative overflow-hidden border-t border-line/70 py-14 md:py-20">
+  <div class="absolute left-1/2 top-8 -z-10 h-52 w-52 -translate-x-1/2 rounded-full bg-cyan-electric/10 blur-3xl" aria-hidden="true"></div>
   <SectionHeader
-    eyebrow="FAQs"
-    title="Preguntas antes de crear tu demo o web."
-    description="Respuestas simples sobre tiempos, entrega, WhatsApp, agenda y contenido editable."
+    eyebrow="Antes de empezar"
+    title="Preguntas frecuentes"
+    description="Respuestas rápidas para reducir incertidumbre sobre tiempos, entrega, WhatsApp, agenda y contenido editable antes de escribir."
+    icon="help"
     align="center"
   />
+  <div class="mx-auto mt-5 flex max-w-3xl flex-wrap justify-center gap-2">
+    {faqBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
+  </div>
 
   <div class="mx-auto mt-8 max-w-3xl space-y-3">
     {faqs.map((item) => (
