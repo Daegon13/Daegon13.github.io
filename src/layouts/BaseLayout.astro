@@ -1,49 +1,99 @@
 ---
-import { SITE_URL } from "../lib/contact";
-import { faqs } from '../data/faqs';
-import { productizedServices } from '../data/services';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+import {
+  GITHUB_URL,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  SITE_URL,
+} from "../lib/contact";
+import { faqs } from "../data/faqs";
+import { productizedServices } from "../data/services";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
 
 /* CSS global de Tailwind para empaquetado */
-import '../styles/tailwind.css';
+import "../styles/tailwind.css";
 
-/* Props SEO base: si no pasás url, evitamos canonical vacío */
-const { title, description, image = '/og-default.png', url = '' } = Astro.props;
+const defaultTitle =
+  "Marin.dev | Demos web y sistemas simples para negocios";
+const defaultDescription =
+  "Demos web, landings y sistemas simples para convertir visitas en consultas, reservas o ventas.";
 
-// Canonical/OG absolutos (SEO prolijo en GitHub Pages)
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  image = "/og-default.png",
+  url = "",
+  noindex = false,
+} = Astro.props;
+
 const site = Astro.site?.toString() ?? SITE_URL;
-const pathname = (typeof url === "string" && url) ? (url.startsWith("http") ? new URL(url).pathname : url) : Astro.url.pathname;
-const canonical = new URL(pathname, site).href;
+const pagePath =
+  typeof url === "string" && url
+    ? url.startsWith("http")
+      ? new URL(url).pathname
+      : url
+    : Astro.url.pathname;
+const canonical = new URL(pagePath, site).href;
 const ogImage = image.startsWith("http") ? image : new URL(image, site).href;
-const serviceJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Demos y webs claras para recibir consultas, reservas o ventas',
-  provider: {
-    '@type': 'Person',
-    name: 'Diego Marin',
-    url: SITE_URL,
+const logoUrl = new URL("/og-default.png", site).href;
+
+const professionalServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Marin.dev",
+  url: site,
+  image: logoUrl,
+  logo: logoUrl,
+  founder: {
+    "@type": "Person",
+    name: "Diego Marin",
+    url: site,
   },
-  areaServed: 'Uruguay y remoto',
+  areaServed: ["Uruguay", "Remoto"],
+  description: defaultDescription,
+  sameAs: [GITHUB_URL, LINKEDIN_URL, INSTAGRAM_URL],
+};
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Demos web, landings y sistemas simples orientados a conversión",
+  serviceType: "Diseño y desarrollo web comercial",
+  provider: {
+    "@type": "ProfessionalService",
+    name: "Marin.dev",
+    url: site,
+  },
+  areaServed: "Uruguay y remoto",
+  description:
+    "Diseño y desarrollo de demos comerciales, landings de conversión, agendas, integraciones con WhatsApp y paneles simples para negocios reales.",
   hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Servicios productizados Marin.dev',
+    "@type": "OfferCatalog",
+    name: "Servicios productizados Marin.dev",
     itemListElement: productizedServices.map((service) => ({
-      '@type': 'Offer',
+      "@type": "Offer",
       name: service.name,
       description: service.description,
     })),
   },
 };
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Marin.dev",
+  url: site,
+  inLanguage: "es-UY",
+};
+
 const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: faqs.map((item) => ({
-    '@type': 'Question',
+    "@type": "Question",
     name: item.q,
     acceptedAnswer: {
-      '@type': 'Answer',
+      "@type": "Answer",
       text: item.a,
     },
   })),
@@ -56,52 +106,37 @@ const faqJsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-
-    <!-- Open Graph / Twitter -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={canonical} />
-
-            <!-- JSON-LD: Organization + WebSite -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "name": "Marin.dev",
-            "url": "https://daegon13.github.io/",
-            "logo": "https://daegon13.github.io/og-default.png",
-            "sameAs": [
-              "https://github.com/Daegon13",
-              "https://www.linkedin.com/in/diego-marin-34632121b/"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "url": "https://daegon13.github.io/",
-            "name": "Marin.dev"
-          }
-        ]
-      }
-    </script>
-
-        <!-- JSON-LD: Service + Offer (resumen de servicios productizados) -->
-    <script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
-
-        <!-- JSON-LD: FAQPage (mejora rich results) -->
-    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
-
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Canonical -->
     <link rel="canonical" href={canonical} />
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Marin.dev" />
+    <meta property="og:locale" content="es_UY" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Marin.dev: demos web y sistemas simples para negocios" />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Marin.dev: demos web y sistemas simples para negocios" />
+
+    <!-- JSON-LD: identidad, sitio y servicios -->
+    <script type="application/ld+json" set:html={JSON.stringify(professionalServiceJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
     <link rel="icon" href="/favicon.svg" />
   </head>
   <body class="theme-v2 v2-shell min-h-screen bg-ink text-slate-50 antialiased overflow-x-hidden overscroll-contain">
-
     <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-slate-50 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink">Saltar al contenido</a>
     <Nav />
     <main id="contenido" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
