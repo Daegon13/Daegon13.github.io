@@ -1,8 +1,10 @@
 ---
 import Badge from './Badge.astro';
-import { projectCoverImage } from '../lib/projectGallery';
+import { projectVisualAsset } from '../lib/projectGallery';
 
 const FEATURE_LIMIT = 4;
+const VISUAL_PILL_LIMIT = 4;
+const STACK_LIMIT = 5;
 const {
   title,
   resumen,
@@ -18,8 +20,10 @@ const {
   status = '',
   features = [],
   impacto = '',
-  ctaLabel = 'Ver caso',
+  ctaLabel = 'Abrir caso',
   priority = 0,
+  demoUrl = '',
+  repoUrl = '',
 } = Astro.props;
 
 const statusLabels = {
@@ -34,49 +38,88 @@ const statusTone = {
   concepto: 'violet',
 };
 
-const chips = Array.isArray(features) && features.length > 0 ? features : stack;
+const categoryRules = [
+  { label: 'WhatsApp', terms: ['whatsapp', 'consulta', 'contacto'] },
+  { label: 'Agenda', terms: ['agenda', 'turno', 'reserva', 'reservas'] },
+  { label: 'Panel admin', terms: ['panel', 'admin', 'editable', 'dashboard', 'stock', 'firebase'] },
+  { label: 'Web corporativa', terms: ['corporativa', 'logística', 'empresa'] },
+  { label: 'Demo comercial', terms: ['demo', 'veterinaria', 'barber', 'restaurante', 'gastronomía'] },
+  { label: 'Landing', terms: ['landing', 'web', 'servicios'] },
+  { label: 'E-commerce', terms: ['e-commerce', 'tienda', 'catalogo', 'catálogo'] },
+  { label: 'Automatización', terms: ['automatización', 'automatizacion', 'operativa', 'movimientos'] },
+];
+
 const commercialType = tipo || sector || 'Caso comercial';
 const benefit = impacto || resultado;
-const displayCover = projectCoverImage({ slug, thumbnail, cover });
-const hasGenericCover = !displayCover || displayCover === '/og-default.png';
+const visual = projectVisualAsset({ slug, thumbnail, cover });
+const hasImage = visual.hasImage;
 const isStarProject = Number(priority) >= 120;
+const caseUrl = `/proyectos/${slug}`;
+const titleInitials = String(title ?? 'MD')
+  .split(/[\s–-]+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((word) => word[0]?.toUpperCase())
+  .join('') || 'MD';
+const normalizedSignals = [commercialType, sector, resumen, problema, solucion, ...features, ...stack]
+  .filter(Boolean)
+  .map((item) => String(item).toLowerCase());
+const categoryBadges = categoryRules
+  .filter((rule) => normalizedSignals.some((signal) => rule.terms.some((term) => signal.includes(term))))
+  .map((rule) => rule.label);
+const visualPills = [...new Set([...categoryBadges, ...features, ...stack])].slice(0, VISUAL_PILL_LIMIT);
+const primaryChips = Array.isArray(features) && features.length > 0 ? features : categoryBadges;
+const stackChips = Array.isArray(stack) ? stack.slice(0, STACK_LIMIT) : [];
+const copyFocus = solucion || problema;
 ---
-<a
-  href={`/proyectos/${slug}`}
-  class="group premium-interactive block h-full overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur hover:border-line-strong hover:shadow-premium-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-electric"
+<article
+  class="group premium-interactive flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur hover:-translate-y-1 hover:border-line-strong hover:shadow-premium-hover"
 >
   <div class="relative overflow-hidden border-b border-line bg-ink/60">
-    {hasGenericCover ? (
-      <div class="relative aspect-[16/10] overflow-hidden bg-ink">
-        <div class="absolute inset-0 bg-premium-grid bg-[length:2rem_2rem] opacity-45"></div>
-        <div class="absolute -left-16 top-6 h-40 w-40 rounded-full bg-cyan-electric/20 blur-3xl transition duration-500 group-hover:bg-cyan-electric/30"></div>
-        <div class="absolute -right-14 bottom-0 h-44 w-44 rounded-full bg-brand-violet/20 blur-3xl transition duration-500 group-hover:bg-brand-violet/30"></div>
-        <div class="relative flex h-full flex-col justify-between p-5">
-          <div class="flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-muted-soft">
-            <span class="status-dot !h-2 !w-2 bg-brand-success text-emerald-300 shadow-[0_0_18px_rgba(52,211,153,0.85)]"></span>
-            Case preview
+    {hasImage ? (
+      <a href={caseUrl} class="block focus-visible:outline-none" aria-label={`Abrir caso de ${title}`}>
+        <img
+          src={visual.src}
+          alt={`Visual del proyecto ${title}`}
+          class="aspect-[16/10] w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.035] group-hover:opacity-100"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+    ) : (
+      <a href={caseUrl} class="block focus-visible:outline-none" aria-label={`Abrir caso de ${title}`}>
+        <div class="relative aspect-[16/10] overflow-hidden bg-ink">
+          <div class="absolute inset-0 bg-premium-grid bg-[length:2rem_2rem] opacity-50"></div>
+          <div class="absolute -left-16 top-4 h-44 w-44 rounded-full bg-cyan-electric/25 blur-3xl transition duration-500 group-hover:bg-cyan-electric/35"></div>
+          <div class="absolute -right-16 bottom-0 h-48 w-48 rounded-full bg-brand-violet/25 blur-3xl transition duration-500 group-hover:bg-brand-violet/35"></div>
+          <div class="absolute inset-x-5 top-5 flex items-center gap-2 rounded-2xl border border-line bg-surface-glass px-3 py-2 shadow-premium backdrop-blur">
+            <span class="h-2.5 w-2.5 rounded-full bg-rose-400/90"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-amber-300/90"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-brand-success/90"></span>
+            <span class="ml-2 h-2 flex-1 rounded-full bg-slate-700/80"></span>
           </div>
-          <div class="rounded-2xl border border-line bg-surface-glass p-4 shadow-premium backdrop-blur">
-            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-electric">{commercialType}</p>
-            <p class="mt-2 line-clamp-2 text-lg font-semibold leading-tight text-slate-50">{title}</p>
-            <div class="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
-              <span class="h-2 rounded-full bg-cyan-electric/70"></span>
-              <span class="h-2 rounded-full bg-brand-blue/60"></span>
-              <span class="h-2 rounded-full bg-brand-violet/60"></span>
+          <div class="relative flex h-full flex-col justify-end p-5 pt-16">
+            <div class="rounded-3xl border border-line bg-surface-glass p-4 shadow-premium backdrop-blur">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-electric/25 bg-cyan-electric/10 text-lg font-black tracking-tight text-cyan-100 shadow-[0_0_34px_rgba(34,211,238,0.18)]">
+                  {titleInitials}
+                </div>
+                <p class="text-right text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted-soft">Mini caso</p>
+              </div>
+              <p class="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-electric">{commercialType}</p>
+              <p class="mt-2 line-clamp-2 text-lg font-semibold leading-tight text-slate-50">{title}</p>
+              <div class="mt-4 flex flex-wrap gap-2" aria-hidden="true">
+                {visualPills.map((item: string) => (
+                  <span class="rounded-full border border-line bg-ink/55 px-2 py-1 text-[0.68rem] font-semibold text-muted-bright">{item}</span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    ) : (
-      <img
-        src={displayCover}
-        alt={`Portada de ${title}`}
-        class="aspect-[16/10] w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100"
-        loading="lazy"
-        decoding="async"
-      />
+      </a>
     )}
-    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/90 to-transparent"></div>
+
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/95 to-transparent"></div>
     <div class="absolute left-4 top-4 flex flex-wrap gap-2">
       {isStarProject && <Badge label="Proyecto estrella" tone="success" />}
       <Badge label={commercialType} tone="cyan" />
@@ -84,41 +127,62 @@ const isStarProject = Number(priority) >= 120;
     </div>
   </div>
 
-  <div class="flex min-h-[23rem] flex-col p-5 sm:p-6">
+  <div class="relative z-10 flex min-h-[24rem] flex-1 flex-col p-5 sm:p-6">
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-muted">{sector}</p>
-      <h3 class="mt-2 text-xl font-semibold tracking-tight text-slate-50 transition group-hover:text-cyan-electric">{title}</h3>
-      {resumen && <p class="mt-3 text-sm leading-6 text-muted-soft">{resumen}</p>}
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-muted">{sector || commercialType}</p>
+      <h3 class="mt-2 text-xl font-semibold tracking-tight text-slate-50 transition group-hover:text-cyan-electric">
+        <a href={caseUrl} class="focus-visible:outline-none">{title}</a>
+      </h3>
+      {resumen && <p class="mt-3 line-clamp-3 text-sm leading-6 text-muted-soft">{resumen}</p>}
     </div>
 
-    <div class="mt-5 space-y-3 text-sm leading-6">
-      {problema && (
-        <p class="rounded-2xl border border-line bg-ink/35 p-3 text-muted-soft">
-          <span class="font-semibold text-slate-50">Problema:</span> {problema}
-        </p>
-      )}
-      {solucion && (
-        <p class="rounded-2xl border border-line bg-ink/35 p-3 text-muted-soft">
-          <span class="font-semibold text-slate-50">Solución:</span> {solucion}
-        </p>
-      )}
-    </div>
+    {copyFocus && (
+      <div class="mt-5 rounded-2xl border border-line bg-ink/35 p-4 text-sm leading-6 text-muted-soft">
+        {problema && (
+          <p><span class="font-semibold text-slate-50">Problema:</span> {problema}</p>
+        )}
+        {solucion && (
+          <p class={problema ? 'mt-3 border-t border-line pt-3' : ''}><span class="font-semibold text-slate-50">Solución:</span> {solucion}</p>
+        )}
+      </div>
+    )}
 
-    <div class="mt-5 flex flex-wrap gap-2">
-      {chips.slice(0, FEATURE_LIMIT).map((item: string) => <Badge label={item} />)}
-    </div>
+    {primaryChips.length > 0 && (
+      <div class="mt-5 flex flex-wrap gap-2" aria-label="Categorías y funcionalidades">
+        {primaryChips.slice(0, FEATURE_LIMIT).map((item: string) => <Badge label={item} />)}
+      </div>
+    )}
 
     {benefit && (
       <p class="mt-5 rounded-2xl border border-brand-success/20 bg-brand-success/10 p-3 text-sm leading-6 text-emerald-100">
-        <span class="font-semibold">Beneficio:</span> {benefit}
+        <span class="font-semibold">Resultado / beneficio:</span> {benefit}
       </p>
     )}
 
-    <div class="mt-auto pt-6">
-      <span class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-electric">
+    {stackChips.length > 0 && (
+      <div class="mt-5 border-t border-line pt-4">
+        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-muted">Tecnologías</p>
+        <div class="mt-2 flex flex-wrap gap-2">
+          {stackChips.map((item: string) => <Badge label={item} tone="violet" />)}
+        </div>
+      </div>
+    )}
+
+    <div class="mt-auto flex flex-wrap items-center gap-3 pt-6">
+      <a href={caseUrl} class="premium-button inline-flex items-center gap-2 rounded-2xl bg-brand-gradient px-4 py-2.5 text-sm font-semibold text-white shadow-glow">
         {ctaLabel}
-        <span aria-hidden="true" class="transition duration-300 group-hover:translate-x-1.5">→</span>
-      </span>
+        <span aria-hidden="true" class="transition duration-300 group-hover:translate-x-1">→</span>
+      </a>
+      {demoUrl && (
+        <a href={demoUrl} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70">
+          Ver demo <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {!demoUrl && repoUrl && (
+        <a href={repoUrl} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70">
+          Ver repo <span aria-hidden="true">↗</span>
+        </a>
+      )}
     </div>
   </div>
-</a>
+</article>
