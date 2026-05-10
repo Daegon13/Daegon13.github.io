@@ -1,20 +1,41 @@
 ---
-const { eyebrow, title, description, align = 'left', class: className = '' } = Astro.props;
-const alignment = align === 'center' ? 'mx-auto text-center items-center' : 'items-start';
+import IconBubble from './IconBubble.astro';
+
+const {
+  eyebrow,
+  title,
+  description,
+  icon,
+  align = 'left',
+  class: className = '',
+} = Astro.props;
+
+const isCenter = align === 'center';
+const alignment = isCenter ? 'mx-auto items-center text-center' : 'items-start text-left';
+const eyebrowAlignment = isCenter ? 'justify-center' : 'justify-start';
 ---
-<header class={`flex max-w-3xl flex-col gap-3 ${alignment} ${className}`}>
-  {eyebrow && (
-    <p class="inline-flex w-fit items-center rounded-full border border-line bg-surface-glass px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-electric">
-      {eyebrow}
-    </p>
-  )}
-  {title && (
-    <h2 class="text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
-      {title}
-    </h2>
-  )}
+<header class={`relative flex max-w-3xl flex-col gap-4 ${alignment} ${className}`}>
+  <div class={`flex w-full items-center gap-3 ${eyebrowAlignment}`}>
+    {icon && <IconBubble icon={icon} tone="cyan" size="sm" label={eyebrow ?? title ?? 'Sección'} />}
+    {eyebrow && (
+      <p class="inline-flex w-fit items-center rounded-full border border-line bg-surface-glass px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-electric shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur">
+        <span class="mr-2 h-1.5 w-1.5 rounded-full bg-cyan-electric shadow-[0_0_14px_rgba(34,211,238,0.7)]" aria-hidden="true"></span>
+        {eyebrow}
+      </p>
+    )}
+  </div>
+
+  <div class="relative">
+    <div class={`pointer-events-none absolute -inset-x-4 -inset-y-3 -z-10 rounded-3xl bg-gradient-to-r from-cyan-electric/10 via-blue-electric/5 to-violet-electric/10 blur-2xl ${isCenter ? 'opacity-60' : 'opacity-45'}`}></div>
+    {title && (
+      <h2 class="text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
+        {title}
+      </h2>
+    )}
+  </div>
+
   {description && (
-    <p class="text-base leading-7 text-muted-soft sm:text-lg">
+    <p class={`text-base leading-7 text-muted-soft sm:text-lg ${isCenter ? 'mx-auto max-w-2xl' : 'max-w-copy'}`}>
       {description}
     </p>
   )}
