@@ -1,7 +1,14 @@
 ---
-import GlowCard from './GlowCard.astro';
 import SectionHeader from './SectionHeader.astro';
+import VisualCard from './VisualCard.astro';
 import { outcomes } from '../data/outcomes';
+
+const outcomeVisuals = [
+  { icon: 'message', tone: 'cyan' },
+  { icon: 'shield', tone: 'violet' },
+  { icon: 'flow', tone: 'emerald' },
+  { icon: 'rocket', tone: 'amber' },
+];
 ---
 
 <section id="que-resuelvo" class="scroll-mt-24 py-14 md:py-20">
@@ -9,17 +16,19 @@ import { outcomes } from '../data/outcomes';
     eyebrow="Qué resuelvo"
     title="La web no solo tiene que verse bien: tiene que guiar a la consulta."
     description="Trabajo la estructura, los mensajes y los llamados a la acción para que el visitante entienda rápido qué ofrecés, qué paso dar y por qué confiar."
+    icon="target"
   />
   <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
     {
-      outcomes.map((item) => (
-        <GlowCard class="h-full">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-electric">{item.goal}</p>
-          <h3 class="mt-3 text-lg font-semibold text-slate-50">{item.title}</h3>
-          <p class="mt-3 text-sm leading-6 text-muted-soft">
-            {item.description}
-          </p>
-        </GlowCard>
+      outcomes.map((item, index) => (
+        <VisualCard
+          class="h-full"
+          title={item.title}
+          description={item.description}
+          badge={item.goal}
+          icon={outcomeVisuals[index]?.icon ?? 'target'}
+          tone={outcomeVisuals[index]?.tone ?? 'cyan'}
+        />
       ))
     }
   </div>

@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+
+const {
+  label,
+  icon,
+  tone = 'neutral',
+  size = 'sm',
+  class: className = '',
+} = Astro.props;
+
+const toneClasses = {
+  cyan: 'border-cyan-electric/25 bg-cyan-electric/10 text-cyan-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]',
+  violet: 'border-violet-electric/25 bg-violet-electric/10 text-violet-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]',
+  emerald: 'border-emerald-300/25 bg-emerald-400/10 text-emerald-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]',
+  amber: 'border-amber-300/25 bg-amber-300/10 text-amber-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]',
+  neutral: 'border-line bg-surface-glass text-muted-soft shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]',
+};
+
+const sizeClasses = {
+  sm: 'gap-1.5 px-2.5 py-1 text-[0.72rem]',
+  md: 'gap-2 px-3 py-1.5 text-xs',
+};
+---
+<span class={`inline-flex w-fit items-center rounded-full border font-semibold uppercase tracking-[0.16em] backdrop-blur ${toneClasses[tone] ?? toneClasses.neutral} ${sizeClasses[size] ?? sizeClasses.sm} ${className}`}>
+  {icon && <Icon name={icon} size="sm" />}
+  <span>{label}</span>
+</span>
