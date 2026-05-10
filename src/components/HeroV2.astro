@@ -6,9 +6,11 @@ import { waLink, DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
 ---
 <section class="relative overflow-hidden py-20 md:py-28">
   <div class="absolute left-1/2 top-10 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-cyan-electric/40 to-transparent" aria-hidden="true"></div>
   <div class="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
     <div>
-      <p class="inline-flex rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100">
+      <p class="inline-flex items-center gap-2 rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100 shadow-[0_0_32px_rgba(34,211,238,0.12)]">
+        <span class="status-dot" aria-hidden="true"></span>
         Marin.dev · páginas, demos y herramientas simples
       </p>
       <h1 class="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
@@ -23,13 +25,13 @@ import { waLink, DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
           href={waLink(DEMO_WHATSAPP_MESSAGE)}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover"
+          class="premium-button inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover"
         >
           Quiero una demo para mi negocio
         </a>
         <a
           href="#casos"
-          class="inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 backdrop-blur transition hover:-translate-y-0.5 hover:border-line-strong"
+          class="premium-button inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 backdrop-blur hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
         >
           Ver ejemplos
         </a>

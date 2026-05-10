@@ -12,7 +12,7 @@ const {
 } = Astro.props;
 ---
 <section class="py-16 text-center md:py-24">
-  <div class="relative overflow-hidden rounded-[2rem] border border-line bg-surface-glow p-8 shadow-premium backdrop-blur md:p-12">
+  <div class="premium-interactive halo-sweep relative overflow-hidden rounded-[2rem] border border-line bg-surface-glow p-8 shadow-premium backdrop-blur md:p-12">
     <div class="absolute inset-x-10 -top-20 h-40 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
     <div class="absolute -bottom-24 right-0 h-44 w-44 rounded-full bg-brand-violet/20 blur-3xl" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-3xl">
@@ -24,14 +24,14 @@ const {
           href={waLink(primaryMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover"
+          class="premium-button inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover"
         >
           {primaryLabel}
         </a>
         {secondaryLabel && secondaryHref && (
           <a
             href={secondaryHref}
-            class="inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 transition hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
+            class="premium-button inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
           >
             {secondaryLabel}
           </a>
