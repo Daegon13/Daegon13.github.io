@@ -15,7 +15,6 @@ const trustBadges = [
   { label: 'Cronograma claro', icon: 'speed', tone: 'cyan' },
   { label: 'Pagos por hitos', icon: 'briefcase', tone: 'emerald' },
   { label: 'Repo + deploy', icon: 'code', tone: 'violet' },
-  { label: 'Soporte post-lanzamiento', icon: 'shield', tone: 'amber' },
 ];
 ---
 <section class="relative overflow-hidden border-t border-line/70 py-14 md:py-20" id="faq">
@@ -25,7 +24,7 @@ const trustBadges = [
   <SectionHeader
     eyebrow="Antes de empezar"
     title="Preguntas frecuentes"
-    description="Las dudas típicas antes de encargar una web: tiempos, pagos, mantenimiento y entrega del proyecto."
+    description="Tiempos, pagos, mantenimiento y entrega del proyecto antes de empezar."
     icon="help"
     align="center"
   />
@@ -45,9 +44,6 @@ const trustBadges = [
             <span class="min-w-0 flex-1 pr-1">
               <span class="block text-sm font-semibold leading-6 text-slate-50 sm:text-base">
                 {item.q}
-              </span>
-              <span class="mt-1 hidden text-xs font-medium uppercase tracking-[0.16em] text-muted sm:block">
-                Tocar para leer
               </span>
             </span>
 
@@ -70,7 +66,7 @@ const trustBadges = [
 
   <div class="mx-auto mt-7 flex max-w-5xl flex-col gap-3 rounded-3xl border border-line bg-ink/40 p-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:p-5">
     <p class="text-sm font-medium leading-6 text-muted-soft">
-      Trabajo con expectativas claras: alcance definido, entregas revisables y control sobre lo publicado.
+      Alcance definido, entregas revisables y control sobre lo publicado.
     </p>
     <div class="flex flex-wrap gap-2 sm:justify-end">
       {trustBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}

@@ -3,7 +3,7 @@ export const productizedServices = [
     name: "Demo Comercial Express",
     tag: "Validar rápido",
     description:
-      "Una demo cuidada para transformar una idea, Instagram o rubro en una propuesta web lista para mostrar y vender antes de invertir de más.",
+      "Una demo cuidada para transformar una idea o Instagram en una propuesta web lista para mostrar.",
     deliverables: [
       "Mensaje principal y estructura comercial",
       "Secciones clave para explicar la propuesta",
@@ -15,7 +15,7 @@ export const productizedServices = [
     name: "Landing de Conversión",
     tag: "Más consultas",
     description:
-      "Una landing clara para campañas, servicios o negocios locales que necesitan llevar visitas hacia consultas, reservas o ventas.",
+      "Una landing clara para llevar visitas hacia consultas, reservas o ventas.",
     deliverables: [
       "Hero orientado a resultado",
       "Bloques de confianza, servicios y objeciones",
@@ -28,7 +28,7 @@ export const productizedServices = [
     name: "Web con WhatsApp / Agenda",
     tag: "Reservas claras",
     description:
-      "Una web para mostrar servicios, ordenar consultas y guiar al visitante hacia WhatsApp, reserva o agenda sin fricción.",
+      "Una web para mostrar servicios y guiar al visitante hacia WhatsApp, reserva o agenda.",
     deliverables: [
       "Servicios o planes con CTA específico",
       "Mensajes prearmados por intención",
@@ -40,7 +40,7 @@ export const productizedServices = [
     name: "Sistema simple / Panel Admin",
     tag: "Operar mejor",
     description:
-      "Una herramienta liviana para gestionar contenido, stock, leads, reservas o datos cuando el negocio ya necesita ordenar operación interna.",
+      "Una herramienta liviana para ordenar contenido, stock, leads, reservas o datos internos.",
     deliverables: [
       "Panel o flujo interno acotado",
       "Datos y estados organizados",

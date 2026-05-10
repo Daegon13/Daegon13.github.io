@@ -2,7 +2,7 @@ export const outcomes = [
   {
     title: "Más consultas",
     description:
-      "CTAs claros, WhatsApp guiado y secciones que responden objeciones antes del primer mensaje.",
+      "CTAs claros y WhatsApp guiado para pedir los datos correctos.",
     badge: "WhatsApp CTA",
     icon: "message",
     tone: "cyan",
@@ -10,23 +10,21 @@ export const outcomes = [
   {
     title: "Más confianza",
     description:
-      "Estructura institucional, prueba social y mensajes de seguridad para que elegirte sea más fácil.",
+      "Estructura, prueba visual y señales de confianza para decidir más rápido.",
     badge: "Confianza",
     icon: "shield",
     tone: "violet",
   },
   {
     title: "Más velocidad",
-    description:
-      "Carga rápida, base SEO y una experiencia fluida para no perder visitas en el camino.",
+    description: "Carga rápida, SEO base y navegación fluida en mobile.",
     badge: "Performance",
     icon: "zap",
     tone: "amber",
   },
   {
     title: "Menos fricción",
-    description:
-      "Formularios, integraciones y entrega prolija con repositorio, deploy y próximos pasos claros.",
+    description: "Flujos simples, repo, deploy y próximos pasos definidos.",
     badge: "Repo + deploy",
     icon: "flow",
     tone: "emerald",
