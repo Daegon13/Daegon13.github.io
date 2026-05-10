@@ -47,7 +47,15 @@ const previewHost = hasPreviewUrl ? new URL(url).host.replace(/^www\./, '') : `m
           </a>
         </>
       ) : hasCustomCover ? (
-        <img src={displayCover} alt={`Mockup o portada de ${title}`} class="h-full w-full object-cover" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+        <img
+          src={displayCover}
+          alt={`Mockup o portada de ${title}`}
+          width="1200"
+          height="900"
+          class="h-full w-full object-cover"
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+        />
       ) : (
         <div class="relative flex h-full flex-col justify-between overflow-hidden p-5">
           <div class="absolute inset-0 bg-premium-grid bg-[length:2rem_2rem] opacity-45"></div>
