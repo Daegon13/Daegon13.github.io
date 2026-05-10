@@ -27,13 +27,20 @@ const {
 } = Astro.props;
 
 const site = Astro.site?.toString() ?? SITE_URL;
-const pagePath =
+const rawPagePath =
   typeof url === "string" && url
     ? url.startsWith("http")
       ? new URL(url).pathname
       : url
     : Astro.url.pathname;
-const canonical = new URL(pagePath, site).href;
+const normalizeCanonicalPath = (path: string) => {
+  const [pathname, search = ""] = path.split("?");
+  const shouldKeepAsIs =
+    pathname === "/" || pathname.endsWith("/") || /\.[a-z0-9]+$/i.test(pathname);
+
+  return `${shouldKeepAsIs ? pathname : `${pathname}/`}${search ? `?${search}` : ""}`;
+};
+const canonical = new URL(normalizeCanonicalPath(rawPagePath), site).href;
 const ogImage = image.startsWith("http") ? image : new URL(image, site).href;
 const logoUrl = new URL("/og-default.png", site).href;
 
