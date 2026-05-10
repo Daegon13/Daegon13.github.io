@@ -1,5 +1,6 @@
 ---
 import SectionHeader from './SectionHeader.astro';
+import VisualBadge from './VisualBadge.astro';
 import VisualCard from './VisualCard.astro';
 import { outcomes } from '../data/outcomes';
 
@@ -9,15 +10,27 @@ const outcomeVisuals = [
   { icon: 'flow', tone: 'emerald' },
   { icon: 'rocket', tone: 'amber' },
 ];
+
+const outcomeBadges = [
+  { label: 'CTA claro', icon: 'target', tone: 'cyan' },
+  { label: 'Menos dudas', icon: 'friction', tone: 'violet' },
+  { label: 'Más confianza', icon: 'shield', tone: 'emerald' },
+];
 ---
 
-<section id="que-resuelvo" class="scroll-mt-24 py-14 md:py-20">
-  <SectionHeader
-    eyebrow="Qué resuelvo"
-    title="La web no solo tiene que verse bien: tiene que guiar a la consulta."
-    description="Trabajo la estructura, los mensajes y los llamados a la acción para que el visitante entienda rápido qué ofrecés, qué paso dar y por qué confiar."
-    icon="target"
-  />
+<section id="que-resuelvo" class="relative scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
+  <div class="absolute -left-28 top-10 -z-10 h-56 w-56 rounded-full bg-cyan-electric/10 blur-3xl" aria-hidden="true"></div>
+  <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+    <SectionHeader
+      eyebrow="Problemas que resolvemos"
+      title="Menos fricción, más consultas"
+      description="Ordeno la web para que el visitante entienda rápido qué ofrecés, por qué confiar y cuál es el próximo paso: escribir, reservar o comprar."
+      icon="target"
+    />
+    <div class="flex flex-wrap gap-2 lg:max-w-sm lg:justify-end">
+      {outcomeBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
+    </div>
+  </div>
   <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
     {
       outcomes.map((item, index) => (

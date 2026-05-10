@@ -1,24 +1,42 @@
 ---
 import BrowserMockup from './BrowserMockup.astro';
+import IconBubble from './IconBubble.astro';
 import MetricPill from './MetricPill.astro';
+import VisualBadge from './VisualBadge.astro';
 import { heroSignals } from '../data/site';
 import { waLink, DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
+
+const heroBadges = [
+  { label: 'Propuesta en 24h', icon: 'speed', tone: 'cyan' },
+  { label: 'Repo + deploy', icon: 'code', tone: 'violet' },
+  { label: 'Pagos por hitos', icon: 'check', tone: 'emerald' },
+  { label: 'WhatsApp CTA', icon: 'message', tone: 'amber' },
+];
 ---
-<section class="relative overflow-hidden py-20 md:py-28">
+<section class="relative overflow-hidden py-20 md:py-28" aria-labelledby="hero-title">
   <div class="absolute left-1/2 top-10 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -right-24 top-32 -z-10 h-64 w-64 rounded-full bg-violet-electric/15 blur-3xl" aria-hidden="true"></div>
   <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-cyan-electric/40 to-transparent" aria-hidden="true"></div>
   <div class="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
     <div>
-      <p class="inline-flex items-center gap-2 rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100 shadow-[0_0_32px_rgba(34,211,238,0.12)]">
-        <span class="status-dot" aria-hidden="true"></span>
-        Marin.dev · páginas, demos y herramientas simples
-      </p>
-      <h1 class="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
+      <div class="inline-flex items-center gap-3 rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-2 shadow-[0_0_32px_rgba(34,211,238,0.12)] backdrop-blur sm:px-4">
+        <IconBubble icon="rocket" tone="cyan" size="sm" label="Conversión, tecnología y velocidad" />
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100">
+          Marin.dev · conversión + tecnología + velocidad
+        </span>
+      </div>
+      <h1 id="hero-title" class="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
         Convertí tu Instagram o idea en una web clara, linda y lista para recibir consultas.
       </h1>
       <p class="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
         Te ayudo a mostrar qué ofrecés, ordenar tus servicios y llevar a la persona correcta a escribirte, reservar o comprar al momento.
       </p>
+
+      <div class="mt-6 flex flex-wrap gap-2.5">
+        {heroBadges.map((badge) => (
+          <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />
+        ))}
+      </div>
 
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a

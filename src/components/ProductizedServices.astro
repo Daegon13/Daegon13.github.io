@@ -2,15 +2,30 @@
 import Badge from './Badge.astro';
 import GlowCard from './GlowCard.astro';
 import SectionHeader from './SectionHeader.astro';
+import VisualBadge from './VisualBadge.astro';
 import { productizedServices } from '../data/services';
 import { waLink, SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
+
+const serviceBadges = [
+  { label: '3–5 días', icon: 'speed', tone: 'cyan' },
+  { label: 'SEO base', icon: 'target', tone: 'violet' },
+  { label: 'Performance', icon: 'zap', tone: 'emerald' },
+  { label: 'Integraciones', icon: 'settings', tone: 'amber' },
+];
 ---
-<section id="planes" class="scroll-mt-24 py-14 md:py-20">
-  <SectionHeader
-    eyebrow="Servicios productizados"
-    title="Opciones claras para empezar sin vueltas."
-    description="Cada opción resuelve una necesidad concreta: mostrar mejor tu negocio, recibir consultas o mantener información actualizada."
-  />
+<section id="planes" class="relative scroll-mt-24 overflow-hidden rounded-[2rem] border border-line/80 bg-surface-glow px-4 py-14 shadow-premium md:px-6 md:py-20">
+  <div class="absolute -left-24 top-10 -z-10 h-56 w-56 rounded-full bg-cyan-electric/10 blur-3xl" aria-hidden="true"></div>
+  <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+    <SectionHeader
+      eyebrow="Servicios"
+      title="Soluciones empaquetadas para avanzar rápido"
+      description="Cada paquete es un punto de partida: definimos alcance, prioridad comercial y próximos pasos para que puedas publicar sin perder semanas en decisiones sueltas."
+      icon="layout"
+    />
+    <div class="flex flex-wrap gap-2 lg:max-w-md lg:justify-end">
+      {serviceBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
+    </div>
+  </div>
   <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
     {productizedServices.map((service) => (
       <GlowCard class={`h-full ${service.featured ? 'border-cyan-electric/35' : ''}`}>
