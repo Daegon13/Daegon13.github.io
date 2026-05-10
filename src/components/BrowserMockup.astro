@@ -1,51 +1,97 @@
 ---
-const leads = [
-  { label: 'Nueva consulta', value: 'WhatsApp', detail: 'Rubro: gimnasio · objetivo: reservas' },
-  { label: 'Reserva confirmada', value: 'Agenda', detail: 'Martes 18:30 · recordatorio listo' },
-  { label: 'Contenido editable', value: 'Servicios', detail: 'Textos, precios y preguntas frecuentes' },
+import IconBubble from './IconBubble.astro';
+import VisualBadge from './VisualBadge.astro';
+
+const { trustBadges = [] } = Astro.props;
+
+const modules = [
+  { title: 'WhatsApp CTA', detail: 'Mensaje listo para filtrar la consulta', icon: 'message', tone: 'emerald' },
+  { title: 'Agenda', detail: 'Turnos y reservas visibles', icon: 'layout', tone: 'cyan' },
+  { title: 'Panel admin', detail: 'Servicios y contenido editable', icon: 'settings', tone: 'violet' },
+  { title: 'SEO base', detail: 'Estructura clara para Google', icon: 'target', tone: 'amber' },
+];
+
+const sideCards = [
+  { label: '+ consultas', value: 'CTA claro', icon: 'message', tone: 'emerald', className: '-left-6 top-20' },
+  { label: 'repo + deploy', value: 'publicado', icon: 'code', tone: 'violet', className: '-right-4 top-10' },
+  { label: 'propuesta en 24h', value: 'alcance inicial', icon: 'speed', tone: 'cyan', className: 'right-6 bottom-8' },
 ];
 ---
-<div class="float-soft relative mx-auto max-w-xl" role="group" aria-label="Vista de ejemplo comercial">
-  <div class="absolute -inset-6 rounded-[2rem] bg-brand-gradient opacity-20 blur-3xl" aria-hidden="true"></div>
-  <div class="relative min-w-0 overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur">
-    <div class="flex min-w-0 items-center gap-2 border-b border-line bg-ink/55 px-4 py-3">
+<div class="relative mx-auto w-full max-w-xl lg:max-w-2xl" role="group" aria-label="Mockup funcional de una web comercial">
+  <div class="absolute -inset-5 rounded-[2rem] bg-brand-gradient opacity-20 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute left-8 top-8 hidden h-28 w-28 rounded-full bg-cyan-electric/15 blur-2xl md:block" aria-hidden="true"></div>
+  <div class="absolute bottom-10 right-10 hidden h-32 w-32 rounded-full bg-violet-electric/15 blur-2xl md:block" aria-hidden="true"></div>
+
+  {sideCards.map((card) => (
+    <div class={`float-soft absolute z-20 hidden w-44 rounded-2xl border border-line bg-surface-glass/90 p-3 shadow-premium backdrop-blur md:block ${card.className}`}>
+      <div class="flex items-center gap-3">
+        <IconBubble icon={card.icon} tone={card.tone} size="sm" />
+        <div class="min-w-0">
+          <p class="truncate text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">{card.label}</p>
+          <p class="truncate text-sm font-semibold text-slate-50">{card.value}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <div class="relative overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur">
+    <div class="flex min-w-0 items-center gap-2 border-b border-line bg-ink/65 px-4 py-3">
       <span class="h-3 w-3 shrink-0 rounded-full bg-red-400/80" aria-hidden="true"></span>
       <span class="h-3 w-3 shrink-0 rounded-full bg-amber-300/80" aria-hidden="true"></span>
       <span class="h-3 w-3 shrink-0 rounded-full bg-emerald-300/80" aria-hidden="true"></span>
-      <div class="ml-3 min-w-0 flex-1 truncate rounded-full border border-line bg-ink/60 px-3 py-1 text-xs text-muted">marin.dev/demo-para-negocio</div>
-      <span class="hidden shrink-0 rounded-full bg-brand-success/10 px-2.5 py-1 text-xs font-semibold text-emerald-100 sm:inline-flex">Publicado</span>
+      <div class="ml-2 min-w-0 flex-1 truncate rounded-full border border-line bg-ink/60 px-3 py-1 text-xs text-muted sm:ml-3">marin.dev/demo-negocio</div>
+      <span class="hidden shrink-0 rounded-full bg-brand-success/10 px-2.5 py-1 text-xs font-semibold text-emerald-100 sm:inline-flex">Deploy activo</span>
     </div>
 
-    <div class="grid gap-4 p-4 sm:grid-cols-[1.1fr_0.9fr] sm:p-6">
-      <section class="rounded-2xl border border-line bg-ink/45 p-5">
-        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-electric">Ejemplo de recorrido</p>
-        <h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-50">Todo claro → consulta al momento</h3>
-        <p class="mt-2 text-sm leading-6 text-muted-soft">Una portada clara, servicios ordenados, agenda visible y WhatsApp con mensaje preparado.</p>
+    <div class="relative p-4 sm:p-6">
+      <div class="absolute right-6 top-6 hidden rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100 sm:block">
+        Flujo de conversión
+      </div>
 
-        <div class="mt-5 grid grid-cols-3 gap-2">
-          {['Botón', 'Agenda', 'Servicios'].map((item) => (
-            <div class="rounded-2xl border border-line bg-surface-glass p-3 text-center">
-              <p class="text-lg font-semibold text-slate-50">✓</p>
-              <p class="text-xs text-muted-soft">{item}</p>
-            </div>
+      <section class="rounded-3xl border border-line bg-ink/45 p-5 sm:p-6">
+        <div class="max-w-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-electric">Web comercial</p>
+          <h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">De visita anónima a consulta calificada</h3>
+          <p class="mt-3 text-sm leading-6 text-muted-soft">Hero claro, servicios ordenados, prueba visual y un próximo paso simple hacia WhatsApp.</p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {modules.map((module) => (
+            <article class="premium-interactive rounded-2xl border border-line bg-surface-glass p-3 shadow-soft hover:border-cyan-electric/30 sm:p-4">
+              <IconBubble icon={module.icon} tone={module.tone} size="sm" />
+              <h4 class="mt-3 text-sm font-semibold text-slate-50">{module.title}</h4>
+              <p class="mt-1 text-xs leading-5 text-muted-soft">{module.detail}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section class="space-y-3">
-        {leads.map((lead, index) => (
-          <article class="premium-interactive rounded-2xl border border-line bg-surface-glass p-4 shadow-soft hover:border-cyan-electric/30">
-            <div class="flex items-start justify-between gap-3">
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{lead.label}</p>
-                <h4 class="mt-1 font-semibold text-slate-50">{lead.value}</h4>
+      <div class="mt-4 grid gap-3 sm:grid-cols-[0.95fr_1.05fr]">
+        <div class="rounded-2xl border border-line bg-surface-glass p-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Performance</p>
+          <div class="mt-3 space-y-2">
+            {['Carga rápida', 'SEO base', 'Mobile first'].map((item, index) => (
+              <div class="flex items-center gap-3">
+                <span class={`h-2 w-2 rounded-full ${index === 0 ? 'bg-cyan-electric' : index === 1 ? 'bg-violet-electric' : 'bg-brand-success'}`} aria-hidden="true"></span>
+                <span class="text-sm font-medium text-slate-50">{item}</span>
               </div>
-              <span class={`mt-1 h-2.5 w-2.5 rounded-full ${index === 0 ? 'bg-cyan-electric' : index === 1 ? 'bg-brand-success' : 'bg-violet-electric'}`} aria-hidden="true"></span>
-            </div>
-            <p class="mt-3 text-sm leading-5 text-muted-soft">{lead.detail}</p>
-          </article>
-        ))}
-      </section>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100">Nueva consulta</p>
+          <p class="mt-2 text-sm leading-6 text-muted-soft">“Hola Diego, quiero una demo/web para mi negocio. Rubro: estética. Objetivo: más reservas.”</p>
+        </div>
+      </div>
+
+      {trustBadges.length > 0 && (
+        <div class="mt-4 hidden flex-wrap gap-2.5 sm:flex">
+          {trustBadges.map((badge) => (
+            <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />
+          ))}
+        </div>
+      )}
     </div>
   </div>
 </div>

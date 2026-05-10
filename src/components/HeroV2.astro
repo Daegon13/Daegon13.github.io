@@ -1,38 +1,45 @@
 ---
 import BrowserMockup from './BrowserMockup.astro';
 import IconBubble from './IconBubble.astro';
-import MetricPill from './MetricPill.astro';
 import VisualBadge from './VisualBadge.astro';
-import { heroSignals } from '../data/site';
 import { waLink, DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
 
 const heroBadges = [
+  { label: 'WhatsApp guiado', icon: 'message', tone: 'emerald' },
+  { label: 'Agenda / reservas', icon: 'layout', tone: 'cyan' },
+  { label: 'Panel admin', icon: 'settings', tone: 'violet' },
+  { label: 'SEO base', icon: 'target', tone: 'amber' },
+  { label: 'Performance', icon: 'speed', tone: 'cyan' },
+];
+
+const trustBadges = [
   { label: 'Propuesta en 24h', icon: 'speed', tone: 'cyan' },
-  { label: 'Repo + deploy', icon: 'code', tone: 'violet' },
   { label: 'Pagos por hitos', icon: 'check', tone: 'emerald' },
-  { label: 'WhatsApp CTA', icon: 'message', tone: 'amber' },
+  { label: 'Repo + deploy', icon: 'code', tone: 'violet' },
 ];
 ---
-<section class="relative overflow-hidden py-20 md:py-28" aria-labelledby="hero-title">
+<section class="relative overflow-hidden py-16 md:py-24" aria-labelledby="hero-title">
   <div class="absolute left-1/2 top-10 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
   <div class="absolute -right-24 top-32 -z-10 h-64 w-64 rounded-full bg-violet-electric/15 blur-3xl" aria-hidden="true"></div>
   <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-cyan-electric/40 to-transparent" aria-hidden="true"></div>
-  <div class="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-    <div>
-      <div class="inline-flex items-center gap-3 rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-2 shadow-[0_0_32px_rgba(34,211,238,0.12)] backdrop-blur sm:px-4">
+
+  <div class="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
+    <div class="relative z-10">
+      <div class="inline-flex max-w-full items-center gap-3 rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-2 shadow-[0_0_32px_rgba(34,211,238,0.12)] backdrop-blur sm:px-4">
         <IconBubble icon="rocket" tone="cyan" size="sm" label="Conversión, tecnología y velocidad" />
-        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100">
-          Marin.dev · conversión + tecnología + velocidad
+        <span class="truncate text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100 sm:tracking-[0.2em]">
+          Marin.dev · demos, webs y sistemas comerciales
         </span>
       </div>
+
       <h1 id="hero-title" class="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
-        Convertí tu Instagram o idea en una web clara, linda y lista para recibir consultas.
+        Webs y demos comerciales que convierten visitas en consultas.
       </h1>
       <p class="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
-        Te ayudo a mostrar qué ofrecés, ordenar tus servicios y llevar a la persona correcta a escribirte, reservar o comprar al momento.
+        Landing, web corporativa, e-commerce o sistema simple con performance, SEO base y CTAs claros a WhatsApp para que tu negocio sea fácil de entender, contactar y escalar.
       </p>
 
-      <div class="mt-6 flex flex-wrap gap-2.5">
+      <div class="mt-6 flex flex-wrap gap-2.5" aria-label="Funciones que puede incluir una demo o web comercial">
         {heroBadges.map((badge) => (
           <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />
         ))}
@@ -43,23 +50,31 @@ const heroBadges = [
           href={waLink(DEMO_WHATSAPP_MESSAGE)}
           target="_blank"
           rel="noopener noreferrer"
-          class="premium-button inline-flex items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover"
+          class="premium-button inline-flex min-h-12 items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover"
         >
           Quiero una demo para mi negocio
         </a>
         <a
           href="#casos"
-          class="premium-button inline-flex items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 backdrop-blur hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
+          class="premium-button inline-flex min-h-12 items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 backdrop-blur hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
         >
-          Ver ejemplos
+          Ver proyectos
         </a>
       </div>
 
-      <div class="mt-8 flex flex-wrap gap-3">
-        {heroSignals.map((signal, index) => <MetricPill label={signal.label} value={signal.value} tone={index === 1 ? 'success' : 'cyan'} />)}
+      <div class="mt-6 rounded-2xl border border-line bg-surface-glass/80 p-3 shadow-soft backdrop-blur sm:inline-flex sm:items-center sm:gap-3 sm:rounded-full sm:px-4 sm:py-2">
+        <p class="text-sm font-medium text-muted-soft">
+          Propuesta en 24h <span class="text-line-strong">•</span> pagos por hitos <span class="text-line-strong">•</span> repo + deploy
+        </p>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-2.5 sm:hidden" aria-label="Señales de confianza">
+        {trustBadges.map((badge) => (
+          <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />
+        ))}
       </div>
     </div>
 
-    <BrowserMockup />
+    <BrowserMockup trustBadges={trustBadges} />
   </div>
 </section>
