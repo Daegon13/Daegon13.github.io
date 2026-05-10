@@ -45,11 +45,18 @@ const proyectos = (await getCollection('proyectos')).sort(byCommercialPriority);
           slug={p.slug}
           cover={p.data.cover}
           thumbnail={p.data.thumbnail}
+          image={p.data.image}
           resultado={p.data.resultado}
           problema={p.data.problema}
           solucion={p.data.solucion}
           tipo={p.data.tipo}
           sector={p.data.sector}
+          category={p.data.category}
+          businessType={p.data.businessType}
+          resultLabel={p.data.resultLabel}
+          highlight={p.data.highlight}
+          visualTone={p.data.visualTone}
+          badges={p.data.badges}
           status={p.data.status}
           features={p.data.features}
           impacto={p.data.impacto}
@@ -57,6 +64,7 @@ const proyectos = (await getCollection('proyectos')).sort(byCommercialPriority);
           priority={p.data.priority}
           demoUrl={p.data.demoUrl}
           repoUrl={p.data.repoUrl}
+          caseUrl={p.data.caseUrl}
         />
       ))}
     </div>

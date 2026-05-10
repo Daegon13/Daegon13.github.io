@@ -12,23 +12,29 @@ export function projectCoverImage({
   slug,
   thumbnail,
   cover,
+  image,
 }: {
   slug?: string;
   thumbnail?: string;
   cover?: string;
+  image?: string;
 }) {
-  return projectVisualAsset({ slug, thumbnail, cover }).src;
+  return projectVisualAsset({ slug, thumbnail, cover, image }).src;
 }
 
 export function projectVisualAsset({
   slug,
   thumbnail,
   cover,
+  image,
 }: {
   slug?: string;
   thumbnail?: string;
   cover?: string;
+  image?: string;
 }) {
+  if (image && image !== DEFAULT_PROJECT_IMAGE)
+    return { src: image, hasImage: true };
   if (thumbnail) return { src: thumbnail, hasImage: true };
   if (cover && cover !== DEFAULT_PROJECT_IMAGE)
     return { src: cover, hasImage: true };
