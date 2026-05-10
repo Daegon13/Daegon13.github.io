@@ -1,16 +1,9 @@
 ---
 import ProjectCard from './ProjectCard.astro';
 import SectionHeader from './SectionHeader.astro';
-import VisualBadge from './VisualBadge.astro';
 import { DEMO_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
 
 const { projects = [] } = Astro.props;
-const projectBadges = [
-  { label: 'Landing', icon: 'layout', tone: 'cyan' },
-  { label: 'Admin panel', icon: 'database', tone: 'violet' },
-  { label: 'Web corporativa', icon: 'briefcase', tone: 'emerald' },
-  { label: 'Demo comercial', icon: 'rocket', tone: 'amber' },
-];
 ---
 <section id="casos" class="relative scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
   <div class="absolute -right-28 top-8 -z-10 h-60 w-60 rounded-full bg-violet-electric/10 blur-3xl" aria-hidden="true"></div>
@@ -19,12 +12,10 @@ const projectBadges = [
       <SectionHeader
         eyebrow="Portfolio"
         title="Proyectos y demos pensados para vender mejor"
-        description="No son solo sitios lindos: cada pieza está diseñada para ordenar el mensaje, reducir fricción y llevar al usuario hacia una consulta o acción concreta."
+        description="Casos diseñados para ordenar el mensaje, reducir fricción y llevar al usuario hacia una acción concreta."
         icon="folder"
       />
-      <div class="flex flex-wrap gap-2">
-        {projectBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
-      </div>
+
     </div>
     <a href="/proyectos" class="premium-button inline-flex w-fit items-center gap-2 rounded-2xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-cyan-electric hover:-translate-y-0.5 hover:border-line-strong">
       Ver portfolio completo <span aria-hidden="true">→</span>
@@ -72,7 +63,7 @@ const projectBadges = [
 
   <div class="mt-10 flex flex-col gap-4 rounded-3xl border border-line bg-surface-glass p-5 shadow-premium backdrop-blur sm:flex-row sm:items-center sm:justify-between">
     <p class="text-sm leading-6 text-muted-soft">
-      <span class="font-semibold text-slate-50">¿Querés algo parecido para tu negocio?</span> Mandame tu Instagram o web y te propongo una demo con foco comercial.
+      <span class="font-semibold text-slate-50">¿Querés algo parecido?</span> Mandame tu Instagram o web y vemos una demo posible.
     </p>
     <a href={waLink(DEMO_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer" class="premium-button inline-flex w-fit items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-5 py-3 text-sm font-semibold text-white shadow-glow">
       Pedir una demo <span aria-hidden="true">↗</span>

@@ -13,7 +13,7 @@ import {
 const {
   eyebrow = 'Próximo paso',
   title = 'Pasame tu idea y vemos cómo convertirla en una web que venda mejor',
-  description = 'Podés mandarme tu Instagram, web actual o una explicación corta del negocio. Te digo qué camino conviene: landing, demo comercial, web corporativa o sistema simple.',
+  description = 'Mandame tu Instagram, web actual o una explicación corta. Te digo qué camino conviene: landing, demo, web o sistema simple.',
   primaryLabel = 'Enviar mensaje por WhatsApp',
   primaryMessage = AUDIT_WHATSAPP_MESSAGE,
   secondaryLabel = 'Ver proyectos',
@@ -24,14 +24,12 @@ const trustBadges = [
   { label: 'Propuesta clara', icon: 'target', tone: 'cyan' },
   { label: 'Repo + deploy', icon: 'code', tone: 'violet' },
   { label: 'Pagos por hitos', icon: 'check', tone: 'emerald' },
-  { label: 'Soporte post-lanzamiento', icon: 'shield', tone: 'cyan' },
-  { label: 'Sin humo', icon: 'zap', tone: 'amber' },
 ];
 
 const contactMethods = [
   {
     label: 'WhatsApp',
-    description: 'Para cotizar rápido o pasarme tu idea.',
+    description: 'Para cotizar o pasarme tu idea.',
     cta: 'Escribir',
     href: waLink(primaryMessage),
     icon: 'message',
@@ -40,7 +38,7 @@ const contactMethods = [
   },
   INSTAGRAM_URL && {
     label: 'Instagram',
-    description: 'Para ver contenido, demos y avances.',
+    description: 'Contenido, demos y avances.',
     cta: 'Abrir Instagram',
     href: INSTAGRAM_URL,
     icon: 'external',
@@ -50,7 +48,7 @@ const contactMethods = [
   },
   EMAIL && {
     label: 'Email',
-    description: 'Para propuestas o archivos más detallados.',
+    description: 'Propuestas o archivos.',
     cta: 'Enviar email',
     href: `mailto:${EMAIL}`,
     icon: 'mail',
@@ -124,7 +122,7 @@ const contactMethods = [
         </div>
       </div>
 
-      <div class="relative">
+      <div class="relative hidden md:block">
         <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan-electric/15 via-blue-electric/10 to-violet-electric/15 blur-2xl" aria-hidden="true"></div>
         <div class="relative overflow-hidden rounded-[1.75rem] border border-line-strong bg-ink/80 p-4 shadow-premium">
           <div class="flex items-center justify-between border-b border-line pb-4">

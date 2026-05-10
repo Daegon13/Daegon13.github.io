@@ -1,6 +1,7 @@
 ---
-import Badge from './Badge.astro';
 import GlowCard from './GlowCard.astro';
+import Icon from './Icon.astro';
+import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
 import { verticalDemos } from '../data/verticals';
 import { waLink } from '../lib/contact';
@@ -9,32 +10,38 @@ import { waLink } from '../lib/contact';
   <SectionHeader
     eyebrow="Demos por rubro"
     title="Una demo concreta vende mejor que una explicación abstracta."
-    description="La idea es que cada rubro vea una versión cercana a su realidad: servicios claros, reservas, WhatsApp y contenido fácil de actualizar."
+    description="Cada rubro necesita ver su oferta, reservas y WhatsApp ordenados como los usaría un cliente real."
+    icon="layout"
   />
   <div class="mt-8 grid gap-5 md:grid-cols-2">
     {verticalDemos.map((demo) => (
       <GlowCard class="h-full">
-        <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-          <div>
+        <div class="flex items-start gap-4">
+          <IconBubble icon={demo.icon ?? 'briefcase'} tone={demo.tone ?? 'cyan'} size="md" />
+          <div class="min-w-0 flex-1">
             <p class="text-sm font-semibold text-cyan-electric">{demo.name}</p>
-            <h3 class="mt-2 text-xl font-semibold tracking-tight text-slate-50">Lo que pasa hoy → cómo se ordena</h3>
+            <h3 class="mt-2 text-xl font-semibold tracking-tight text-slate-50">Demo comercial lista para mostrar</h3>
           </div>
-          <span class="rounded-full border border-line bg-ink/45 px-3 py-1 text-xs font-semibold text-muted-bright">Demo comercial</span>
         </div>
+
         <div class="mt-5 grid gap-3 text-sm leading-6 text-muted-soft">
-          <p class="rounded-2xl border border-line bg-ink/35 p-3"><strong class="text-slate-50">Problema:</strong> {demo.problem}</p>
-          <p class="rounded-2xl border border-line bg-ink/35 p-3"><strong class="text-slate-50">Propuesta:</strong> {demo.solution}</p>
+          <p class="rounded-2xl border border-line bg-ink/35 p-3"><strong class="text-slate-50">Hoy:</strong> {demo.problem}</p>
+          <p class="rounded-2xl border border-line bg-ink/35 p-3"><strong class="text-slate-50">Se ordena con:</strong> {demo.solution}</p>
         </div>
-        <div class="mt-5 flex flex-wrap gap-2">
-          {demo.features.map((feature) => <Badge label={feature} tone="cyan" />)}
+
+        <div class="mt-5 flex flex-wrap gap-2" aria-label={`Funciones para ${demo.name}`}>
+          {demo.features.slice(0, 3).map((feature) => (
+            <span class="rounded-full border border-line bg-ink/45 px-3 py-1 text-xs font-semibold text-muted-bright">{feature}</span>
+          ))}
         </div>
+
         <a
           href={waLink(`Hola Diego, quiero una demo para este rubro: ${demo.name}.\n\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nLink de referencia: [Instagram o web]`)}
           target="_blank"
           rel="noopener noreferrer"
           class="premium-button mt-6 inline-flex w-fit items-center gap-2 rounded-2xl border border-line bg-surface-glass px-4 py-2 text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-cyan-electric/35 hover:text-cyan-electric"
         >
-          Pedir demo de {demo.name} <span aria-hidden="true">→</span>
+          Pedir demo <Icon name="arrow" size="sm" />
         </a>
       </GlowCard>
     ))}

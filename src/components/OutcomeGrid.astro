@@ -1,14 +1,8 @@
 ---
 import SectionHeader from './SectionHeader.astro';
-import VisualBadge from './VisualBadge.astro';
 import VisualCard from './VisualCard.astro';
 import { outcomes } from '../data/outcomes';
 
-const supportingBadges = [
-  { label: 'claridad', icon: 'target', tone: 'cyan' },
-  { label: 'velocidad', icon: 'zap', tone: 'amber' },
-  { label: 'conversión', icon: 'message', tone: 'emerald' },
-];
 ---
 
 <section id="que-resuelvo" class="relative scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
@@ -37,12 +31,7 @@ const supportingBadges = [
     }
   </div>
 
-  <div class="mt-6 flex flex-col gap-3 rounded-3xl border border-line bg-surface-glass px-4 py-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:px-5">
-    <p class="text-sm leading-6 text-muted-soft">
-      Cada bloque está pensado para que el cliente entienda rápido qué hacer después.
-    </p>
-    <div class="flex flex-wrap gap-2">
-      {supportingBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
-    </div>
-  </div>
+  <p class="mt-6 rounded-3xl border border-line bg-surface-glass px-4 py-4 text-sm leading-6 text-muted-soft backdrop-blur sm:px-5">
+    Cada bloque tiene una función: aclarar, generar confianza o acercar a la consulta.
+  </p>
 </section>

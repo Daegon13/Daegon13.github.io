@@ -8,8 +8,7 @@ const heroBadges = [
   { label: 'WhatsApp guiado', icon: 'message', tone: 'emerald' },
   { label: 'Agenda / reservas', icon: 'layout', tone: 'cyan' },
   { label: 'Panel admin', icon: 'settings', tone: 'violet' },
-  { label: 'SEO base', icon: 'target', tone: 'amber' },
-  { label: 'Performance', icon: 'speed', tone: 'cyan' },
+  { label: 'SEO + performance', icon: 'speed', tone: 'amber' },
 ];
 
 const trustBadges = [
@@ -36,7 +35,7 @@ const trustBadges = [
         Webs y demos comerciales que convierten visitas en consultas.
       </h1>
       <p class="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
-        Landing, web corporativa, e-commerce o sistema simple con performance, SEO base y CTAs claros a WhatsApp para que tu negocio sea fácil de entender, contactar y escalar.
+        Landings, demos y sistemas simples con mensaje claro, WhatsApp guiado y estructura lista para generar consultas.
       </p>
 
       <div class="mt-6 flex flex-wrap gap-2.5" aria-label="Funciones que puede incluir una demo o web comercial">
@@ -68,11 +67,6 @@ const trustBadges = [
         </p>
       </div>
 
-      <div class="mt-4 flex flex-wrap gap-2.5 sm:hidden" aria-label="Señales de confianza">
-        {trustBadges.map((badge) => (
-          <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />
-        ))}
-      </div>
     </div>
 
     <BrowserMockup trustBadges={trustBadges} />

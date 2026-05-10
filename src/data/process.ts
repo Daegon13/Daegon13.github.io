@@ -3,24 +3,23 @@ export const processSteps = [
     step: "01",
     title: "Me pasás tu Instagram, web o idea",
     description:
-      "Reviso qué vendés, a quién le hablás y qué datos necesita mandar una persona para consultarte mejor.",
+      "Reviso qué vendés, a quién le hablás y qué datos necesita mandar el cliente.",
   },
   {
     step: "02",
     title: "Detecto fricción y oportunidad",
-    description:
-      "Marco qué no se entiende, qué dudas frenan la consulta y qué contenido conviene mostrar primero.",
+    description: "Marco dudas, frenos y contenido clave para mostrar primero.",
   },
   {
     step: "03",
     title: "Diseño una demo o propuesta",
     description:
-      "Armo una versión visual y navegable para validar mensaje, estructura, CTA y alcance antes de avanzar de más.",
+      "Armo una versión navegable para validar mensaje, estructura y CTA.",
   },
   {
     step: "04",
     title: "Construimos, deployamos y vendés",
     description:
-      "Dejamos la web publicada, los accesos claros y un flujo simple para compartirla y recibir consultas.",
+      "Publicamos, dejamos accesos claros y un flujo listo para compartir.",
   },
 ];

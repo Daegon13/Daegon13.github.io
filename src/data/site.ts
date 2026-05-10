@@ -1,23 +1,33 @@
 export const capabilityStrip = [
   {
     title: "Repo + deploy",
-    description: "Código ordenado, web publicada y lista para compartir.",
+    description: "Código ordenado y web publicada.",
+    icon: "code",
+    tone: "violet",
   },
   {
     title: "WhatsApp guiado",
-    description: "Botones con mensaje preparado para pedir datos útiles.",
+    description: "Mensajes preparados para consultar.",
+    icon: "message",
+    tone: "emerald",
   },
   {
     title: "Agenda / reservas",
-    description: "Flujos simples para turnos, pedidos o consultas concretas.",
+    description: "Turnos y pedidos sin fricción.",
+    icon: "layout",
+    tone: "cyan",
   },
   {
     title: "Panel simple",
-    description: "Contenido editable o sistema liviano cuando el caso lo pide.",
+    description: "Contenido editable cuando hace falta.",
+    icon: "settings",
+    tone: "amber",
   },
   {
     title: "Entrega por hitos",
-    description: "Avances claros para validar copy, diseño y publicación.",
+    description: "Avances claros y revisables.",
+    icon: "speed",
+    tone: "cyan",
   },
 ];
 
