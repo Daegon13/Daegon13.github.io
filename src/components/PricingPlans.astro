@@ -1,7 +1,10 @@
 ---
 import Badge from './Badge.astro';
 import GlowCard from './GlowCard.astro';
+import Icon from './Icon.astro';
+import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
+import VisualBadge from './VisualBadge.astro';
 import { SERVICE_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
 
 const plans = [
@@ -21,6 +24,16 @@ const plans = [
     ],
     comparison: 'Demo para mostrar valor',
     cta: 'Quiero validar una demo',
+    icon: 'rocket',
+    tone: 'cyan',
+    chooser: 'Rápido',
+    positioning: 'Para pasar de idea o Instagram a una demo vendible sin armar un proyecto enorme.',
+    attributes: [
+      { label: '3–5 días', icon: 'speed' },
+      { label: 'One-page', icon: 'layout' },
+      { label: 'WhatsApp CTA', icon: 'message' },
+      { label: 'SEO base', icon: 'target' },
+    ],
   },
   {
     name: 'Landing de Conversión',
@@ -39,6 +52,16 @@ const plans = [
     comparison: 'Captación de consultas',
     cta: 'Consultar landing',
     featured: true,
+    icon: 'target',
+    tone: 'emerald',
+    chooser: 'Conversión',
+    positioning: 'Para ordenar una oferta concreta y guiar visitas hacia consulta, reserva o venta.',
+    attributes: [
+      { label: 'CTA principal', icon: 'message' },
+      { label: 'Confianza', icon: 'shield' },
+      { label: 'OpenGraph', icon: 'external' },
+      { label: 'Performance', icon: 'zap' },
+    ],
   },
   {
     name: 'Web con WhatsApp / Agenda',
@@ -56,6 +79,16 @@ const plans = [
     ],
     comparison: 'Consultas y reservas guiadas',
     cta: 'Ordenar mis reservas',
+    icon: 'briefcase',
+    tone: 'violet',
+    chooser: 'Institucional',
+    positioning: 'Para mostrar servicios con más profundidad y llevar cada consulta al canal correcto.',
+    attributes: [
+      { label: 'Multipágina', icon: 'layout' },
+      { label: 'Confianza', icon: 'shield' },
+      { label: 'WhatsApp', icon: 'message' },
+      { label: 'Agenda', icon: 'flow' },
+    ],
   },
   {
     name: 'Sistema simple / Panel Admin',
@@ -73,81 +106,114 @@ const plans = [
     ],
     comparison: 'Gestión simple de datos',
     cta: 'Consultar panel simple',
+    icon: 'database',
+    tone: 'amber',
+    chooser: 'Escalable',
+    positioning: 'Para ordenar datos, estados y tareas internas en una herramienta simple de usar.',
+    attributes: [
+      { label: 'Panel admin', icon: 'settings' },
+      { label: 'Formularios', icon: 'layout' },
+      { label: 'Integraciones', icon: 'flow' },
+      { label: 'Datos', icon: 'database' },
+    ],
   },
 ];
 
-const comparisonItems = [
-  'Demo rápida para vender una idea',
-  'Landing para captar consultas',
-  'WhatsApp/agenda para ordenar reservas',
-  'Panel simple para operación acotada',
-];
+const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
+  name,
+  chooser,
+  comparison,
+  tone,
+}));
 ---
 <section class="py-14 md:py-20">
   <SectionHeader
-    eyebrow="Servicios productizados"
-    title="Elegí un punto de partida, no un molde cerrado."
-    description="Cada plan parte de un problema comercial concreto: validar una propuesta, convertir visitas, ordenar reservas o simplificar una operación interna. Ajustamos el alcance antes de cotizar final."
+    eyebrow="Servicios"
+    title="Elegí un punto de partida y lo adaptamos a tu negocio"
+    description="Trabajo con paquetes claros para avanzar rápido, pero cada propuesta se ajusta al objetivo real: consultas, reservas, ventas o gestión."
     align="center"
   />
 
-  <div class="mx-auto mt-8 grid max-w-5xl gap-3 rounded-3xl border border-line bg-surface-glass p-3 text-sm text-muted-soft shadow-premium backdrop-blur sm:grid-cols-2 lg:grid-cols-4">
-    {comparisonItems.map((item, index) => (
-      <div class="flex items-center gap-3 rounded-2xl border border-line bg-ink/35 px-4 py-3">
-        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cyan-electric/10 text-xs font-bold text-cyan-electric">
-          {index + 1}
-        </span>
-        <span>{item}</span>
+  <div class="mx-auto mt-8 grid max-w-5xl gap-3 rounded-3xl border border-line bg-surface-glass p-3 text-sm text-muted-soft shadow-premium backdrop-blur md:grid-cols-2 xl:grid-cols-4">
+    {chooserItems.map((item) => (
+      <div class="group rounded-2xl border border-line bg-ink/35 px-4 py-3 transition hover:-translate-y-0.5 hover:border-line-strong hover:bg-surface-glass">
+        <div class="flex items-center justify-between gap-3">
+          <VisualBadge label={item.chooser} icon="target" tone={item.tone} />
+          <span class="h-px min-w-8 flex-1 bg-gradient-to-r from-line-strong to-transparent" aria-hidden="true"></span>
+        </div>
+        <p class="mt-3 font-semibold text-slate-50">{item.name}</p>
+        <p class="mt-1 text-xs leading-5 text-muted-soft">{item.comparison}</p>
       </div>
     ))}
   </div>
 
   <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-4">
     {plans.map((plan) => (
-      <GlowCard class={`flex h-full flex-col ${plan.featured ? 'border-cyan-electric/40 shadow-glow' : ''}`}>
-        <div class="flex items-start justify-between gap-3">
-          <Badge label={plan.badge} tone={plan.featured ? 'success' : 'cyan'} />
-          {plan.featured && (
-            <span class="rounded-full border border-brand-success/30 bg-brand-success/10 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-emerald-100">
-              Más elegido
-            </span>
-          )}
+      <GlowCard
+        class={`relative flex h-full flex-col overflow-hidden ${plan.featured ? 'border-cyan-electric/40 shadow-glow' : ''}`}
+      >
+        <div
+          class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${
+            plan.featured
+              ? 'from-cyan-electric via-blue-electric to-violet-electric'
+              : 'from-cyan-electric/30 via-slate-500/20 to-transparent'
+          }`}
+          aria-hidden="true"
+        ></div>
+
+        <div class="flex items-start justify-between gap-4">
+          <IconBubble icon={plan.icon} tone={plan.tone} size="lg" />
+          <div class="flex flex-col items-end gap-2">
+            <Badge label={plan.badge} tone={plan.featured ? 'success' : 'cyan'} />
+            <VisualBadge label={plan.chooser} icon="speed" tone={plan.tone} size="sm" />
+          </div>
         </div>
 
         <div class="mt-5">
           <h3 class="text-2xl font-semibold tracking-tight text-slate-50">{plan.name}</h3>
-          <div class="mt-4 flex flex-wrap items-end gap-x-3 gap-y-1">
+          <p class="mt-3 text-sm leading-6 text-muted-soft">{plan.positioning}</p>
+          <div class="mt-5 flex flex-wrap items-end gap-x-3 gap-y-1">
             <p class="text-2xl font-semibold text-slate-50">{plan.price}</p>
-            <p class="pb-1 text-xs text-muted">estimado</p>
+            <p class="pb-1 text-xs font-medium uppercase tracking-[0.16em] text-muted">estimado</p>
           </div>
-          <p class="mt-1 text-xs text-muted-soft">Cotización final según alcance, contenido e integraciones.</p>
+          <p class="mt-1 text-xs text-muted-soft">Precio estimado. Cotización final según alcance.</p>
         </div>
 
-        <dl class="mt-5 space-y-4 text-sm leading-6">
-          <div>
-            <dt class="font-semibold text-slate-50">Para quién es</dt>
-            <dd class="mt-1 text-muted-soft">{plan.forWho}</dd>
-          </div>
-          <div>
-            <dt class="font-semibold text-slate-50">Qué problema resuelve</dt>
-            <dd class="mt-1 text-muted-soft">{plan.solves}</dd>
-          </div>
-          <div>
-            <dt class="font-semibold text-slate-50">Tiempo estimado</dt>
-            <dd class="mt-1 text-muted-soft">{plan.time}</dd>
-          </div>
-        </dl>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {plan.attributes.map((attribute) => (
+            <VisualBadge label={attribute.label} icon={attribute.icon} tone={plan.tone} />
+          ))}
+        </div>
 
-        <div class="mt-6 rounded-2xl border border-line bg-ink/40 p-4">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-electric">Entregables</p>
-          <ul class="mt-3 space-y-3 text-sm text-muted-soft">
+        <div class="mt-6 rounded-2xl border border-line bg-ink/45 p-4">
+          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-electric">
+            <Icon name="check" size="sm" />
+            <span>Incluye</span>
+          </div>
+          <ul class="mt-4 space-y-3 text-sm leading-6 text-muted-soft">
             {plan.deliverables.map((deliverable) => (
               <li class="flex gap-3">
-                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-success" aria-hidden="true"></span>
+                <span
+                  class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-brand-success/25 bg-brand-success/10 text-brand-success"
+                  aria-hidden="true"
+                >
+                  <Icon name="check" size="sm" strokeWidth={2.2} />
+                </span>
                 <span>{deliverable}</span>
               </li>
             ))}
           </ul>
+        </div>
+
+        <div class="mt-5 rounded-2xl border border-cyan-electric/15 bg-cyan-electric/5 p-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-electric">Ideal para</p>
+          <p class="mt-2 text-sm leading-6 text-muted-soft">{plan.forWho}</p>
+        </div>
+
+        <div class="mt-5 rounded-2xl border border-line bg-surface-glass p-4">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Resuelve</p>
+          <p class="mt-2 text-sm leading-6 text-muted-soft">{plan.solves}</p>
+          <p class="mt-3 text-xs font-medium text-slate-300">Tiempo estimado: {plan.time}</p>
         </div>
 
         <div class="mt-auto pt-6">
@@ -156,14 +222,15 @@ const comparisonItems = [
             href={waLink(SERVICE_WHATSAPP_MESSAGE(plan.name))}
             target="_blank"
             rel="noopener noreferrer"
-            class={`inline-flex w-full items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
+            class={`inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 ${
               plan.featured
                 ? 'bg-brand-gradient text-white shadow-glow hover:shadow-premium-hover'
                 : 'border border-line bg-surface-glass text-slate-50 hover:border-line-strong hover:text-cyan-electric'
             }`}
             aria-label={`Consultar el plan ${plan.name} por WhatsApp`}
           >
-            {plan.cta}
+            <span>{plan.cta}</span>
+            <Icon name="arrow" size="sm" />
           </a>
         </div>
       </GlowCard>
