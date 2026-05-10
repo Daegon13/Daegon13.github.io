@@ -43,7 +43,7 @@ const isStarProject = Number(priority) >= 120;
 ---
 <a
   href={`/proyectos/${slug}`}
-  class="group block h-full overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-premium-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-electric"
+  class="group premium-interactive block h-full overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur hover:border-line-strong hover:shadow-premium-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-electric"
 >
   <div class="relative overflow-hidden border-b border-line bg-ink/60">
     {hasGenericCover ? (
@@ -53,7 +53,7 @@ const isStarProject = Number(priority) >= 120;
         <div class="absolute -right-14 bottom-0 h-44 w-44 rounded-full bg-brand-violet/20 blur-3xl transition duration-500 group-hover:bg-brand-violet/30"></div>
         <div class="relative flex h-full flex-col justify-between p-5">
           <div class="flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-muted-soft">
-            <span class="h-2 w-2 rounded-full bg-brand-success shadow-[0_0_18px_rgba(52,211,153,0.85)]"></span>
+            <span class="status-dot !h-2 !w-2 bg-brand-success text-emerald-300 shadow-[0_0_18px_rgba(52,211,153,0.85)]"></span>
             Case preview
           </div>
           <div class="rounded-2xl border border-line bg-surface-glass p-4 shadow-premium backdrop-blur">
@@ -117,7 +117,7 @@ const isStarProject = Number(priority) >= 120;
     <div class="mt-auto pt-6">
       <span class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-electric">
         {ctaLabel}
-        <span aria-hidden="true" class="transition group-hover:translate-x-1">→</span>
+        <span aria-hidden="true" class="transition duration-300 group-hover:translate-x-1.5">→</span>
       </span>
     </div>
   </div>
