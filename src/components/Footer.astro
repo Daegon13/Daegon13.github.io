@@ -14,7 +14,7 @@ const footerLinks = [
 ---
 <footer class="mt-20 border-t border-line bg-ink/75 backdrop-blur">
   <Container class="py-10 text-sm text-muted-soft">
-    <div class="grid gap-8 md:grid-cols-[1.05fr_1fr] md:items-center">
+    <div class="grid min-w-0 gap-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] md:items-center">
       <div>
         <p class="text-base font-semibold text-slate-50">Marin.dev</p>
         <p class="mt-2 max-w-xl leading-6">
@@ -22,13 +22,13 @@ const footerLinks = [
         </p>
       </div>
 
-      <nav class="flex flex-wrap gap-2 md:justify-end" aria-label="Links de contacto y sitio">
+      <nav class="flex min-w-0 flex-wrap gap-2 md:justify-end" aria-label="Links de contacto y sitio">
         {footerLinks.map((link) => (
           <a
             href={link.href}
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener noreferrer' : undefined}
-            class="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-glass px-3 py-1.5 text-xs font-medium transition hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-100"
+            class="inline-flex min-w-0 max-w-full items-center gap-1.5 rounded-full border border-line bg-surface-glass px-3 py-1.5 text-xs font-medium transition hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-100"
           >
             <Icon name={link.icon} size="sm" />
             <span>{link.label}</span>
@@ -39,7 +39,7 @@ const footerLinks = [
 
     <div class="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
       <p>© {new Date().getFullYear()} Diego Marin. Todos los derechos reservados.</p>
-      <p class="inline-flex items-center gap-2">
+      <p class="inline-flex min-w-0 items-center gap-2">
         <span class="size-2 rounded-full bg-brand-success shadow-[0_0_1.125rem_rgba(52,211,153,0.55)]"></span>
         Sitio rápido, simple y fácil de mantener.
       </p>

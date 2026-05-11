@@ -17,52 +17,52 @@ const trustBadges = [
   { label: 'Repo + deploy', icon: 'code', tone: 'violet' },
 ];
 ---
-<section class="relative overflow-hidden py-16 md:py-24" aria-labelledby="hero-title">
+<section class="relative py-16 md:overflow-x-clip md:py-24" aria-labelledby="hero-title">
   <div class="absolute left-1/2 top-10 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-electric/15 blur-2xl md:bg-cyan-electric/20 md:blur-3xl" aria-hidden="true"></div>
   <div class="absolute -right-24 top-32 -z-10 hidden h-64 w-64 rounded-full bg-violet-electric/15 blur-3xl md:block" aria-hidden="true"></div>
   <div class="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-cyan-electric/40 to-transparent" aria-hidden="true"></div>
 
-  <div class="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
-    <div class="relative z-10">
-      <div class="inline-flex max-w-full items-center gap-3 rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-2 shadow-[0_0_32px_rgba(34,211,238,0.12)] backdrop-blur sm:px-4">
+  <div class="grid min-w-0 items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14">
+    <div class="relative z-10 min-w-0 max-w-full">
+      <div class="inline-flex min-w-0 max-w-full items-center gap-2 rounded-full sm:gap-3 border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-2 shadow-[0_0_32px_rgba(34,211,238,0.12)] backdrop-blur sm:px-4">
         <IconBubble icon="rocket" tone="cyan" size="sm" label="Conversión, tecnología y velocidad" />
-        <span class="truncate text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100 sm:tracking-[0.2em]">
+        <span class="min-w-0 text-xs font-semibold uppercase leading-5 tracking-[0.1em] text-cyan-100 sm:tracking-[0.2em]">
           Marin.dev · demos, webs y sistemas comerciales
         </span>
       </div>
 
-      <h1 id="hero-title" class="mt-6 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
+      <h1 id="hero-title" class="mt-6 max-w-full break-words text-[clamp(2.25rem,10vw,3.5rem)] font-semibold leading-[1.02] tracking-tight text-slate-50 sm:max-w-4xl sm:text-5xl lg:text-6xl">
         Webs y demos comerciales que convierten visitas en consultas.
       </h1>
-      <p class="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
+      <p class="mt-6 max-w-2xl break-words text-base leading-8 text-muted-soft sm:text-lg">
         Landings, demos y sistemas simples con mensaje claro, WhatsApp guiado y estructura lista para generar consultas.
       </p>
 
-      <div class="mt-6 flex flex-wrap gap-2.5" aria-label="Funciones que puede incluir una demo o web comercial">
+      <div class="mt-6 flex min-w-0 max-w-full flex-wrap gap-2.5" aria-label="Funciones que puede incluir una demo o web comercial">
         {heroBadges.map((badge) => (
           <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />
         ))}
       </div>
 
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <div class="mt-8 flex min-w-0 max-w-full flex-col gap-3 sm:flex-row">
         <a
           href={waLink(DEMO_WHATSAPP_MESSAGE)}
           target="_blank"
           rel="noopener noreferrer"
-          class="premium-button inline-flex min-h-12 items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover"
+          class="premium-button inline-flex min-h-12 w-full max-w-full items-center justify-center whitespace-normal rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold leading-5 text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto sm:px-6"
         >
           Quiero una demo para mi negocio
         </a>
         <a
           href="#casos"
-          class="premium-button inline-flex min-h-12 items-center justify-center rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 backdrop-blur hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
+          class="premium-button inline-flex min-h-12 w-full max-w-full items-center justify-center whitespace-normal rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold leading-5 text-slate-50 backdrop-blur hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric sm:w-auto sm:px-6"
         >
           Ver proyectos
         </a>
       </div>
 
-      <div class="mt-6 rounded-2xl border border-line bg-surface-glass/80 p-3 shadow-soft backdrop-blur sm:inline-flex sm:items-center sm:gap-3 sm:rounded-full sm:px-4 sm:py-2">
-        <p class="text-sm font-medium text-muted-soft">
+      <div class="mt-6 w-full max-w-full rounded-2xl border border-line bg-surface-glass/80 p-3 shadow-soft backdrop-blur sm:inline-flex sm:w-auto sm:items-center sm:gap-3 sm:rounded-full sm:px-4 sm:py-2">
+        <p class="break-words text-sm font-medium leading-6 text-muted-soft">
           Propuesta en 24h <span class="text-line-strong">•</span> pagos por hitos <span class="text-line-strong">•</span> repo + deploy
         </p>
       </div>

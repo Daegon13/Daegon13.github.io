@@ -5,7 +5,7 @@ import { outcomes } from '../data/outcomes';
 
 ---
 
-<section id="que-resuelvo" class="relative scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
+<section id="que-resuelvo" class="relative min-w-0 scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
   <div class="absolute -left-28 top-10 -z-10 h-56 w-56 rounded-full bg-cyan-electric/10 blur-3xl" aria-hidden="true"></div>
   <div class="absolute -right-32 bottom-10 -z-10 h-64 w-64 rounded-full bg-violet-electric/10 blur-3xl" aria-hidden="true"></div>
 
@@ -16,7 +16,7 @@ import { outcomes } from '../data/outcomes';
     icon="target"
   />
 
-  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+  <div class="mt-8 grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
     {
       outcomes.map((item) => (
         <VisualCard

@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:mobile-layout": "node scripts/check-mobile-layout-contract.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.4",

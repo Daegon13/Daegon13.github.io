@@ -22,7 +22,7 @@ const sizeClasses = {
   md: 'gap-2 px-3 py-1.5 text-xs',
 };
 ---
-<span class={`inline-flex w-fit items-center rounded-full border font-semibold uppercase tracking-[0.16em] backdrop-blur ${toneClasses[tone] ?? toneClasses.neutral} ${sizeClasses[size] ?? sizeClasses.sm} ${className}`}>
+<span class={`inline-flex min-w-0 max-w-full items-center rounded-full border font-semibold uppercase tracking-[0.1em] backdrop-blur sm:w-fit sm:tracking-[0.16em] ${toneClasses[tone] ?? toneClasses.neutral} ${sizeClasses[size] ?? sizeClasses.sm} ${className}`}>
   {icon && <Icon name={icon} size="sm" />}
-  <span>{label}</span>
+  <span class="min-w-0 break-words leading-5">{label}</span>
 </span>

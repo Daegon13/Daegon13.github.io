@@ -5,10 +5,10 @@ import { DEMO_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
 
 const { projects = [] } = Astro.props;
 ---
-<section id="casos" class="relative scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
+<section id="casos" class="relative min-w-0 scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
   <div class="absolute -right-28 top-8 -z-10 h-60 w-60 rounded-full bg-violet-electric/10 blur-3xl" aria-hidden="true"></div>
-  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-    <div class="space-y-5">
+  <div class="flex min-w-0 flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="min-w-0 space-y-5">
       <SectionHeader
         eyebrow="Portfolio"
         title="Proyectos y demos pensados para vender mejor"
@@ -17,13 +17,13 @@ const { projects = [] } = Astro.props;
       />
 
     </div>
-    <a href="/proyectos" class="premium-button inline-flex w-fit items-center gap-2 rounded-2xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-cyan-electric hover:-translate-y-0.5 hover:border-line-strong">
+    <a href="/proyectos" class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-cyan-electric hover:-translate-y-0.5 hover:border-line-strong sm:w-fit">
       Ver portfolio completo <span aria-hidden="true">→</span>
     </a>
   </div>
 
   {projects.length > 0 ? (
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-8 grid min-w-0 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((p) => (
         <ProjectCard
           title={p.data.title}
@@ -61,11 +61,11 @@ const { projects = [] } = Astro.props;
     </div>
   )}
 
-  <div class="mt-10 flex flex-col gap-4 rounded-3xl border border-line bg-surface-glass p-5 shadow-premium backdrop-blur sm:flex-row sm:items-center sm:justify-between">
-    <p class="text-sm leading-6 text-muted-soft">
+  <div class="mt-10 flex min-w-0 flex-col gap-4 rounded-3xl border border-line bg-surface-glass p-5 shadow-premium backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+    <p class="min-w-0 break-words text-sm leading-6 text-muted-soft">
       <span class="font-semibold text-slate-50">¿Querés algo parecido?</span> Mandame tu Instagram o web y vemos una demo posible.
     </p>
-    <a href={waLink(DEMO_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer" class="premium-button inline-flex w-fit items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-5 py-3 text-sm font-semibold text-white shadow-glow">
+    <a href={waLink(DEMO_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer" class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold text-white shadow-glow sm:w-fit">
       Pedir una demo <span aria-hidden="true">↗</span>
     </a>
   </div>

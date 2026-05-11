@@ -55,45 +55,45 @@ const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [ru
 ---
 <BaseLayout title={`${title} | Caso Marin.dev`} description={resumen} image={previewImage} url={`/proyectos/${proyecto.slug}`}>
   <Container class="py-12 sm:py-16">
-    <article>
-      <header class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_28rem] lg:items-center">
-        <div>
-          <div class="flex flex-wrap gap-2">
+    <article class="min-w-0">
+      <header class="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-center">
+        <div class="min-w-0">
+          <div class="flex min-w-0 max-w-full flex-wrap gap-2">
             {(tipo || sector) && <Badge label={tipo || sector} tone="cyan" />}
             {status && <Badge label={statusLabels[status] ?? status} tone={statusTone[status] ?? 'default'} />}
           </div>
-          <h1 class="mt-5 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">{title}</h1>
-          {resumen && <p class="mt-5 max-w-3xl text-lg leading-8 text-muted-soft">{resumen}</p>}
+          <h1 class="mt-5 max-w-full break-words text-[clamp(2.25rem,10vw,3.5rem)] font-semibold leading-[1.04] tracking-tight text-slate-50 sm:max-w-4xl sm:text-5xl lg:text-6xl">{title}</h1>
+          {resumen && <p class="mt-5 max-w-3xl break-words text-lg leading-8 text-muted-soft">{resumen}</p>}
 
-          <dl class="mt-7 grid gap-3 text-sm text-muted-soft sm:grid-cols-3">
+          <dl class="mt-7 grid min-w-0 gap-3 text-sm text-muted-soft sm:grid-cols-3">
             {sector && (
-              <div class="rounded-2xl border border-line bg-surface-glass p-4">
+              <div class="min-w-0 rounded-2xl border border-line bg-surface-glass p-4">
                 <dt class="font-semibold text-slate-50">Rubro</dt>
                 <dd class="mt-1">{sector}</dd>
               </div>
             )}
             {rol && (
-              <div class="rounded-2xl border border-line bg-surface-glass p-4">
+              <div class="min-w-0 rounded-2xl border border-line bg-surface-glass p-4">
                 <dt class="font-semibold text-slate-50">Rol</dt>
                 <dd class="mt-1">{rol}</dd>
               </div>
             )}
             {fecha && (
-              <div class="rounded-2xl border border-line bg-surface-glass p-4">
+              <div class="min-w-0 rounded-2xl border border-line bg-surface-glass p-4">
                 <dt class="font-semibold text-slate-50">Fecha</dt>
                 <dd class="mt-1">{fecha}</dd>
               </div>
             )}
           </dl>
 
-          <div class="mt-8 flex flex-wrap gap-3">
+          <div class="mt-8 flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap">
             {demoUrl && (
-              <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl bg-brand-gradient px-5 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5">
+              <a href={demoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex w-full max-w-full items-center justify-center rounded-xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 sm:w-auto">
                 Ver demo
               </a>
             )}
             {repoUrl && (
-              <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-slate-50 transition hover:border-line-strong hover:bg-surface-850">
+              <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex w-full max-w-full items-center justify-center rounded-xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-slate-50 transition hover:border-line-strong hover:bg-surface-850 sm:w-auto">
                 Ver archivos
               </a>
             )}
@@ -103,47 +103,47 @@ const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [ru
         <ProjectLinkPreview title={title} url={demoUrl} cover={image || cover} thumbnail={thumbnail} slug={proyecto.slug} eager />
       </header>
 
-      <section class="mt-12 grid gap-5 lg:grid-cols-3">
+      <section class="mt-12 grid min-w-0 gap-5 lg:grid-cols-3">
         {idealPara && (
           <GlowCard>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Contexto</p>
-            <h2 class="mt-3 text-xl font-semibold text-slate-50">Para qué negocio sirve</h2>
+            <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.2em]">Contexto</p>
+            <h2 class="mt-3 break-words text-xl font-semibold text-slate-50">Para qué negocio sirve</h2>
             <p class="mt-3 text-sm leading-6 text-muted-soft">{idealPara}</p>
           </GlowCard>
         )}
         {problema && (
           <GlowCard>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Problema</p>
-            <h2 class="mt-3 text-xl font-semibold text-slate-50">Problema detectado</h2>
+            <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.2em]">Problema</p>
+            <h2 class="mt-3 break-words text-xl font-semibold text-slate-50">Problema detectado</h2>
             <p class="mt-3 text-sm leading-6 text-muted-soft">{problema}</p>
           </GlowCard>
         )}
         {solucion && (
           <GlowCard>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Solución</p>
-            <h2 class="mt-3 text-xl font-semibold text-slate-50">Qué se construyó</h2>
+            <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.2em]">Solución</p>
+            <h2 class="mt-3 break-words text-xl font-semibold text-slate-50">Qué se construyó</h2>
             <p class="mt-3 text-sm leading-6 text-muted-soft">{solucion}</p>
           </GlowCard>
         )}
       </section>
 
       {(features.length > 0 || impacto || resultado) && (
-        <section class="mt-8 grid gap-5 lg:grid-cols-[minmax(0,1fr)_24rem]">
+        <section class="mt-8 grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)]">
           {features.length > 0 && (
-            <div class="rounded-3xl border border-line bg-surface-glass p-6 shadow-premium backdrop-blur">
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Qué incluye</p>
-              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div class="min-w-0 rounded-3xl border border-line bg-surface-glass p-6 shadow-premium backdrop-blur">
+              <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.2em]">Qué incluye</p>
+              <div class="mt-5 grid min-w-0 gap-3 sm:grid-cols-2">
                 {features.map((feature) => (
-                  <div class="rounded-2xl border border-line bg-ink/35 p-4 text-sm font-medium text-muted-bright">{feature}</div>
+                  <div class="min-w-0 break-words rounded-2xl border border-line bg-ink/35 p-4 text-sm font-medium text-muted-bright">{feature}</div>
                 ))}
               </div>
             </div>
           )}
 
           {(impacto || resultado) && (
-            <div class="rounded-3xl border border-brand-success/20 bg-brand-success/10 p-6 shadow-premium">
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">Impacto / resultado</p>
-              {resultado && <p class="mt-4 text-2xl font-semibold text-slate-50">{resultado}</p>}
+            <div class="min-w-0 rounded-3xl border border-brand-success/20 bg-brand-success/10 p-6 shadow-premium">
+              <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-emerald-200 sm:tracking-[0.2em]">Impacto / resultado</p>
+              {resultado && <p class="mt-4 break-words text-2xl font-semibold text-slate-50">{resultado}</p>}
               {impacto && <p class="mt-4 text-sm leading-6 text-emerald-50/90">{impacto}</p>}
             </div>
           )}
@@ -151,24 +151,24 @@ const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [ru
       )}
 
       {stack.length > 0 && (
-        <section class="mt-8 rounded-3xl border border-line bg-surface-glass p-6 shadow-premium backdrop-blur">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-electric">Herramientas usadas</p>
-          <div class="mt-4 flex flex-wrap gap-2">
+        <section class="mt-8 min-w-0 rounded-3xl border border-line bg-surface-glass p-6 shadow-premium backdrop-blur">
+          <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.2em]">Herramientas usadas</p>
+          <div class="mt-4 flex min-w-0 max-w-full flex-wrap gap-2">
             {stack.map((s) => <Badge label={s} />)}
           </div>
         </section>
       )}
 
-      <section class="prose-dark mt-10 max-w-none rounded-3xl border border-line bg-surface-glass p-6 leading-7 shadow-premium backdrop-blur">
+      <section class="prose-dark mt-10 max-w-none min-w-0 break-words rounded-3xl border border-line bg-surface-glass p-6 leading-7 shadow-premium backdrop-blur">
         <Content />
       </section>
 
       <section class="mt-10 rounded-3xl border border-line bg-brand-gradient p-[1px] shadow-glow">
-        <div class="rounded-3xl bg-ink/90 p-6 text-center sm:p-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100">Último paso</p>
-          <h2 class="mt-3 text-2xl font-semibold text-slate-50">¿Querés algo parecido para tu negocio?</h2>
+        <div class="min-w-0 rounded-3xl bg-ink/90 p-6 text-center sm:p-8">
+          <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-100 sm:tracking-[0.2em]">Último paso</p>
+          <h2 class="mt-3 break-words text-2xl font-semibold text-slate-50">¿Querés algo parecido para tu negocio?</h2>
           <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-soft">Mandame tu rubro, tu Instagram o web actual y el objetivo comercial. Te digo qué demo, web o herramienta simple tendría más sentido construir primero.</p>
-          <a href={waLink(whatsappText)} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center justify-center rounded-xl bg-slate-50 px-5 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-white">
+          <a href={waLink(whatsappText)} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex w-full max-w-full items-center justify-center rounded-xl bg-slate-50 px-5 py-3 text-center text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-white sm:w-auto">
             Quiero algo parecido
           </a>
         </div>

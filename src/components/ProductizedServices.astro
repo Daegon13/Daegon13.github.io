@@ -13,33 +13,33 @@ const serviceBadges = [
   { label: 'Integraciones', icon: 'settings', tone: 'amber' },
 ];
 ---
-<section id="planes" class="relative scroll-mt-24 overflow-hidden rounded-[2rem] border border-line/80 bg-surface-glow px-4 py-14 shadow-premium md:px-6 md:py-20">
+<section id="planes" class="relative min-w-0 scroll-mt-24 overflow-hidden rounded-[2rem] border border-line/80 bg-surface-glow px-4 py-14 shadow-premium md:px-6 md:py-20">
   <div class="absolute -left-24 top-10 -z-10 h-56 w-56 rounded-full bg-cyan-electric/10 blur-3xl" aria-hidden="true"></div>
-  <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+  <div class="flex min-w-0 flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
     <SectionHeader
       eyebrow="Servicios"
       title="Soluciones empaquetadas para avanzar rápido"
       description="Paquetes claros para definir alcance, prioridad comercial y próximos pasos sin perder semanas."
       icon="layout"
     />
-    <div class="flex flex-wrap gap-2 lg:max-w-md lg:justify-end">
+    <div class="flex min-w-0 max-w-full flex-wrap gap-2 lg:max-w-md lg:justify-end">
       {serviceBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
     </div>
   </div>
-  <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+  <div class="mt-8 grid min-w-0 gap-6 md:grid-cols-2 xl:grid-cols-4">
     {productizedServices.map((service) => (
       <GlowCard class={`h-full ${service.featured ? 'border-cyan-electric/35' : ''}`}>
-        <div class="flex items-center justify-between gap-3">
+        <div class="flex min-w-0 items-center justify-between gap-3">
           <Badge label={service.tag} tone={service.featured ? 'success' : 'cyan'} />
           {service.featured && <span class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-success">Recomendado</span>}
         </div>
-        <h3 class="mt-5 text-2xl font-semibold tracking-tight text-slate-50">{service.name}</h3>
+        <h3 class="mt-5 break-words text-2xl font-semibold tracking-tight text-slate-50">{service.name}</h3>
         <p class="mt-3 text-sm leading-6 text-muted-soft">{service.description}</p>
         <ul class="mt-5 space-y-3 text-sm text-muted-soft">
           {service.deliverables.map((item) => (
-            <li class="flex gap-3">
+            <li class="flex min-w-0 gap-3">
               <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-electric" aria-hidden="true"></span>
-              <span>{item}</span>
+              <span class="min-w-0 break-words">{item}</span>
             </li>
           ))}
         </ul>
@@ -47,7 +47,7 @@ const serviceBadges = [
           href={waLink(SERVICE_WHATSAPP_MESSAGE(service.name))}
           target="_blank"
           rel="noopener noreferrer"
-          class="premium-button mt-6 inline-flex w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
+          class="premium-button mt-6 inline-flex w-full max-w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
         >
           Consultar este paquete
         </a>
