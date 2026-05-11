@@ -243,6 +243,54 @@
     }
   }
 
+  @media (max-width: 47.9375rem) {
+    .v2-shell::before {
+      position: absolute;
+      height: 56rem;
+      background-size: 3.75rem 3.75rem;
+      opacity: 0.45;
+    }
+
+    .v2-shell::after {
+      position: absolute;
+      height: 64rem;
+      background:
+        radial-gradient(circle at 18% 6%, rgba(34, 211, 238, 0.12), transparent 18rem),
+        radial-gradient(circle at 86% 24%, rgba(139, 92, 246, 0.08), transparent 20rem);
+    }
+
+    .premium-interactive {
+      transform: none;
+      transition:
+        border-color 180ms ease,
+        background-color 180ms ease;
+      will-change: auto;
+    }
+
+    .premium-interactive::before,
+    .premium-button::after {
+      display: none;
+    }
+
+    .float-soft {
+      animation: none;
+    }
+
+    .theme-v2 :where(.backdrop-blur, .backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl) {
+      --tw-backdrop-blur: blur(0);
+    }
+
+    .theme-v2 :where(.blur-2xl, .blur-3xl) {
+      --tw-blur: blur(1.25rem);
+    }
+
+    .theme-v2 :where(.shadow-premium, .shadow-glow) {
+      --tw-shadow: 0 1rem 2.75rem -1.75rem rgba(15, 23, 42, 0.82), 0 0 0 0.0625rem rgba(148, 163, 184, 0.08);
+      --tw-shadow-colored: 0 1rem 2.75rem -1.75rem var(--tw-shadow-color), 0 0 0 0.0625rem var(--tw-shadow-color);
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
