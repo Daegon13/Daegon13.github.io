@@ -17,7 +17,7 @@ const sideCards = [
   { label: 'propuesta en 24h', value: 'alcance inicial', icon: 'speed', tone: 'cyan', className: 'right-6 bottom-8' },
 ];
 ---
-<div class="relative mx-auto w-full max-w-xl lg:max-w-2xl" role="group" aria-label="Mockup funcional de una web comercial">
+<div class="relative mx-auto min-w-0 max-w-full lg:max-w-2xl" role="group" aria-label="Mockup funcional de una web comercial">
   <div class="absolute -inset-5 rounded-[2rem] bg-brand-gradient opacity-10 blur-2xl md:opacity-20 md:blur-3xl" aria-hidden="true"></div>
   <div class="absolute left-8 top-8 hidden h-28 w-28 rounded-full bg-cyan-electric/15 blur-2xl md:block" aria-hidden="true"></div>
   <div class="absolute bottom-10 right-10 hidden h-32 w-32 rounded-full bg-violet-electric/15 blur-2xl md:block" aria-hidden="true"></div>
@@ -34,7 +34,7 @@ const sideCards = [
     </div>
   ))}
 
-  <div class="relative overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur">
+  <div class="relative min-w-0 overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur">
     <div class="flex min-w-0 items-center gap-2 border-b border-line bg-ink/65 px-4 py-3">
       <span class="h-3 w-3 shrink-0 rounded-full bg-red-400/80" aria-hidden="true"></span>
       <span class="h-3 w-3 shrink-0 rounded-full bg-amber-300/80" aria-hidden="true"></span>
@@ -43,21 +43,21 @@ const sideCards = [
       <span class="hidden shrink-0 rounded-full bg-brand-success/10 px-2.5 py-1 text-xs font-semibold text-emerald-100 sm:inline-flex">Deploy activo</span>
     </div>
 
-    <div class="relative p-4 sm:p-6">
+    <div class="relative min-w-0 p-4 sm:p-6">
       <div class="absolute right-6 top-6 hidden rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100 sm:block">
         Flujo de conversión
       </div>
 
-      <section class="rounded-3xl border border-line bg-ink/45 p-5 sm:p-6">
-        <div class="max-w-sm">
-          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-electric">Web comercial</p>
-          <h3 class="mt-3 text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">De visita a consulta</h3>
+      <section class="min-w-0 rounded-3xl border border-line bg-ink/45 p-5 sm:p-6">
+        <div class="max-w-sm min-w-0">
+          <p class="break-words text-xs font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.22em]">Web comercial</p>
+          <h3 class="mt-3 break-words text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">De visita a consulta</h3>
           <p class="mt-3 text-sm leading-6 text-muted-soft">Mensaje claro, prueba visual y próximo paso simple.</p>
         </div>
 
-        <div class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <div class="mt-6 grid min-w-0 grid-cols-2 gap-3 lg:grid-cols-4">
           {modules.map((module) => (
-            <article class="premium-interactive rounded-2xl border border-line bg-surface-glass p-3 shadow-soft hover:border-cyan-electric/30 sm:p-4">
+            <article class="premium-interactive min-w-0 rounded-2xl border border-line bg-surface-glass p-3 shadow-soft hover:border-cyan-electric/30 sm:p-4">
               <IconBubble icon={module.icon} tone={module.tone} size="sm" />
               <h4 class="mt-3 text-sm font-semibold text-slate-50">{module.title}</h4>
               <p class="mt-1 hidden text-xs leading-5 text-muted-soft sm:block">{module.detail}</p>
@@ -66,21 +66,21 @@ const sideCards = [
         </div>
       </section>
 
-      <div class="mt-4 grid gap-3 sm:grid-cols-[0.95fr_1.05fr]">
-        <div class="rounded-2xl border border-line bg-surface-glass p-4">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">Performance</p>
+      <div class="mt-4 grid min-w-0 gap-3 sm:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div class="min-w-0 rounded-2xl border border-line bg-surface-glass p-4">
+          <p class="break-words text-xs font-semibold uppercase tracking-[0.1em] text-muted sm:tracking-[0.18em]">Performance</p>
           <div class="mt-3 space-y-2">
             {['Carga rápida', 'SEO base', 'Mobile first'].map((item, index) => (
               <div class="flex items-center gap-3">
                 <span class={`h-2 w-2 rounded-full ${index === 0 ? 'bg-cyan-electric' : index === 1 ? 'bg-violet-electric' : 'bg-brand-success'}`} aria-hidden="true"></span>
-                <span class="text-sm font-medium text-slate-50">{item}</span>
+                <span class="min-w-0 break-words text-sm font-medium text-slate-50">{item}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div class="rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100">Nueva consulta</p>
+        <div class="min-w-0 rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4">
+          <p class="break-words text-xs font-semibold uppercase tracking-[0.1em] text-emerald-100 sm:tracking-[0.18em]">Nueva consulta</p>
           <p class="mt-2 text-sm leading-6 text-muted-soft">“Quiero una demo. Rubro: estética. Objetivo: más reservas.”</p>
         </div>
       </div>

@@ -2,15 +2,15 @@
 import IconBubble from './IconBubble.astro';
 import { capabilityStrip } from '../data/site';
 ---
-<section class="py-6 md:py-8" aria-label="Capacidades comerciales">
-  <div class="rounded-3xl border border-line bg-surface-glass p-3 shadow-premium backdrop-blur">
-    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+<section class="min-w-0 py-6 md:py-8" aria-label="Capacidades comerciales">
+  <div class="min-w-0 rounded-3xl border border-line bg-surface-glass p-3 shadow-premium backdrop-blur">
+    <div class="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-5">
       {capabilityStrip.map((item, index) => (
-        <article class="group premium-interactive relative overflow-hidden rounded-2xl border border-line bg-ink/35 p-4 hover:border-cyan-electric/35 hover:bg-ink/55">
+        <article class="group premium-interactive relative min-w-0 overflow-hidden rounded-2xl border border-line bg-ink/35 p-4 hover:border-cyan-electric/35 hover:bg-ink/55">
           <div class="absolute right-3 top-3 text-[2.5rem] font-black leading-none text-slate-50/[0.03]" aria-hidden="true">
             0{index + 1}
           </div>
-          <div class="relative flex items-start gap-3">
+          <div class="relative flex min-w-0 items-start gap-3">
             <IconBubble icon={item.icon} tone={item.tone} size="sm" />
             <div class="min-w-0">
               <h2 class="text-sm font-semibold text-slate-50">{item.title}</h2>

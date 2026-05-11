@@ -3,14 +3,14 @@ import GlowCard from './GlowCard.astro';
 import SectionHeader from './SectionHeader.astro';
 import { processSteps } from '../data/process';
 ---
-<section class="py-14 md:py-20">
+<section class="min-w-0 py-14 md:py-20">
   <SectionHeader
     eyebrow="Proceso"
     title="De Instagram o idea suelta a una web lista para compartir."
     description="Un proceso corto, con avances revisables y foco en consultas, reservas o ventas."
     align="center"
   />
-  <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+  <div class="mt-10 grid min-w-0 gap-5 md:grid-cols-2 lg:grid-cols-4">
     {processSteps.map((item) => (
       <GlowCard class="h-full">
         <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-gradient text-sm font-bold text-white">{item.step}</span>

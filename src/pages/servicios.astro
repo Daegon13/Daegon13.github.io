@@ -17,19 +17,19 @@ const serviceHighlights = [
 ];
 ---
 <BaseLayout {title} {description} {url} {image}>
-  <section class="relative overflow-hidden py-16 md:py-24">
+  <section class="relative min-w-0 overflow-hidden py-16 md:py-24">
     <div class="absolute left-1/2 top-10 h-48 w-48 -translate-x-1/2 rounded-full bg-cyan-electric/15 blur-3xl" aria-hidden="true"></div>
-    <div class="relative mx-auto max-w-4xl text-center">
-      <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-electric">Servicios Marin.dev</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-50 md:text-6xl">
+    <div class="relative mx-auto min-w-0 max-w-4xl text-center">
+      <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.24em]">Servicios Marin.dev</p>
+      <h1 class="mt-4 break-words text-[clamp(2.25rem,10vw,3.5rem)] font-semibold leading-[1.04] tracking-tight text-slate-50 md:text-6xl">
         Productos digitales simples para vender, reservar u operar mejor.
       </h1>
       <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-soft md:text-lg">
         No arranco desde “necesitás una web”. Arranco desde el objetivo: validar una idea, captar consultas, ordenar reservas o crear una herramienta interna liviana.
       </p>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <div class="mt-8 flex min-w-0 max-w-full flex-wrap justify-center gap-3">
         {serviceHighlights.map((item) => (
-          <span class="rounded-full border border-line bg-surface-glass px-4 py-2 text-sm text-muted-soft shadow-sm backdrop-blur">
+          <span class="min-w-0 max-w-full rounded-full border border-line bg-surface-glass px-4 py-2 text-sm text-muted-soft shadow-sm backdrop-blur">
             {item}
           </span>
         ))}
@@ -37,14 +37,14 @@ const serviceHighlights = [
     </div>
   </section>
 
-  <section class="grid gap-6 rounded-[2rem] border border-line bg-surface-glow p-6 shadow-premium backdrop-blur md:grid-cols-[0.9fr_1.1fr] md:p-8">
-    <div>
-      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-electric">Cómo elegir</p>
-      <h2 class="mt-3 text-2xl font-semibold tracking-tight text-slate-50 md:text-4xl">
+  <section class="grid min-w-0 gap-6 rounded-[2rem] border border-line bg-surface-glow p-6 shadow-premium backdrop-blur md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:p-8">
+    <div class="min-w-0">
+      <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.22em]">Cómo elegir</p>
+      <h2 class="mt-3 break-words text-2xl font-semibold tracking-tight text-slate-50 md:text-4xl">
         Elegí el punto de partida. Después ajustamos el alcance real.
       </h2>
     </div>
-    <div class="space-y-4 text-sm leading-6 text-muted-soft md:text-base">
+    <div class="min-w-0 space-y-4 text-sm leading-6 text-muted-soft md:text-base">
       <p>
         Los planes no son moldes cerrados: son formas de ordenar la conversación para que sepas qué estás comprando, qué problema resuelve y qué entregables esperar.
       </p>

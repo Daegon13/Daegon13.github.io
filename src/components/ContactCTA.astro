@@ -58,14 +58,14 @@ const contactMethods = [
   },
 ].filter(Boolean);
 ---
-<section class="py-16 md:py-24">
-  <div class="premium-interactive halo-sweep relative overflow-hidden rounded-[2rem] border border-line bg-surface-glow p-5 shadow-premium backdrop-blur sm:p-7 md:p-10 lg:p-12">
+<section class="min-w-0 py-16 md:py-24">
+  <div class="premium-interactive halo-sweep relative min-w-0 overflow-hidden rounded-[2rem] border border-line bg-surface-glow p-5 shadow-premium backdrop-blur sm:p-7 md:p-10 lg:p-12">
     <div class="absolute inset-x-8 -top-24 h-56 rounded-full bg-cyan-electric/20 blur-3xl" aria-hidden="true"></div>
     <div class="absolute -bottom-28 right-0 h-56 w-56 rounded-full bg-brand-violet/20 blur-3xl" aria-hidden="true"></div>
     <div class="absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-electric/60 to-transparent" aria-hidden="true"></div>
 
-    <div class="relative grid gap-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.8fr)] lg:items-center">
-      <div>
+    <div class="relative grid min-w-0 gap-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.8fr)] lg:items-center">
+      <div class="min-w-0 max-w-full">
         <SectionHeader
           eyebrow={eyebrow}
           title={title}
@@ -74,16 +74,16 @@ const contactMethods = [
           align="left"
         />
 
-        <div class="mt-6 flex flex-wrap gap-2">
+        <div class="mt-6 flex min-w-0 max-w-full flex-wrap gap-2">
           {trustBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
         </div>
 
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div class="mt-8 flex min-w-0 max-w-full flex-col gap-3 sm:flex-row">
           <a
             href={waLink(primaryMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            class="premium-button inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover sm:min-w-64"
+            class="premium-button inline-flex min-h-12 w-full max-w-full items-center justify-center gap-2 whitespace-normal rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold leading-5 text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto sm:min-w-64 sm:px-6"
           >
             <Icon name="message" size="sm" />
             {primaryLabel}
@@ -91,7 +91,7 @@ const contactMethods = [
           {secondaryLabel && secondaryHref && (
             <a
               href={secondaryHref}
-              class="premium-button inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-line bg-surface-glass px-6 py-3 text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
+              class="premium-button inline-flex min-h-12 w-full max-w-full items-center justify-center gap-2 whitespace-normal rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold leading-5 text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric sm:w-auto sm:px-6"
             >
               {secondaryLabel}
               <Icon name="arrow" size="sm" />
@@ -99,21 +99,21 @@ const contactMethods = [
           )}
         </div>
 
-        <div class="mt-7 grid gap-3 sm:grid-cols-3">
+        <div class="mt-7 grid min-w-0 gap-3 sm:grid-cols-3">
           {contactMethods.map((method) => (
             <a
               href={method.href}
               target={method.external ? '_blank' : undefined}
               rel={method.external ? 'noopener noreferrer' : undefined}
-              class="group rounded-2xl border border-line bg-surface-glass p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:bg-surface-850/80"
+              class="group min-w-0 rounded-2xl border border-line bg-surface-glass p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:bg-surface-850/80"
             >
               <span class={`inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br ${method.tone} text-cyan-100 ring-1 ring-white/10`}>
                 <Icon name={method.icon} size="sm" />
               </span>
-              <span class="mt-3 block text-sm font-semibold text-slate-50">{method.label}</span>
+              <span class="mt-3 block min-w-0 break-words text-sm font-semibold text-slate-50">{method.label}</span>
               {method.helper && <span class="mt-1 block truncate text-xs text-cyan-100/80">{method.helper}</span>}
               <span class="mt-2 block text-xs leading-5 text-muted-soft">{method.description}</span>
-              <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-electric group-hover:text-cyan-100">
+              <span class="mt-3 inline-flex max-w-full items-center gap-1.5 text-xs font-semibold text-cyan-electric group-hover:text-cyan-100">
                 {method.cta}
                 <Icon name="arrow" size="sm" />
               </span>

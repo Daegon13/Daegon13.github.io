@@ -79,17 +79,17 @@ const contactCards = [
 ---
 <BaseLayout {title} {description} {url} {image}>
   <Container class="py-12 md:py-16 lg:py-20">
-    <section class="relative overflow-hidden rounded-[2.25rem] border border-line bg-surface-glass p-5 shadow-premium backdrop-blur md:p-8 lg:p-10">
+    <section class="relative min-w-0 overflow-hidden rounded-[2.25rem] border border-line bg-surface-glass p-5 shadow-premium backdrop-blur md:p-8 lg:p-10">
       <div class="pointer-events-none absolute -left-20 top-8 h-64 w-64 rounded-full bg-cyan-electric/15 blur-3xl"></div>
       <div class="pointer-events-none absolute -right-24 bottom-6 h-72 w-72 rounded-full bg-violet-electric/15 blur-3xl"></div>
 
-      <div class="relative grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
-        <aside class="space-y-6">
-          <div>
-            <p class="inline-flex rounded-full border border-cyan-electric/30 bg-cyan-electric/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-100">
+      <div class="relative grid min-w-0 gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-start">
+        <aside class="min-w-0 space-y-6">
+          <div class="min-w-0">
+            <p class="inline-flex min-w-0 max-w-full rounded-full border border-cyan-electric/30 bg-cyan-electric/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-cyan-100 sm:tracking-[0.22em]">
               Contacto guiado
             </p>
-            <h1 class="mt-5 text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
+            <h1 class="mt-5 break-words text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl">
               Contame qué querés mejorar y te digo el mejor camino
             </h1>
             <p class="mt-5 text-base leading-7 text-muted-soft sm:text-lg">
@@ -97,16 +97,16 @@ const contactCards = [
             </p>
           </div>
 
-          <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-            <div class="rounded-2xl border border-line bg-ink/45 p-4">
+          <div class="grid min-w-0 gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            <div class="min-w-0 rounded-2xl border border-line bg-ink/45 p-4">
               <p class="text-sm font-semibold text-slate-50">1. Me pasás contexto</p>
               <p class="mt-1 text-sm leading-6 text-muted-soft">Rubro, link actual y objetivo principal.</p>
             </div>
-            <div class="rounded-2xl border border-line bg-ink/45 p-4">
+            <div class="min-w-0 rounded-2xl border border-line bg-ink/45 p-4">
               <p class="text-sm font-semibold text-slate-50">2. Ordeno la oportunidad</p>
               <p class="mt-1 text-sm leading-6 text-muted-soft">Te digo si conviene demo, landing o sistema simple.</p>
             </div>
-            <div class="rounded-2xl border border-line bg-ink/45 p-4">
+            <div class="min-w-0 rounded-2xl border border-line bg-ink/45 p-4">
               <p class="text-sm font-semibold text-slate-50">3. Hablamos por WhatsApp</p>
               <p class="mt-1 text-sm leading-6 text-muted-soft">Sin formulario frío ni datos sensibles.</p>
             </div>
@@ -116,9 +116,9 @@ const contactCards = [
             <p class="text-sm font-semibold text-slate-50">Canales directos</p>
             <div class="mt-4 space-y-3">
               {contactCards.map((card) => (
-                <a class="group/contact flex items-center justify-between gap-4 rounded-2xl border border-line bg-white/[0.04] px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-cyan-electric/10" href={card.href} target={card.href.startsWith("http") ? "_blank" : undefined} rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-                  <span>
-                    <span class="block font-medium text-slate-100">{card.label}</span>
+                <a class="group/contact flex min-w-0 items-center justify-between gap-4 rounded-2xl border border-line bg-white/[0.04] px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-cyan-electric/10" href={card.href} target={card.href.startsWith("http") ? "_blank" : undefined} rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+                  <span class="min-w-0">
+                    <span class="block break-words font-medium text-slate-100">{card.label}</span>
                     <span class="mt-0.5 block text-muted-soft">{card.value}</span>
                   </span>
                   <span class="text-cyan-100 transition group-hover/contact:translate-x-1" aria-hidden="true">→</span>
@@ -128,13 +128,13 @@ const contactCards = [
           </GlowCard>
         </aside>
 
-        <form id="contacto" class="rounded-[2rem] border border-line bg-ink/70 p-5 shadow-premium backdrop-blur md:p-7" aria-describedby="contacto-ayuda">
-          <div class="flex flex-col gap-3 border-b border-line pb-5 sm:flex-row sm:items-start sm:justify-between">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-electric">Armá el mensaje</p>
-              <h2 class="mt-2 text-2xl font-semibold tracking-tight text-slate-50">Te abre WhatsApp con todo ordenado</h2>
+        <form id="contacto" class="min-w-0 rounded-[2rem] border border-line bg-ink/70 p-5 shadow-premium backdrop-blur md:p-7" aria-describedby="contacto-ayuda">
+          <div class="flex min-w-0 flex-col gap-3 border-b border-line pb-5 sm:flex-row sm:items-start sm:justify-between">
+            <div class="min-w-0">
+              <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.18em]">Armá el mensaje</p>
+              <h2 class="mt-2 break-words text-2xl font-semibold tracking-tight text-slate-50">Te abre WhatsApp con todo ordenado</h2>
             </div>
-            <span class="w-fit rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-xs font-semibold text-emerald-200">
+            <span class="inline-flex min-w-0 max-w-full rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-xs font-semibold text-emerald-200">
               Sin backend
             </span>
           </div>
