@@ -211,3 +211,18 @@ Alcance sugerido:
 3. Modificar `ProjectLinkPreview` para usar preview estático por defecto y cargar demo externa solo con click o nueva pestaña.
 4. Dejar `astro:assets` preparado para covers raster locales, sin migrar todo el portfolio de golpe.
 5. Ejecutar `npm run build` y revisar tamaños de `dist/` antes/después.
+
+## Patch: previews estáticos para demos externas
+
+Se actualizó `src/components/ProjectLinkPreview.astro` para que las páginas de detalle de proyecto no carguen iframes externos automáticamente. El componente ahora renderiza por defecto una tarjeta estática con marco tipo navegador, dominio/título del proyecto, portada si existe y CTA `Abrir demo` con `target="_blank"` y `rel="noopener noreferrer"`.
+
+Beneficio esperado:
+
+- Evita descargar y ejecutar sitios completos de Vercel, GitHub Pages u otros dominios durante el render inicial del caso.
+- Reduce riesgo sobre LCP, INP, uso de red y consumo de CPU en mobile.
+- Mantiene la salida estática de Astro y no agrega React, hidratación ni librerías de lazy iframe.
+
+Uso restante de iframes:
+
+- `ProjectLinkPreview` conserva un modo opt-in `embedMode="iframe"` para casos excepcionales, pero queda deshabilitado por defecto.
+- No se detectan usos actuales que pasen `embedMode="iframe"`; las páginas de proyecto abren las demos mediante enlace externo.
