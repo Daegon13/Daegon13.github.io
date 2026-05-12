@@ -134,7 +134,7 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
     align="center"
   />
 
-  <div class="mx-auto mt-8 grid min-w-0 max-w-5xl gap-3 rounded-3xl border border-line bg-surface-glass p-3 text-sm text-muted-soft shadow-premium backdrop-blur md:grid-cols-2 xl:grid-cols-4">
+  <div class="mx-auto mt-8 grid min-w-0 max-w-5xl gap-3 rounded-3xl border border-line bg-surface-glass p-3 text-sm text-muted-soft shadow-none backdrop-blur-none md:grid-cols-2 md:shadow-premium md:backdrop-blur xl:grid-cols-4">
     {chooserItems.map((item) => (
       <div class="group min-w-0 rounded-2xl border border-line bg-ink/35 px-4 py-3 transition hover:-translate-y-0.5 hover:border-line-strong hover:bg-surface-glass">
         <div class="flex min-w-0 items-center justify-between gap-3">
@@ -150,7 +150,7 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
   <div class="mt-10 grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-4">
     {plans.map((plan) => (
       <GlowCard
-        class={`relative flex h-full min-w-0 flex-col overflow-hidden ${plan.featured ? 'border-cyan-electric/40 shadow-glow' : ''}`}
+        class={`relative flex h-full min-w-0 flex-col overflow-hidden ${plan.featured ? 'border-cyan-electric/40 md:shadow-glow' : ''}`}
       >
         <div
           class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${
@@ -224,7 +224,7 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
             rel="noopener noreferrer"
             class={`inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-center text-sm font-semibold transition hover:-translate-y-0.5 ${
               plan.featured
-                ? 'bg-brand-gradient text-white shadow-glow hover:shadow-premium-hover'
+                ? 'bg-brand-gradient text-white shadow-none md:shadow-glow md:hover:shadow-premium-hover'
                 : 'border border-line bg-surface-glass text-slate-50 hover:border-line-strong hover:text-cyan-electric'
             }`}
             aria-label={`Consultar el plan ${plan.name} por WhatsApp`}

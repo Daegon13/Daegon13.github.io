@@ -13,7 +13,8 @@ const {
 
 const displayCover = projectCoverImage({ slug, thumbnail, cover });
 const hasPreviewUrl = typeof url === 'string' && url.length > 0;
-const hasCustomCover = displayCover && displayCover !== '/og-default.png';
+const isLocalCover = typeof displayCover === 'string' && displayCover.startsWith('/');
+const hasStaticCover = isLocalCover && displayCover !== '/og-default.png';
 const shouldRenderIframe = hasPreviewUrl && embedMode === 'iframe';
 let previewHost = `marin.dev/caso/${slug}`;
 
@@ -23,8 +24,8 @@ if (hasPreviewUrl) {
 }
 ---
 <div class="relative min-w-0 max-w-full">
-  <div class="absolute -inset-4 rounded-[2rem] bg-cyan-electric/10 blur-3xl"></div>
-  <div class="relative min-w-0 overflow-hidden rounded-3xl border border-line bg-surface-glow p-3 shadow-premium">
+  <div class="absolute -inset-4 hidden rounded-[2rem] bg-cyan-electric/10 blur-3xl md:block"></div>
+  <div class="relative min-w-0 overflow-hidden rounded-3xl border border-line bg-surface-glow p-3 shadow-none md:shadow-premium">
     <div class="flex min-w-0 items-center gap-2 border-b border-line px-2 pb-3">
       <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
       <span class="h-2.5 w-2.5 rounded-full bg-amber-300/80"></span>
@@ -45,7 +46,7 @@ if (hasPreviewUrl) {
           ></iframe>
           <div class="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-ink/80 to-transparent"></div>
         </>
-      ) : hasCustomCover ? (
+      ) : hasStaticCover ? (
         <>
           <img
             src={displayCover}
@@ -61,13 +62,13 @@ if (hasPreviewUrl) {
       ) : (
         <div class="relative flex h-full min-w-0 flex-col justify-between overflow-hidden p-5">
           <div class="absolute inset-0 bg-premium-grid bg-[length:2rem_2rem] opacity-45"></div>
-          <div class="absolute -left-16 top-6 h-40 w-40 rounded-full bg-cyan-electric/20 blur-3xl"></div>
-          <div class="absolute -right-14 bottom-0 h-44 w-44 rounded-full bg-brand-violet/20 blur-3xl"></div>
-          <div class="relative rounded-2xl border border-line bg-surface-glass p-4 shadow-premium backdrop-blur">
+          <div class="absolute -left-16 top-6 hidden h-40 w-40 rounded-full bg-cyan-electric/20 blur-3xl md:block"></div>
+          <div class="absolute -right-14 bottom-0 hidden h-44 w-44 rounded-full bg-brand-violet/20 blur-3xl md:block"></div>
+          <div class="relative rounded-2xl border border-line bg-surface-glass p-4 shadow-none backdrop-blur-none md:shadow-premium md:backdrop-blur">
             <p class="break-words text-xs font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.2em]">Preview del caso</p>
             <p class="mt-2 break-words text-lg font-semibold leading-tight text-slate-50">{title}</p>
           </div>
-          <div class="relative grid min-w-0 gap-3 rounded-2xl border border-line bg-ink/45 p-4 shadow-premium backdrop-blur">
+          <div class="relative grid min-w-0 gap-3 rounded-2xl border border-line bg-ink/45 p-4 shadow-none backdrop-blur-none md:shadow-premium md:backdrop-blur">
             <div class="h-2 rounded-full bg-slate-600/70"></div>
             <div class="h-2 w-4/5 rounded-full bg-slate-700/80"></div>
             <div class="mt-2 grid grid-cols-3 gap-2">
@@ -80,7 +81,7 @@ if (hasPreviewUrl) {
       )}
 
       <div class="absolute inset-x-0 bottom-0 p-4">
-        <div class="rounded-2xl border border-line bg-ink/85 p-4 shadow-premium backdrop-blur">
+        <div class="rounded-2xl border border-line bg-ink/85 p-4 shadow-none backdrop-blur-none md:shadow-premium md:backdrop-blur">
           <p class="break-words text-xs font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.2em]">{hasPreviewUrl ? 'Demo externa' : 'Preview estático'}</p>
           <div class="mt-2 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div class="min-w-0">
@@ -92,7 +93,7 @@ if (hasPreviewUrl) {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-xl border border-line bg-slate-50 px-4 py-2 text-center text-xs font-semibold text-ink shadow-premium transition hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-white sm:w-auto sm:shrink-0"
+                class="inline-flex w-full max-w-full items-center justify-center gap-2 rounded-xl border border-line bg-slate-50 px-4 py-2 text-center text-xs font-semibold text-ink shadow-none transition-colors hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-white md:shadow-premium md:transition-transform sm:w-auto sm:shrink-0"
                 aria-label={`Abrir demo externa de ${title} en una pestaña nueva`}
               >
                 Abrir demo <span aria-hidden="true">↗</span>

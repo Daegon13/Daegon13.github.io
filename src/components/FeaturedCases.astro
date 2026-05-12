@@ -6,7 +6,7 @@ import { DEMO_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
 const { projects = [] } = Astro.props;
 ---
 <section id="casos" class="relative min-w-0 scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
-  <div class="absolute -right-28 top-8 -z-10 h-60 w-60 rounded-full bg-violet-electric/10 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -right-28 top-8 -z-10 hidden h-60 w-60 rounded-full bg-violet-electric/10 blur-3xl md:block" aria-hidden="true"></div>
   <div class="flex min-w-0 flex-col gap-6 md:flex-row md:items-end md:justify-between">
     <div class="min-w-0 space-y-5">
       <SectionHeader
@@ -61,11 +61,11 @@ const { projects = [] } = Astro.props;
     </div>
   )}
 
-  <div class="mt-10 flex min-w-0 flex-col gap-4 rounded-3xl border border-line bg-surface-glass p-5 shadow-premium backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+  <div class="mt-10 flex min-w-0 flex-col gap-4 rounded-3xl border border-line bg-surface-glass p-5 shadow-none backdrop-blur-none sm:flex-row md:shadow-premium md:backdrop-blur sm:items-center sm:justify-between">
     <p class="min-w-0 break-words text-sm leading-6 text-muted-soft">
       <span class="font-semibold text-slate-50">¿Querés algo parecido?</span> Mandame tu Instagram o web y vemos una demo posible.
     </p>
-    <a href={waLink(DEMO_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer" class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold text-white shadow-glow sm:w-fit">
+    <a href={waLink(DEMO_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer" class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold text-white shadow-none sm:w-fit md:shadow-glow">
       Pedir una demo <span aria-hidden="true">↗</span>
     </a>
   </div>
