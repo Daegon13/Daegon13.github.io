@@ -2,7 +2,7 @@
 const { as = 'div', class: className = '' } = Astro.props;
 const Tag = as;
 ---
-<Tag class={`group premium-interactive relative overflow-hidden rounded-3xl border border-line bg-surface-glow p-5 shadow-premium backdrop-blur hover:border-line-strong hover:shadow-premium-hover ${className}`}>
+<Tag class={`group premium-interactive mobile-card-lite relative min-w-0 overflow-hidden rounded-3xl border border-line bg-surface-glow p-5 shadow-premium backdrop-blur-none hover:border-line-strong hover:shadow-premium-hover md:backdrop-blur ${className}`}>
   <div class="pointer-events-none absolute inset-x-0 top-0 h-[0.0625rem] bg-gradient-to-r from-transparent via-cyan-electric/50 to-transparent opacity-70"></div>
   <div class="pointer-events-none absolute -right-14 -top-14 hidden h-32 w-32 rounded-full bg-cyan-electric/10 blur-3xl transition duration-300 group-hover:bg-cyan-electric/20 md:block"></div>
   <div class="relative">

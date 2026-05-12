@@ -29,6 +29,6 @@ const iconSizes = {
   lg: 'lg',
 };
 ---
-<span class={`inline-flex shrink-0 items-center justify-center border backdrop-blur ${toneClasses[tone] ?? toneClasses.cyan} ${sizeClasses[size] ?? sizeClasses.md} ${className}`}>
+<span class={`inline-flex shrink-0 items-center justify-center border backdrop-blur-none md:backdrop-blur ${toneClasses[tone] ?? toneClasses.cyan} ${sizeClasses[size] ?? sizeClasses.md} ${className}`}>
   <Icon name={icon} size={iconSizes[size] ?? 'md'} label={label} />
 </span>
