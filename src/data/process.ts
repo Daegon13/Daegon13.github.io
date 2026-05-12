@@ -7,8 +7,8 @@ export const processSteps = [
   },
   {
     step: "02",
-    title: "Detecto fricción y oportunidad",
-    description: "Marco dudas, frenos y contenido clave para mostrar primero.",
+    title: "Detecto dudas y oportunidades",
+    description: "Marco precios, servicios, horarios o datos que conviene mostrar primero.",
   },
   {
     step: "03",
@@ -18,8 +18,8 @@ export const processSteps = [
   },
   {
     step: "04",
-    title: "Construimos, deployamos y vendés",
+    title: "Construimos, deployamos y medimos",
     description:
-      "Publicamos, dejamos accesos claros y un flujo listo para compartir.",
+      "Publicamos, dejamos accesos definidos y una URL para enviar por WhatsApp.",
   },
 ];

@@ -51,7 +51,7 @@ export const verticalDemos = [
   {
     name: "Estudios profesionales",
     problem:
-      "La confianza depende de recomendaciones y no de un proceso claro.",
+      "La confianza depende de recomendaciones y los pasos de atención no están visibles.",
     solution: "servicios, experiencia, pasos de atención y agenda inicial.",
     features: ["Confianza", "Proceso", "Agenda", "Experiencia"],
     icon: "shield",

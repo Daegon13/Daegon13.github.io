@@ -3,21 +3,21 @@ export const productizedServices = [
     name: "Demo Comercial Express",
     tag: "Validar rápido",
     description:
-      "Una demo cuidada para transformar una idea o Instagram en una propuesta web lista para mostrar.",
+      "Una demo navegable para transformar una idea o Instagram en pantallas que se puedan evaluar.",
     deliverables: [
-      "Mensaje principal y estructura comercial",
+      "Mensaje principal y secciones necesarias",
       "Secciones clave para explicar la propuesta",
-      "CTA a WhatsApp con mensaje guiado",
-      "Vista responsive lista para compartir",
+      "CTA a WhatsApp con mensaje prearmado",
+      "Vista responsive con deploy publicado",
     ],
   },
   {
     name: "Landing de Conversión",
-    tag: "Más consultas",
+    tag: "WhatsApp listo",
     description:
-      "Una landing clara para llevar visitas hacia consultas, reservas o ventas.",
+      "Una landing para mostrar servicios, prueba visual, objeciones y WhatsApp en los puntos clave.",
     deliverables: [
-      "Hero orientado a resultado",
+      "Hero con oferta, rubro y CTA visible",
       "Bloques de confianza, servicios y objeciones",
       "CTA principal y secundarios bien ubicados",
       "SEO/share básico y carga rápida",
@@ -26,21 +26,21 @@ export const productizedServices = [
   },
   {
     name: "Web con WhatsApp / Agenda",
-    tag: "Reservas claras",
+    tag: "Agenda visible",
     description:
       "Una web para mostrar servicios y guiar al visitante hacia WhatsApp, reserva o agenda.",
     deliverables: [
       "Servicios o planes con CTA específico",
       "Mensajes prearmados por intención",
-      "Flujo simple de reserva o consulta",
-      "Páginas clave para generar confianza",
+      "Flujo de reserva o consulta acotado",
+      "Páginas clave con servicios y contacto",
     ],
   },
   {
     name: "Sistema simple / Panel Admin",
-    tag: "Operar mejor",
+    tag: "Panel acotado",
     description:
-      "Una herramienta liviana para ordenar contenido, stock, leads, reservas o datos internos.",
+      "Una herramienta liviana para ver contenido, stock, leads, reservas o datos internos en módulos simples.",
     deliverables: [
       "Panel o flujo interno acotado",
       "Datos y estados organizados",
