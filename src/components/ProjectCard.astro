@@ -72,7 +72,16 @@ const visualSystem = getProjectVisual({
 const visualStyles = visualSystem.styles;
 const commercialType = category || tipo || sector || visualSystem.category.label || 'Caso comercial';
 const businessLabel = businessType || sector || commercialType;
-const benefit = resultLabel || highlight || impacto || resultado;
+const normalizeCopy = (value = '') => String(value).trim().replace(/\s+/g, ' ');
+const highlightCopy = normalizeCopy(highlight);
+const benefitOptions = [
+  { label: 'Qué permite', value: resultLabel },
+  { label: 'Qué demuestra', value: impacto },
+  { label: 'Resultado', value: resultado },
+].map((item) => ({ ...item, normalized: normalizeCopy(item.value) }));
+const selectedBenefit = benefitOptions.find((item) => item.normalized && item.normalized !== highlightCopy);
+const benefit = selectedBenefit?.value || '';
+const benefitLabel = selectedBenefit?.label || 'Qué permite';
 const visual = projectVisualAsset({ slug, thumbnail, cover, image });
 const hasImage = visual.hasImage;
 const isStarProject = Number(priority) >= 120;
@@ -166,7 +175,7 @@ const copyFocus = highlight || solucion || problema;
     {copyFocus && (
       <div class="mobile-safe-text mt-5 min-w-0 rounded-2xl border border-line bg-ink/35 p-4 text-sm leading-6 text-muted-soft">
         {highlight ? (
-          <p><span class="font-semibold text-slate-50">Clave:</span> {highlight}</p>
+          <p><span class="font-semibold text-slate-50">Construido:</span> {highlight}</p>
         ) : (
           <>
             {problema && (
@@ -188,7 +197,7 @@ const copyFocus = highlight || solucion || problema;
 
     {benefit && (
       <p class="mobile-safe-text mt-5 min-w-0 break-words rounded-2xl border border-brand-success/20 bg-brand-success/10 p-3 text-sm leading-6 text-emerald-100">
-        <span class="font-semibold">Resultado / beneficio:</span> {benefit}
+        <span class="font-semibold">{benefitLabel}:</span> {benefit}
       </p>
     )}
 
