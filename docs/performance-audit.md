@@ -222,7 +222,8 @@ Beneficio esperado:
 - Reduce riesgo sobre LCP, INP, uso de red y consumo de CPU en mobile.
 - Mantiene la salida estática de Astro y no agrega React, hidratación ni librerías de lazy iframe.
 
-Uso restante de iframes:
+Política no-auto-iframe vigente:
 
-- `ProjectLinkPreview` conserva un modo opt-in `embedMode="iframe"` para casos excepcionales, pero queda deshabilitado por defecto.
-- No se detectan usos actuales que pasen `embedMode="iframe"`; las páginas de proyecto abren las demos mediante enlace externo.
+- `ProjectLinkPreview` ya no renderiza iframes ni acepta un modo `embedMode="iframe"`; las demos externas se presentan con preview estático, dominio visible y botón `Abrir demo`.
+- Las demos se abren en una pestaña nueva con `target="_blank"` y `rel="noopener noreferrer"` para preservar el enlace público sin descargar sitios completos de terceros durante el scroll mobile.
+- Cualquier excepción futura para iframes debe documentarse explícitamente como cambio de arquitectura/performance y no puede activarse por defecto en páginas de proyecto.
