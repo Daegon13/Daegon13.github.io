@@ -5,119 +5,8 @@ import Icon from './Icon.astro';
 import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
+import { servicePlans as plans } from '../data/services';
 import { SERVICE_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
-
-const plans = [
-  {
-    name: 'Demo Comercial Express',
-    badge: 'Validar rápido',
-    price: 'USD 150–290',
-    time: '3–5 días hábiles',
-    forWho: 'Para leads, preventas, ideas nuevas o negocios que necesitan visualizar una propuesta antes de construir algo grande.',
-    solves: 'Convierte una idea o Instagram en una demo concreta, compartible y orientada a conversación comercial.',
-    deliverables: [
-      'Estructura de landing/demo de una página',
-      'Copy base orientado a consulta o reserva',
-      'CTA a WhatsApp con mensaje guiado',
-      'Mockup visual o bloques de producto/servicio',
-      'Deploy estático listo para compartir',
-    ],
-    comparison: 'Demo para mostrar valor',
-    cta: 'Quiero validar una demo',
-    icon: 'rocket',
-    tone: 'cyan',
-    chooser: 'Rápido',
-    positioning: 'Para pasar de idea o Instagram a una demo vendible sin armar un proyecto enorme.',
-    attributes: [
-      { label: '3–5 días', icon: 'speed' },
-      { label: 'One-page', icon: 'layout' },
-      { label: 'WhatsApp CTA', icon: 'message' },
-      { label: 'SEO base', icon: 'target' },
-    ],
-  },
-  {
-    name: 'Landing de Conversión',
-    badge: 'Recomendado',
-    price: 'USD 390–690',
-    time: '7–12 días hábiles',
-    forWho: 'Para campañas, profesionales, servicios y negocios locales que ya reciben tráfico o quieren empezar a vender mejor.',
-    solves: 'Ordena el mensaje, reduce dudas y guía al visitante hacia consultas, reservas o ventas con una estructura clara.',
-    deliverables: [
-      'Hero con promesa y CTA principal',
-      'Secciones de confianza, servicios, proceso y FAQs',
-      'Optimización básica para SEO y redes sociales',
-      'WhatsApp, formulario o link de reserva integrado',
-      'Medición básica y página rápida responsive',
-    ],
-    comparison: 'Captación de consultas',
-    cta: 'Consultar landing',
-    featured: true,
-    icon: 'target',
-    tone: 'emerald',
-    chooser: 'Conversión',
-    positioning: 'Para ordenar una oferta concreta y guiar visitas hacia consulta, reserva o venta.',
-    attributes: [
-      { label: 'CTA principal', icon: 'message' },
-      { label: 'Confianza', icon: 'shield' },
-      { label: 'OpenGraph', icon: 'external' },
-      { label: 'Performance', icon: 'zap' },
-    ],
-  },
-  {
-    name: 'Web con WhatsApp / Agenda',
-    badge: 'Reservas claras',
-    price: 'USD 590–990',
-    time: '10–15 días hábiles',
-    forWho: 'Para gimnasios, barberías, veterinarias, clínicas, restaurantes y servicios que necesitan ordenar consultas o turnos.',
-    solves: 'Evita mensajes incompletos y lleva a cada visitante al canal correcto con contexto, servicio elegido y próximo paso.',
-    deliverables: [
-      'Páginas o secciones por servicio/plan',
-      'CTAs por intención: consultar, reservar o pedir presupuesto',
-      'Mensajes de WhatsApp prearmados por flujo',
-      'Integración con agenda externa si ya existe',
-      'Guía simple para mantener links y contenidos',
-    ],
-    comparison: 'Consultas y reservas guiadas',
-    cta: 'Ordenar mis reservas',
-    icon: 'briefcase',
-    tone: 'violet',
-    chooser: 'Institucional',
-    positioning: 'Para mostrar servicios con más profundidad y llevar cada consulta al canal correcto.',
-    attributes: [
-      { label: 'Multipágina', icon: 'layout' },
-      { label: 'Confianza', icon: 'shield' },
-      { label: 'WhatsApp', icon: 'message' },
-      { label: 'Agenda', icon: 'flow' },
-    ],
-  },
-  {
-    name: 'Sistema simple / Panel Admin',
-    badge: 'Operación interna',
-    price: 'USD 790–1.490+',
-    time: '15–25 días hábiles',
-    forWho: 'Para negocios que ya necesitan gestionar contenido, stock, leads, reservas o información operativa sin depender de planillas sueltas.',
-    solves: 'Centraliza una operación acotada en un panel simple, pensado para usarlo de verdad sin prometer un backend corporativo complejo.',
-    deliverables: [
-      'Alcance funcional definido por hitos',
-      'Panel o flujo interno para datos clave',
-      'Estados simples para leads, reservas o stock',
-      'Roles/accesos básicos si el alcance lo permite',
-      'Documentación breve para operar el sistema',
-    ],
-    comparison: 'Gestión simple de datos',
-    cta: 'Consultar panel simple',
-    icon: 'database',
-    tone: 'amber',
-    chooser: 'Escalable',
-    positioning: 'Para ordenar datos, estados y tareas internas en una herramienta simple de usar.',
-    attributes: [
-      { label: 'Panel admin', icon: 'settings' },
-      { label: 'Formularios', icon: 'layout' },
-      { label: 'Integraciones', icon: 'flow' },
-      { label: 'Datos', icon: 'database' },
-    ],
-  },
-];
 
 const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
   name,
@@ -130,7 +19,7 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
   <SectionHeader
     eyebrow="Servicios"
     title="Elegí un punto de partida y lo adaptamos a tu negocio"
-    description="Trabajo con paquetes claros para avanzar rápido, pero cada propuesta se ajusta al objetivo real: consultas, reservas, ventas o gestión."
+    description="Cada paquete parte de un entregable concreto, con límites visibles y datos necesarios para cotizar sin adivinar el alcance."
     align="center"
   />
 
@@ -191,7 +80,7 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
             <span>Incluye</span>
           </div>
           <ul class="mt-4 space-y-3 text-sm leading-6 text-muted-soft">
-            {plan.deliverables.map((deliverable) => (
+            {plan.includes.map((deliverable) => (
               <li class="flex min-w-0 gap-3">
                 <span
                   class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-brand-success/25 bg-brand-success/10 text-brand-success"
@@ -207,13 +96,32 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
 
         <div class="mt-5 rounded-2xl border border-cyan-electric/15 bg-cyan-electric/5 p-4">
           <p class="break-words text-xs font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.18em]">Ideal para</p>
-          <p class="mt-2 text-sm leading-6 text-muted-soft">{plan.forWho}</p>
+          <p class="mt-2 text-sm leading-6 text-muted-soft">{plan.bestFor}</p>
         </div>
 
         <div class="mt-5 rounded-2xl border border-line bg-surface-glass p-4">
           <p class="break-words text-xs font-semibold uppercase tracking-[0.1em] text-muted sm:tracking-[0.18em]">Resuelve</p>
           <p class="mt-2 text-sm leading-6 text-muted-soft">{plan.solves}</p>
           <p class="mt-3 text-xs font-medium text-slate-300">Tiempo estimado: {plan.time}</p>
+        </div>
+
+        <div class="mt-5 grid gap-3 text-sm leading-6 text-muted-soft">
+          <div class="rounded-2xl border border-line bg-ink/35 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">Necesito de vos</p>
+            <p class="mt-2">{plan.clientInput.join(' · ')}</p>
+          </div>
+          <div class="rounded-2xl border border-line bg-ink/35 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">No incluye por defecto</p>
+            <p class="mt-2">{plan.notIncluded.join(' · ')}</p>
+          </div>
+          <div class="rounded-2xl border border-brand-success/15 bg-brand-success/5 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-success">Entrega final</p>
+            <p class="mt-2">{plan.finalDeliverable}</p>
+          </div>
+          <div class="rounded-2xl border border-amber-300/15 bg-amber-300/5 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-amber-200">Cuándo no conviene</p>
+            <p class="mt-2">{plan.wrongFit}</p>
+          </div>
         </div>
 
         <div class="mt-auto pt-6">

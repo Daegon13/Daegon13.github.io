@@ -19,7 +19,7 @@ const serviceBadges = [
     <SectionHeader
       eyebrow="Servicios"
       title="Paquetes con entregables definidos"
-      description="Cada servicio marca qué se entrega, qué queda fuera y qué necesito para empezar sin perder semanas."
+      description="Mismos paquetes de la página de servicios: entregable, límite de alcance, datos necesarios y CTA específico."
       icon="layout"
     />
     <div class="flex min-w-0 max-w-full flex-wrap gap-2 lg:max-w-md lg:justify-end">
@@ -36,20 +36,24 @@ const serviceBadges = [
         <h3 class="mt-5 break-words text-2xl font-semibold tracking-tight text-slate-50">{service.name}</h3>
         <p class="mt-3 text-sm leading-6 text-muted-soft">{service.description}</p>
         <ul class="mt-5 space-y-3 text-sm text-muted-soft">
-          {service.deliverables.map((item) => (
+          {service.includes.slice(0, 4).map((item) => (
             <li class="flex min-w-0 gap-3">
               <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-electric" aria-hidden="true"></span>
               <span class="min-w-0 break-words">{item}</span>
             </li>
           ))}
         </ul>
+        <div class="mt-5 space-y-3 rounded-2xl border border-line bg-ink/35 p-4 text-xs leading-5 text-muted-soft">
+          <p><span class="font-semibold text-slate-200">Necesito:</span> {service.clientInput.slice(0, 2).join(' · ')}</p>
+          <p><span class="font-semibold text-slate-200">No incluye:</span> {service.notIncluded.slice(0, 2).join(' · ')}</p>
+        </div>
         <a
           href={waLink(SERVICE_WHATSAPP_MESSAGE(service.name))}
           target="_blank"
           rel="noopener noreferrer"
           class="premium-button mt-6 inline-flex w-full max-w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
         >
-          Consultar este paquete
+          {service.cta}
         </a>
       </GlowCard>
     ))}
