@@ -21,14 +21,14 @@ const proyectos = (await getCollection('proyectos')).sort(byCommercialPriority);
 ---
 <BaseLayout
   title="Casos, demos y herramientas | Marin.dev"
-  description="Portfolio comercial de Marin.dev: demos, webs y herramientas simples pensadas para recibir consultas, reservas o ventas."
+  description="Portfolio comercial de Marin.dev: demos, webs y herramientas simples con agenda, WhatsApp, carta digital, panel, catálogo o web corporativa."
 >
   <Container class="py-14 sm:py-20">
     <div class="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:items-end">
       <SectionHeader
         eyebrow="Portfolio"
-        title="Proyectos y demos pensados para vender mejor"
-        description="No son solo sitios lindos: cada pieza está diseñada para ordenar el mensaje, reducir fricción y llevar al usuario hacia una consulta o acción concreta."
+        title="Casos, demos y sistemas por rubro"
+        description="Cada caso muestra un tipo de decisión: agenda, WhatsApp, carta digital, panel, catálogo o web corporativa."
       />
       <div class="min-w-0 rounded-3xl border border-line bg-surface-glass p-5 text-sm leading-6 text-muted-soft shadow-premium backdrop-blur">
         <p class="font-semibold text-slate-50">Criterio de orden</p>
@@ -72,7 +72,7 @@ const proyectos = (await getCollection('proyectos')).sort(byCommercialPriority);
     <div class="mt-10 flex min-w-0 flex-col gap-4 rounded-3xl border border-line bg-surface-glass p-5 shadow-premium backdrop-blur sm:flex-row sm:items-center sm:justify-between">
       <div class="min-w-0">
         <p class="break-words font-semibold text-slate-50">¿Querés algo parecido para tu negocio?</p>
-        <p class="mt-1 text-sm leading-6 text-muted-soft">Compartime tu Instagram, web o idea y te digo cómo convertirla en una demo accionable.</p>
+        <p class="mt-1 text-sm leading-6 text-muted-soft">Compartime tu Instagram, web o idea y te digo qué módulos conviene mostrar primero.</p>
       </div>
       <a href={waLink(DEMO_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer" class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold text-white shadow-glow sm:w-fit">
         Pedir una demo <span aria-hidden="true">↗</span>
