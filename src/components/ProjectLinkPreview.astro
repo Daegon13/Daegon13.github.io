@@ -8,14 +8,12 @@ const {
   thumbnail = '',
   slug = '',
   eager = false,
-  embedMode = 'static',
 } = Astro.props;
 
 const displayCover = projectCoverImage({ slug, thumbnail, cover });
 const hasPreviewUrl = typeof url === 'string' && url.length > 0;
 const isLocalCover = typeof displayCover === 'string' && displayCover.startsWith('/');
 const hasStaticCover = isLocalCover && displayCover !== '/og-default.png';
-const shouldRenderIframe = hasPreviewUrl && embedMode === 'iframe';
 let previewHost = `marin.dev/caso/${slug}`;
 
 if (hasPreviewUrl) {
@@ -34,19 +32,7 @@ if (hasPreviewUrl) {
     </div>
 
     <div class="relative mt-3 aspect-[4/3] min-w-0 overflow-hidden rounded-2xl border border-line bg-ink">
-      {shouldRenderIframe ? (
-        <>
-          <iframe
-            src={url}
-            title={`Vista previa navegable de ${title}`}
-            class="h-full w-full bg-white"
-            loading={eager ? 'eager' : 'lazy'}
-            referrerpolicy="no-referrer"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-          ></iframe>
-          <div class="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-ink/80 to-transparent"></div>
-        </>
-      ) : hasStaticCover ? (
+      {hasStaticCover ? (
         <>
           <img
             src={displayCover}
