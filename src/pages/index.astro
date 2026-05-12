@@ -21,8 +21,9 @@ proyectos = proyectos.sort((a, b) => {
   const priorityDiff = (b.data.priority ?? 0) - (a.data.priority ?? 0);
   return priorityDiff || (a.data.fecha < b.data.fecha ? 1 : -1);
 });
-const destacados = proyectos.filter((p) => p.data.featured).slice(0, 6);
-const homeCases = destacados.length > 0 ? destacados : proyectos.slice(0, 6);
+const HOME_CASE_LIMIT = 4;
+const destacados = proyectos.filter((p) => p.data.featured).slice(0, HOME_CASE_LIMIT);
+const homeCases = destacados.length > 0 ? destacados : proyectos.slice(0, HOME_CASE_LIMIT);
 
 ---
 <BaseLayout

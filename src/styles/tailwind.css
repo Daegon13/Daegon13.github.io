@@ -345,12 +345,16 @@
 
     .mobile-card-lite {
       box-shadow:
-        0 0.875rem 2rem -1.5rem rgba(15, 23, 42, 0.9),
-        0 0 0 0.0625rem rgba(148, 163, 184, 0.08);
+        0 0.5rem 1.25rem -1rem rgba(15, 23, 42, 0.72),
+        0 0 0 0.0625rem rgba(148, 163, 184, 0.07);
     }
 
     .float-soft {
       animation: none;
+    }
+
+    .theme-v2 :where(.premium-button, .premium-interactive, .mobile-card-lite) {
+      transition-property: border-color, background-color, color;
     }
 
     .theme-v2
@@ -365,19 +369,30 @@
     }
 
     .theme-v2 :where(.blur-2xl, .blur-3xl) {
-      --tw-blur: blur(1.25rem);
+      --tw-blur: blur(0);
     }
 
-    .theme-v2 :where(.shadow-premium, .shadow-glow) {
+    .theme-v2 :where(.shadow-premium, .shadow-glow, .shadow-premium-hover) {
       --tw-shadow:
-        0 1rem 2.75rem -1.75rem rgba(15, 23, 42, 0.82),
-        0 0 0 0.0625rem rgba(148, 163, 184, 0.08);
+        0 0.75rem 1.75rem -1.35rem rgba(15, 23, 42, 0.76),
+        0 0 0 0.0625rem rgba(148, 163, 184, 0.07);
       --tw-shadow-colored:
-        0 1rem 2.75rem -1.75rem var(--tw-shadow-color),
+        0 0.75rem 1.75rem -1.35rem var(--tw-shadow-color),
         0 0 0 0.0625rem var(--tw-shadow-color);
       box-shadow:
         var(--tw-ring-offset-shadow, 0 0 #0000),
         var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    }
+  }
+
+  @media (hover: none) {
+    .theme-v2 :where(.premium-button, .premium-interactive):hover {
+      transform: none !important;
+    }
+
+    .theme-v2 :where(.premium-button, .premium-interactive):hover::after,
+    .theme-v2 :where(.premium-interactive):hover::before {
+      opacity: 0 !important;
     }
   }
 

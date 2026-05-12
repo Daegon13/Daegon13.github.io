@@ -93,7 +93,7 @@ const stackChips = Array.isArray(stack) ? stack.slice(0, STACK_LIMIT) : [];
 const copyFocus = highlight || solucion || problema;
 ---
 <article
-  class="group premium-interactive mobile-card-lite flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-premium backdrop-blur-none hover:border-line-strong hover:shadow-premium-hover md:backdrop-blur"
+  class="group premium-interactive mobile-card-lite flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-line bg-surface-glow shadow-none backdrop-blur-none hover:border-line-strong md:shadow-premium md:hover:shadow-premium-hover md:backdrop-blur"
 >
   <div class="relative min-w-0 overflow-hidden border-b border-line bg-ink/60">
     {hasImage ? (
@@ -103,7 +103,7 @@ const copyFocus = highlight || solucion || problema;
           alt={`Visual del proyecto ${title}`}
           width="1200"
           height="750"
-          class="aspect-[16/10] w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.035] group-hover:opacity-100"
+          class="aspect-[16/10] w-full object-cover opacity-90 transition-opacity duration-300 md:transition-transform md:duration-500 md:group-hover:scale-[1.035] md:group-hover:opacity-100"
           loading="lazy"
           decoding="async"
         />
@@ -114,7 +114,7 @@ const copyFocus = highlight || solucion || problema;
           <div class="absolute inset-0 bg-premium-grid bg-[length:2rem_2rem] opacity-45"></div>
           <div class={`absolute -left-16 top-4 hidden h-44 w-44 rounded-full blur-3xl transition duration-500 group-hover:opacity-90 md:block ${visualStyles.glowPrimary}`}></div>
           <div class={`absolute -right-16 bottom-0 hidden h-48 w-48 rounded-full blur-3xl transition duration-500 group-hover:opacity-90 md:block ${visualStyles.glowSecondary}`}></div>
-          <div class="absolute inset-x-5 top-5 flex min-w-0 items-center gap-2 rounded-2xl border border-line bg-surface-glass px-3 py-2 shadow-premium backdrop-blur-none md:backdrop-blur">
+          <div class="absolute inset-x-5 top-5 flex min-w-0 items-center gap-2 rounded-2xl border border-line bg-surface-glass px-3 py-2 shadow-none backdrop-blur-none md:shadow-premium md:backdrop-blur">
             <span class="h-2.5 w-2.5 rounded-full bg-rose-400/90"></span>
             <span class="h-2.5 w-2.5 rounded-full bg-amber-300/90"></span>
             <span class="h-2.5 w-2.5 rounded-full bg-brand-success/90"></span>
@@ -122,7 +122,7 @@ const copyFocus = highlight || solucion || problema;
             <span class={`h-2 w-12 rounded-full ${visualStyles.line}`}></span>
           </div>
           <div class="relative flex h-full min-w-0 flex-col justify-end p-5 pt-16">
-            <div class="mobile-card-lite min-w-0 rounded-3xl border border-line bg-surface-glass p-4 shadow-premium backdrop-blur-none md:backdrop-blur">
+            <div class="mobile-card-lite min-w-0 rounded-3xl border border-line bg-surface-glass p-4 shadow-none backdrop-blur-none md:shadow-premium md:backdrop-blur">
               <div class="flex min-w-0 items-center justify-between gap-3">
                 <div class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border text-lg font-black tracking-tight ${visualStyles.iconShell}`}>
                   <span aria-hidden="true" class="text-xl leading-none">{visualSystem.category.icon}</span>
@@ -154,10 +154,10 @@ const copyFocus = highlight || solucion || problema;
     </div>
   </div>
 
-  <div class="relative z-10 flex min-w-0 flex-1 flex-col p-5 sm:p-6 md:min-h-[24rem]">
+  <div class="relative z-10 flex min-h-0 min-w-0 flex-1 flex-col p-5 sm:p-6 md:min-h-[24rem]">
     <div>
       <p class="mobile-safe-text break-words text-xs font-semibold uppercase tracking-[0.06em] text-muted sm:tracking-[0.18em]">{businessLabel}</p>
-      <h3 class="mobile-safe-text mt-2 break-words text-xl font-semibold tracking-tight text-slate-50 transition group-hover:text-cyan-electric">
+      <h3 class="mobile-safe-text mt-2 break-words text-xl font-semibold tracking-tight text-slate-50 transition-colors group-hover:text-cyan-electric">
         <a href={resolvedCaseUrl} class="focus-visible:outline-none">{title}</a>
       </h3>
       {resumen && <p class="mobile-safe-text mt-3 line-clamp-3 text-sm leading-6 text-muted-soft">{resumen}</p>}
@@ -202,7 +202,7 @@ const copyFocus = highlight || solucion || problema;
     )}
 
     <div class="mt-auto flex min-w-0 flex-col items-stretch gap-3 pt-6 sm:flex-row sm:flex-wrap sm:items-center">
-      <a href={resolvedCaseUrl} class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-4 py-2.5 text-center text-sm font-semibold text-white shadow-glow sm:w-auto">
+      <a href={resolvedCaseUrl} class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-4 py-2.5 text-center text-sm font-semibold text-white shadow-none sm:w-auto md:shadow-glow">
         {ctaLabel}
         <span aria-hidden="true" class="transition duration-300 group-hover:translate-x-1">→</span>
       </a>
