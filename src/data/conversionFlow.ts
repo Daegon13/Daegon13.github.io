@@ -1,29 +1,29 @@
 export const conversionFlow = [
   {
     step: "01",
-    title: "Aterriza desde Instagram, Google o WhatsApp",
+    title: "Llegan desde Instagram, Google o un anuncio",
     description:
-      "La primera pantalla explica qué hacés, para quién es y cuál es el próximo paso.",
-    signal: "Promesa + CTA",
+      "La primera pantalla confirma el rubro, la oferta y el canal principal sin hacerlos buscar en historias destacadas.",
+    signal: "Origen del tráfico",
   },
   {
     step: "02",
-    title: "Entiende servicios, confianza y diferencial",
+    title: "Ven servicios, precio orientativo u horarios",
     description:
-      "Servicios, pruebas y preguntas se ordenan para bajar dudas antes del mensaje.",
-    signal: "Confianza + claridad",
+      "El contenido responde las dudas básicas antes del chat: qué incluye, cuándo atiende y qué módulo conviene mirar.",
+    signal: "Datos para decidir",
   },
   {
     step: "03",
-    title: "Elige una acción guiada",
-    description: "WhatsApp, reserva o pedido salen con un mensaje preparado.",
+    title: "Eligen qué quieren consultar, reservar o cotizar",
+    description: "El CTA conecta con WhatsApp, agenda o pedido según el tipo de negocio.",
     signal: "WhatsApp / agenda",
   },
   {
     step: "04",
-    title: "La demo valida qué construir después",
+    title: "Te llega un WhatsApp con más contexto",
     description:
-      "Una versión navegable permite validar mensaje, secciones y siguiente alcance.",
-    signal: "Demo → siguiente hito",
+      "El mensaje puede incluir rubro, servicio y objetivo para evitar el típico ‘hola, info’.",
+    signal: "Mensaje prearmado",
   },
 ];

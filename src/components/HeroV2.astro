@@ -5,17 +5,17 @@ import VisualBadge from './VisualBadge.astro';
 import { waLink, DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
 
 const mobileHeroBadges = [
-  { label: 'WhatsApp guiado', icon: 'message', tone: 'emerald' },
-  { label: 'Agenda', icon: 'layout', tone: 'cyan' },
-  { label: 'Panel admin', icon: 'settings', tone: 'violet' },
-  { label: 'SEO', icon: 'speed', tone: 'amber' },
+  { label: 'WhatsApp preparado', icon: 'message', tone: 'emerald' },
+  { label: 'Agenda / reservas', icon: 'layout', tone: 'cyan' },
+  { label: 'Panel editable', icon: 'settings', tone: 'violet' },
+  { label: 'SEO base', icon: 'speed', tone: 'amber' },
 ];
 
 const desktopHeroBadges = [
-  { label: 'WhatsApp guiado', icon: 'message', tone: 'emerald' },
+  { label: 'WhatsApp preparado', icon: 'message', tone: 'emerald' },
   { label: 'Agenda / reservas', icon: 'layout', tone: 'cyan' },
-  { label: 'Panel admin', icon: 'settings', tone: 'violet' },
-  { label: 'SEO + performance', icon: 'speed', tone: 'amber' },
+  { label: 'Panel editable', icon: 'settings', tone: 'violet' },
+  { label: 'Deploy publicado', icon: 'speed', tone: 'amber' },
 ];
 
 const trustBadges = [
@@ -27,7 +27,7 @@ const trustBadges = [
 const mobileFlow = [
   { label: 'Consulta por WhatsApp', icon: 'message', tone: 'emerald' },
   { label: 'Servicio elegido', icon: 'layout', tone: 'cyan' },
-  { label: 'Demo lista para compartir', icon: 'check', tone: 'violet' },
+  { label: 'Link publicado', icon: 'check', tone: 'violet' },
 ];
 ---
 <section class="relative py-12 sm:py-16 lg:overflow-x-clip lg:py-24" aria-labelledby="hero-title">
@@ -38,7 +38,7 @@ const mobileFlow = [
   <div class="grid min-w-0 items-center gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14">
     <div class="relative z-10 min-w-0 max-w-full">
       <div class="inline-flex min-w-0 max-w-full items-center gap-2 rounded-full border border-cyan-electric/25 bg-cyan-electric/10 px-3 py-2 shadow-[0_0_22px_rgba(34,211,238,0.10)] sm:gap-3 sm:px-4 lg:shadow-[0_0_32px_rgba(34,211,238,0.12)] lg:backdrop-blur">
-        <IconBubble icon="rocket" tone="cyan" size="sm" label="Conversión, tecnología y velocidad" />
+        <IconBubble icon="rocket" tone="cyan" size="sm" label="Demos, tecnología y deploy" />
         <span class="min-w-0 text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-cyan-100 sm:tracking-[0.16em] lg:tracking-[0.2em]">
           <span class="sm:hidden">Marin.dev · demos web</span>
           <span class="hidden sm:inline">Marin.dev · demos, webs y sistemas comerciales</span>
@@ -46,10 +46,10 @@ const mobileFlow = [
       </div>
 
       <h1 id="hero-title" class="mt-5 max-w-full break-words text-[clamp(2.25rem,10vw,3.5rem)] font-semibold leading-[1.04] tracking-tight text-slate-50 sm:mt-6 sm:max-w-4xl sm:text-5xl lg:text-6xl lg:leading-[1.02]">
-        Webs y demos comerciales que convierten visitas en consultas.
+        Webs y demos comerciales para convertir visitas en consultas útiles.
       </h1>
       <p class="mt-4 max-w-2xl break-words text-base leading-7 text-muted-soft sm:mt-6 sm:text-lg sm:leading-8">
-        Landings, demos y sistemas simples con WhatsApp, agenda y estructura clara para generar consultas.
+        Armo landings, demos navegables y paneles livianos con servicios visibles, WhatsApp preparado, SEO base y deploy publicado.
       </p>
 
       <div class="mt-5 grid min-w-0 max-w-full grid-cols-1 gap-2.5 min-[360px]:grid-cols-2 sm:hidden" aria-label="Funciones que puede incluir una demo o web comercial">

@@ -1,7 +1,7 @@
 export const faqs = [
   {
     q: "¿Necesito tener todo definido antes de pedir una demo?",
-    a: "No. Con tu Instagram, una web actual o una idea alcanza para ordenar la oferta, detectar fricción y proponer una primera versión clara.",
+    a: "No. Con tu Instagram, una web actual o una idea alcanza para revisar servicios, precios orientativos, horarios y proponer una primera versión navegable.",
     icon: "message",
     tone: "cyan",
   },
@@ -13,7 +13,7 @@ export const faqs = [
   },
   {
     q: "¿Cómo se manejan los pagos?",
-    a: "Trabajo con alcance claro y pagos por hitos acordados según el proyecto. La idea es que cada avance tenga una entrega revisable y no haya sorpresas al final.",
+    a: "Trabajo con alcance, entregables y pagos por hitos acordados según el proyecto. La idea es que cada avance tenga una entrega revisable y no haya sorpresas al final.",
     icon: "briefcase",
     tone: "emerald",
   },

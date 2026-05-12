@@ -6,14 +6,14 @@ export const capabilityStrip = [
     tone: "violet",
   },
   {
-    title: "WhatsApp guiado",
-    description: "Mensajes preparados para consultar.",
+    title: "WhatsApp preparado",
+    description: "Texto inicial con contexto.",
     icon: "message",
     tone: "emerald",
   },
   {
     title: "Agenda / reservas",
-    description: "Turnos y pedidos sin fricción.",
+    description: "Turnos y pedidos en un link.",
     icon: "layout",
     tone: "cyan",
   },
@@ -25,14 +25,14 @@ export const capabilityStrip = [
   },
   {
     title: "Entrega por hitos",
-    description: "Avances claros y revisables.",
+    description: "Alcance y entregables revisables.",
     icon: "speed",
     tone: "cyan",
   },
 ];
 
 export const heroSignals = [
-  { label: "Web publicada", value: "lista para compartir" },
+  { label: "Web publicada", value: "deploy activo" },
   { label: "WhatsApp listo", value: "consulta al momento" },
-  { label: "Paso a paso", value: "alcance claro" },
+  { label: "Paso a paso", value: "alcance definido" },
 ];
