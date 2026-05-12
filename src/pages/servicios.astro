@@ -6,14 +6,14 @@ import PricingPlans from '../components/PricingPlans.astro';
 import { SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
 
 const title = 'Servicios productizados – Marin.dev';
-const description = 'Demos, landings, webs con WhatsApp/agenda y sistemas simples para convertir visitas en consultas, reservas o ventas.';
+const description = 'Demos, landings, webs con WhatsApp/agenda y paneles simples para validar ofertas, recibir mejores mensajes o manejar datos básicos.';
 const url = 'https://daegon13.github.io/servicios';
 const image = '/og-default.png';
 
 const serviceHighlights = [
-  'Rangos claros antes de cotizar',
-  'Alcance definido por objetivo comercial',
-  'WhatsApp, agenda o panel cuando suma valor',
+  'Rangos de precio antes de cotizar',
+  'Alcance y límites visibles',
+  'Primer entregable definido',
 ];
 ---
 <BaseLayout {title} {description} {url} {image}>
@@ -22,10 +22,10 @@ const serviceHighlights = [
     <div class="relative mx-auto min-w-0 max-w-4xl text-center">
       <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.24em]">Servicios Marin.dev</p>
       <h1 class="mt-4 break-words text-[clamp(2.25rem,10vw,3.5rem)] font-semibold leading-[1.04] tracking-tight text-slate-50 md:text-6xl">
-        Productos digitales simples para vender, reservar u operar mejor.
+        Productos digitales simples para validar una oferta, recibir mejores mensajes o manejar datos básicos.
       </h1>
       <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-soft md:text-lg">
-        No arranco desde “necesitás una web”. Arranco desde el objetivo: validar una idea, captar consultas, ordenar reservas o crear una herramienta interna liviana.
+        No arranco desde “necesitás una web”. Arranco desde el problema real: falta contexto de precios, servicios dispersos, mensajes incompletos o datos internos en planillas.
       </p>
       <div class="mt-8 flex min-w-0 max-w-full flex-wrap justify-center gap-3">
         {serviceHighlights.map((item) => (
@@ -41,15 +41,15 @@ const serviceHighlights = [
     <div class="min-w-0">
       <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.22em]">Cómo elegir</p>
       <h2 class="mt-3 break-words text-2xl font-semibold tracking-tight text-slate-50 md:text-4xl">
-        Elegí el punto de partida. Después ajustamos el alcance real.
+        Elegí según el problema que querés resolver primero.
       </h2>
     </div>
     <div class="min-w-0 space-y-4 text-sm leading-6 text-muted-soft md:text-base">
       <p>
-        Los planes no son moldes cerrados: son formas de ordenar la conversación para que sepas qué estás comprando, qué problema resuelve y qué entregables esperar.
+        Los planes sirven para ubicar el primer entregable: una demo, una landing, un flujo de turnos por WhatsApp o un panel acotado.
       </p>
       <p>
-        Si tu negocio todavía necesita validar una propuesta, conviene una demo. Si ya tenés tráfico o campañas, una landing. Si el cuello de botella son turnos o mensajes incompletos, WhatsApp/agenda. Si el problema está adentro del negocio, un panel simple.
+        Si solo tenés Instagram o idea → Demo Comercial Express. Si ya sabés qué vendés → Landing de Conversión. Si el problema son turnos o mensajes incompletos → Web con WhatsApp / Agenda. Si el problema es interno → Sistema simple / Panel Admin.
       </p>
     </div>
   </section>
@@ -63,7 +63,7 @@ const serviceHighlights = [
   <ContactCTA
     eyebrow="¿No sabés cuál elegir?"
     title="Mandame tu rubro, Instagram o web y te recomiendo el punto de partida."
-    description="Te respondo con una recomendación concreta: demo, landing, WhatsApp/agenda o panel simple, según el objetivo y el momento de tu negocio."
+    description="Te respondo con un punto de partida y qué datos necesito: rubro, servicios, precios/rangos, turnos o campos del panel."
     primaryLabel="Consultar mi caso por WhatsApp"
     primaryMessage={SERVICE_WHATSAPP_MESSAGE('Servicios Marin.dev')}
     secondaryLabel="Ver casos"
