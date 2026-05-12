@@ -1,6 +1,6 @@
 ---
 // Insignia simple para tags/stack compatible con el tema oscuro V2
-const { label, tone = 'default' } = Astro.props;
+const { label, tone = 'default', class: className = '' } = Astro.props;
 const tones = {
   default: 'border-line bg-surface-glass text-muted-bright',
   cyan: 'border-cyan-electric/30 bg-cyan-electric/10 text-cyan-100',
@@ -10,4 +10,4 @@ const tones = {
 };
 const classes = tones[tone] ?? tones.default;
 ---
-<span class={`inline-flex min-w-0 max-w-full items-center rounded-full border px-2.5 py-0.5 text-xs font-medium shadow-sm backdrop-blur ${classes}`}><span class="min-w-0 break-words leading-5">{label}</span></span>
+<span class={`mobile-safe-pill inline-flex min-w-0 max-w-full items-center rounded-full border px-2.5 py-0.5 text-xs font-medium shadow-sm backdrop-blur-none md:backdrop-blur ${classes} ${className}`}><span class="mobile-safe-text min-w-0 flex-1 shrink break-words leading-5">{label}</span></span>

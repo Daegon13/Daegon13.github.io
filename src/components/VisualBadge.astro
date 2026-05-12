@@ -6,6 +6,7 @@ const {
   icon,
   tone = 'neutral',
   size = 'sm',
+  compact = false,
   class: className = '',
 } = Astro.props;
 
@@ -18,11 +19,11 @@ const toneClasses = {
 };
 
 const sizeClasses = {
-  sm: 'gap-1.5 px-2.5 py-1 text-[0.72rem]',
-  md: 'gap-2 px-3 py-1.5 text-xs',
+  sm: compact ? 'gap-1 px-2 py-0.5 text-[0.68rem]' : 'gap-1.5 px-2.5 py-1 text-[0.72rem]',
+  md: compact ? 'gap-1.5 px-2.5 py-1 text-[0.72rem]' : 'gap-2 px-3 py-1.5 text-xs',
 };
 ---
-<span class={`inline-flex min-w-0 max-w-full items-center rounded-full border font-semibold uppercase tracking-[0.1em] backdrop-blur sm:w-fit sm:tracking-[0.16em] ${toneClasses[tone] ?? toneClasses.neutral} ${sizeClasses[size] ?? sizeClasses.sm} ${className}`}>
+<span class={`mobile-safe-pill inline-flex min-w-0 max-w-full items-center rounded-full border font-semibold uppercase tracking-[0.06em] backdrop-blur-none sm:w-fit sm:tracking-[0.14em] md:backdrop-blur ${toneClasses[tone] ?? toneClasses.neutral} ${sizeClasses[size] ?? sizeClasses.sm} ${className}`}>
   {icon && <Icon name={icon} size="sm" />}
-  <span class="min-w-0 break-words leading-5">{label}</span>
+  <span class="mobile-safe-text min-w-0 flex-1 shrink break-words leading-5">{label}</span>
 </span>
