@@ -7,6 +7,16 @@ export const servicePlans = [
     time: "3–5 días hábiles",
     bestFor:
       "Negocios que tienen Instagram, una idea o un rubro definido y necesitan una demo navegable antes de invertir en algo grande.",
+    goodFit: [
+      "Tenés Instagram, una idea o un rubro definido.",
+      "Necesitás mostrar una versión navegable antes de invertir más.",
+      "Querés validar una oferta rápido.",
+    ],
+    badFit: [
+      "Necesitás pagos reales.",
+      "Necesitás panel admin completo.",
+      "Necesitás cargar muchos productos.",
+    ],
     description:
       "Una página/demo navegable con hero, servicios o módulos principales, CTA a WhatsApp, visual mobile y deploy publicado.",
     positioning:
@@ -57,6 +67,16 @@ export const servicePlans = [
     time: "7–12 días hábiles",
     bestFor:
       "Una oferta definida, campaña, link de bio, Google Business o servicio principal que necesita pedir cotizaciones con mejor contexto.",
+    goodFit: [
+      "Ya tenés una oferta o servicio principal.",
+      "Vas a mandar tráfico desde Instagram, Google o anuncios.",
+      "Necesitás explicar beneficios, prueba y contacto.",
+    ],
+    badFit: [
+      "Querés un e-commerce completo.",
+      "Necesitás muchas páginas de contenido.",
+      "Todavía no sabés qué querés ofrecer.",
+    ],
     description:
       "Una landing con hero, oferta, prueba/confianza, FAQ, CTA a WhatsApp o formulario, metadata SEO/share y deploy.",
     positioning:
@@ -108,6 +128,16 @@ export const servicePlans = [
     time: "10–15 días hábiles",
     bestFor:
       "Barberías, clínicas, gimnasios, restaurantes o servicios que reciben mensajes incompletos sobre horarios, precios o disponibilidad.",
+    goodFit: [
+      "Recibís mensajes sin datos suficientes.",
+      "Necesitás que el cliente elija servicio, fecha o intención.",
+      "Usás WhatsApp o una agenda externa.",
+    ],
+    badFit: [
+      "Necesitás una agenda propia compleja.",
+      "Necesitás pagos o usuarios.",
+      "Necesitás CRM avanzado.",
+    ],
     description:
       "Una web con selección de servicio, agenda externa si aplica, WhatsApp prearmado y páginas de confianza para pedir turno con datos mínimos.",
     positioning:
@@ -158,6 +188,16 @@ export const servicePlans = [
     time: "15–25 días hábiles",
     bestFor:
       "Negocios que ya tienen un flujo manual y necesitan ver o editar datos básicos sin construir una plataforma enorme.",
+    goodFit: [
+      "Hoy manejás datos en planillas.",
+      "Necesitás ver estados, filtros o tablas.",
+      "El equipo necesita editar datos básicos.",
+    ],
+    badFit: [
+      "Querés un SaaS multiempresa.",
+      "Necesitás permisos complejos.",
+      "Necesitás app móvil nativa.",
+    ],
     description:
       "Un panel acotado con tabla o dashboard, formularios, estados simples, filtros, deploy/repo y documentación breve.",
     positioning:
