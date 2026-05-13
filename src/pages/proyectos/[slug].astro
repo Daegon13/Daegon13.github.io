@@ -4,7 +4,7 @@ import Badge from '../../components/Badge.astro';
 import Container from '../../components/Container.astro';
 import GlowCard from '../../components/GlowCard.astro';
 import ProjectLinkPreview from '../../components/ProjectLinkPreview.astro';
-import { waLink } from '../../lib/contact';
+import { PROJECT_WHATSAPP_MESSAGE, waLink } from '../../lib/contact';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -51,7 +51,7 @@ const statusTone = {
   demo: 'cyan',
   concepto: 'violet',
 };
-const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [web / demo / agenda / zona editable / no sé todavía]`;
+const whatsappText = PROJECT_WHATSAPP_MESSAGE(title);
 ---
 <BaseLayout title={`${title} | Caso Marin.dev`} description={resumen} image={previewImage} url={`/proyectos/${proyecto.slug}`}>
   <Container class="py-12 sm:py-16">
@@ -167,9 +167,9 @@ const whatsappText = `Hola Diego, quiero algo parecido a ${title}.\n\nRubro: [ru
         <div class="min-w-0 rounded-3xl bg-ink/90 p-6 text-center sm:p-8">
           <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-100 sm:tracking-[0.2em]">Último paso</p>
           <h2 class="mt-3 break-words text-2xl font-semibold text-slate-50">¿Querés algo parecido para tu negocio?</h2>
-          <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-soft">Mandame tu rubro, tu Instagram o web actual y el objetivo comercial. Te digo qué demo, web o herramienta simple tendría más sentido construir primero.</p>
+          <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-soft">Mandame tu rubro, tu Instagram o web actual y qué querés conseguir. Te digo si conviene demo, landing, agenda o panel simple.</p>
           <a href={waLink(whatsappText)} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex w-full max-w-full items-center justify-center rounded-xl bg-slate-50 px-5 py-3 text-center text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-white sm:w-auto">
-            Quiero algo parecido
+            Pedir demo parecida
           </a>
         </div>
       </section>
