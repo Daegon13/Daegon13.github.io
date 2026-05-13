@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import FAQs from '../components/FAQs.astro';
 import PricingPlans from '../components/PricingPlans.astro';
-import { SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
+import { DEFAULT_WHATSAPP_MESSAGE } from '../lib/contact';
 
 const title = 'Servicios productizados – Marin.dev';
 const description = 'Demos, landings, webs con WhatsApp/agenda y paneles simples para validar ofertas, recibir mejores mensajes o manejar datos básicos.';
@@ -64,8 +64,8 @@ const serviceHighlights = [
     eyebrow="¿No sabés cuál elegir?"
     title="Mandame tu rubro, Instagram o web y te recomiendo el punto de partida."
     description="Te respondo con un punto de partida y qué datos necesito: rubro, servicios, precios/rangos, turnos o campos del panel."
-    primaryLabel="Mandar datos del proyecto"
-    primaryMessage={SERVICE_WHATSAPP_MESSAGE('Servicios Marin.dev')}
+    primaryLabel="Mandar Instagram y rubro"
+    primaryMessage={DEFAULT_WHATSAPP_MESSAGE}
     secondaryLabel="Ver casos"
     secondaryHref="/proyectos"
   />

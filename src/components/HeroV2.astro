@@ -2,7 +2,7 @@
 import BrowserMockup from './BrowserMockup.astro';
 import IconBubble from './IconBubble.astro';
 import VisualBadge from './VisualBadge.astro';
-import { waLink, DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
+import { waLink, DEFAULT_WHATSAPP_MESSAGE } from '../lib/contact';
 
 const mobileHeroBadges = [
   { label: 'WhatsApp preparado', icon: 'message', tone: 'emerald' },
@@ -65,12 +65,12 @@ const mobileFlow = [
 
       <div class="mt-7 flex min-w-0 max-w-full flex-col gap-3 sm:mt-8 sm:flex-row">
         <a
-          href={waLink(DEMO_WHATSAPP_MESSAGE)}
+          href={waLink(DEFAULT_WHATSAPP_MESSAGE)}
           target="_blank"
           rel="noopener noreferrer"
           class="premium-button inline-flex min-h-12 w-full max-w-full items-center justify-center whitespace-normal rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold leading-5 text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto sm:px-6"
         >
-          Quiero una demo para mi negocio
+          Mandar Instagram y rubro
         </a>
         <a
           href="#casos"
@@ -79,6 +79,9 @@ const mobileFlow = [
           Ver proyectos
         </a>
       </div>
+      <p class="mt-3 max-w-xl text-sm leading-6 text-muted-soft">
+        No necesitás tener el alcance definido. Con tu rubro y link actual alcanza para orientarte.
+      </p>
 
       <div class="mt-5 grid w-full max-w-full grid-cols-1 gap-2.5 sm:hidden" aria-label="Señales de confianza">
         {trustBadges.map((badge) => (
