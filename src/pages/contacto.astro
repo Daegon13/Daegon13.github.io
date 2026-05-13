@@ -130,7 +130,7 @@ const contactCards = [
             <p class="text-sm font-semibold text-slate-50">Canales directos</p>
             <div class="mt-4 space-y-3">
               {contactCards.map((card) => (
-                <a class="group/contact flex min-w-0 items-center justify-between gap-4 rounded-2xl border border-line bg-white/[0.04] px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-cyan-electric/10" href={card.href} target={card.href.startsWith("http") ? "_blank" : undefined} rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+                <a class="group/contact flex min-w-0 items-center justify-between gap-4 rounded-2xl border border-line bg-white/[0.04] px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-cyan-electric/10" href={card.href} target={card.href.startsWith("http") ? "_blank" : undefined} rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined} data-analytics-event={card.label === "WhatsApp directo" ? "contact_whatsapp_submit" : undefined} data-analytics-source="contact_page_channel" data-analytics-cta-label={card.value}>
                   <span class="min-w-0">
                     <span class="block break-words font-medium text-slate-100">{card.label}</span>
                     <span class="mt-0.5 block text-muted-soft">{card.value}</span>
@@ -142,7 +142,7 @@ const contactCards = [
           </GlowCard>
         </aside>
 
-        <form id="contacto" class="min-w-0 rounded-[2rem] border border-line bg-ink/70 p-5 shadow-premium backdrop-blur md:p-7" aria-describedby="contacto-ayuda">
+        <form id="contacto" class="min-w-0 rounded-[2rem] border border-line bg-ink/70 p-5 shadow-premium backdrop-blur md:p-7" aria-describedby="contacto-ayuda" data-analytics-submit-event="contact_whatsapp_submit" data-analytics-source="contact_page_form" data-analytics-cta-label="Mandar Instagram y rubro">
           <div class="flex min-w-0 flex-col gap-3 border-b border-line pb-5 sm:flex-row sm:items-start sm:justify-between">
             <div class="min-w-0">
               <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.18em]">Armá el mensaje</p>
@@ -242,7 +242,7 @@ const contactCards = [
             <button type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto">
               Mandar Instagram y rubro
             </button>
-            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={makeWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer">
+            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={makeWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer" data-analytics-event="contact_whatsapp_submit" data-analytics-source="contact_page_fallback_link" data-analytics-cta-label="Mandar Instagram y rubro">
               Mandar Instagram y rubro
             </a>
           </div>

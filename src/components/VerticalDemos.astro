@@ -5,6 +5,7 @@ import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
 import { verticalDemos } from '../data/verticals';
 import { getVerticalLeadMessage, waLink } from '../lib/contact';
+import { toAnalyticsSlug } from '../lib/analytics';
 ---
 <section class="min-w-0 py-14 md:py-20">
   <SectionHeader
@@ -39,6 +40,10 @@ import { getVerticalLeadMessage, waLink } from '../lib/contact';
           href={waLink(getVerticalLeadMessage(demo.name))}
           target="_blank"
           rel="noopener noreferrer"
+          data-analytics-event="vertical_demo_cta"
+          data-analytics-source="vertical_demos"
+          data-analytics-vertical-slug={toAnalyticsSlug(demo.name)}
+          data-analytics-cta-label="Pedir demo para este rubro"
           class="premium-button mt-6 inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl border border-line bg-surface-glass px-4 py-2 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-cyan-electric/35 hover:text-cyan-electric sm:w-fit"
         >
           Pedir demo para este rubro <Icon name="arrow" size="sm" />

@@ -150,5 +150,10 @@ const faqJsonLd = {
       <slot />
     </main>
     <Footer />
+    <script>
+      import { bindAnalyticsEvents } from "../lib/analytics";
+
+      bindAnalyticsEvents();
+    </script>
   </body>
 </html>

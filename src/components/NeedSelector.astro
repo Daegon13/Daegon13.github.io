@@ -4,6 +4,7 @@ import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
 import { getServiceLeadMessage, waLink } from '../lib/contact';
+import { toAnalyticsSlug } from '../lib/analytics';
 
 const options = [
   {
@@ -93,6 +94,10 @@ const options = [
             href={waLink(option.message)}
             target="_blank"
             rel="noopener noreferrer"
+            data-analytics-event="need_selector_cta"
+            data-analytics-source="need_selector"
+            data-analytics-service-slug={toAnalyticsSlug(option.recommended)}
+            data-analytics-cta-label={option.cta}
             class="premium-button mt-5 inline-flex w-full max-w-full items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-electric to-blue-electric px-5 py-3 text-center text-sm font-semibold text-ink shadow-[0_16px_40px_rgba(34,211,238,0.16)] hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(59,130,246,0.22)] sm:w-fit"
           >
             {option.cta}

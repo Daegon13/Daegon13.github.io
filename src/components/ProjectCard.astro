@@ -3,6 +3,7 @@ import Badge from './Badge.astro';
 import { projectVisualAsset } from '../lib/projectGallery';
 import { getProjectVisual } from '../lib/projectVisuals';
 import { getProjectLeadMessage, waLink } from '../lib/contact';
+import { toAnalyticsSlug } from '../lib/analytics';
 
 const FEATURE_LIMIT = 4;
 const STACK_LIMIT = 5;
@@ -89,6 +90,7 @@ const visual = projectVisualAsset({ slug, thumbnail, cover, image });
 const hasImage = visual.hasImage;
 const isStarProject = Number(priority) >= 120;
 const resolvedCaseUrl = caseUrl || `/proyectos/${slug}`;
+const analyticsProjectSlug = toAnalyticsSlug(slug || title);
 const normalizedSignals = [commercialType, sector, resumen, problema, solucion, ...features, ...stack]
   .filter(Boolean)
   .map((item) => String(item).toLowerCase());
@@ -218,11 +220,11 @@ const copyFocus = highlight || solucion || problema;
         {ctaLabel}
         <span aria-hidden="true" class="transition duration-300 group-hover:translate-x-1">→</span>
       </a>
-      <a href={waLink(getProjectLeadMessage(title))} target="_blank" rel="noreferrer" class="inline-flex w-full max-w-full items-center justify-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-center text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70 sm:w-auto">
+      <a href={waLink(getProjectLeadMessage(title))} target="_blank" rel="noreferrer" data-analytics-event="project_whatsapp_click" data-analytics-source="project_card" data-analytics-project-slug={analyticsProjectSlug} data-analytics-cta-label="Quiero algo parecido" class="inline-flex w-full max-w-full items-center justify-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-center text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70 sm:w-auto">
         Quiero algo parecido <span aria-hidden="true">↗</span>
       </a>
       {demoUrl && (
-        <a href={demoUrl} target="_blank" rel="noreferrer" class="inline-flex w-full max-w-full items-center justify-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-center text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70 sm:w-auto">
+        <a href={demoUrl} target="_blank" rel="noreferrer" data-analytics-event="project_demo_click" data-analytics-source="project_card" data-analytics-project-slug={analyticsProjectSlug} data-analytics-cta-label="Ver demo" class="inline-flex w-full max-w-full items-center justify-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-center text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70 sm:w-auto">
           Ver demo <span aria-hidden="true">↗</span>
         </a>
       )}
