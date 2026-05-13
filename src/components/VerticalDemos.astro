@@ -4,7 +4,7 @@ import Icon from './Icon.astro';
 import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
 import { verticalDemos } from '../data/verticals';
-import { VERTICAL_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
+import { getVerticalLeadMessage, waLink } from '../lib/contact';
 ---
 <section class="min-w-0 py-14 md:py-20">
   <SectionHeader
@@ -36,7 +36,7 @@ import { VERTICAL_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
         </div>
 
         <a
-          href={waLink(VERTICAL_WHATSAPP_MESSAGE(demo.name))}
+          href={waLink(getVerticalLeadMessage(demo.name))}
           target="_blank"
           rel="noopener noreferrer"
           class="premium-button mt-6 inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl border border-line bg-surface-glass px-4 py-2 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-cyan-electric/35 hover:text-cyan-electric sm:w-fit"

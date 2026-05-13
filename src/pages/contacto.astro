@@ -15,7 +15,7 @@ import {
   INSTAGRAM_URL,
   LINKEDIN_URL,
   WHATSAPP_BASE_URL,
-  WHATSAPP_NUMBER_E164,
+  makeWhatsAppUrl,
   waLink,
 } from "../lib/contact";
 
@@ -203,8 +203,8 @@ const contactCards = [
             <button type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto">
               Mandar Instagram y rubro
             </button>
-            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={WHATSAPP_BASE_URL} target="_blank" rel="noopener noreferrer">
-              Abrir WhatsApp directo
+            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={makeWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer">
+              Mandar Instagram y rubro
             </a>
           </div>
 
@@ -221,7 +221,7 @@ const contactCards = [
     </section>
   </Container>
 
-  <script define:vars={{ WHATSAPP_NUMBER_E164 }}>
+  <script define:vars={{ WHATSAPP_BASE_URL }}>
     const form = document.getElementById('contacto');
 
     form?.addEventListener('submit', (e) => {
@@ -239,24 +239,20 @@ const contactCards = [
 
       const lines = [
         `Hola Diego, quiero saber qué conviene construir primero.`,
-        '',
+        `Mi rubro es: ${rubro || '___'} y mi Instagram/web es: ${referencia || '___'}`,
+        objetivo ? `Objetivo: ${objetivo}` : null,
+        interes ? `Me interesa: ${interes}` : null,
         nombre ? `Nombre: ${nombre}` : null,
         email ? `Email: ${email}` : null,
-        `Mi rubro es: ${rubro || '[rubro]'}`,
-        `Mi Instagram/web es: ${referencia || '[Instagram, web o referencia]'}`,
-        `Hoy necesito: ${objetivo || '[más consultas / turnos / pedidos / mostrar una idea / manejar datos]'}`,
-        `Servicio que creo necesitar: ${interes || '[demo / landing / agenda / panel / no sé todavía]'}`,
         presupuesto && presupuesto !== 'Todavía no lo sé' ? `Presupuesto: ${presupuesto}` : null,
       ].filter((line) => line !== null);
 
       if (mensaje) {
-        lines.push('', `Mensaje libre: ${mensaje}`);
+        lines.push(`Nota: ${mensaje}`);
       }
 
-      lines.push('', 'Quedo atento a tu dirección: demo, landing, agenda o panel simple.');
-
       const text = lines.join(String.fromCharCode(10));
-      const href = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(text)}`;
+      const href = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(text)}`;
       window.open(href, '_blank', 'noopener,noreferrer');
     });
   </script>

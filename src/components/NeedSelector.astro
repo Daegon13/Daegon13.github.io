@@ -3,13 +3,7 @@ import GlowCard from './GlowCard.astro';
 import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
-import {
-  SELECTOR_AGENDA_WHATSAPP_MESSAGE,
-  SELECTOR_DEMO_WHATSAPP_MESSAGE,
-  SELECTOR_LANDING_WHATSAPP_MESSAGE,
-  SELECTOR_PANEL_WHATSAPP_MESSAGE,
-  waLink,
-} from '../lib/contact';
+import { getServiceLeadMessage, waLink } from '../lib/contact';
 
 const options = [
   {
@@ -17,8 +11,8 @@ const options = [
     recommended: 'Demo Comercial Express',
     explanation:
       'Sirve para mostrar una versión navegable del negocio antes de invertir en una web o sistema completo.',
-    cta: 'Pedir demo para mi rubro',
-    message: SELECTOR_DEMO_WHATSAPP_MESSAGE,
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Demo Comercial Express'),
     icon: 'rocket',
     tone: 'cyan',
   },
@@ -27,8 +21,8 @@ const options = [
     recommended: 'Landing de Conversión',
     explanation:
       'Sirve para presentar una oferta, explicar el servicio, responder dudas y llevar al cliente a WhatsApp.',
-    cta: 'Cotizar landing',
-    message: SELECTOR_LANDING_WHATSAPP_MESSAGE,
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Landing de Conversión'),
     icon: 'target',
     tone: 'emerald',
   },
@@ -37,8 +31,8 @@ const options = [
     recommended: 'Web con WhatsApp / Agenda',
     explanation:
       'Sirve cuando necesitás que el cliente elija servicio, horario, rubro o datos antes de escribir.',
-    cta: 'Consultar flujo de turnos',
-    message: SELECTOR_AGENDA_WHATSAPP_MESSAGE,
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Web con WhatsApp / Agenda'),
     icon: 'message',
     tone: 'violet',
   },
@@ -47,8 +41,8 @@ const options = [
     recommended: 'Sistema simple / Panel Admin',
     explanation:
       'Sirve para ver, editar o revisar datos básicos como productos, stock, leads, turnos o estados.',
-    cta: 'Consultar panel simple',
-    message: SELECTOR_PANEL_WHATSAPP_MESSAGE,
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Sistema simple / Panel Admin'),
     icon: 'database',
     tone: 'amber',
   },

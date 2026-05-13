@@ -2,6 +2,7 @@
 import Badge from './Badge.astro';
 import { projectVisualAsset } from '../lib/projectGallery';
 import { getProjectVisual } from '../lib/projectVisuals';
+import { getProjectLeadMessage, waLink } from '../lib/contact';
 
 const FEATURE_LIMIT = 4;
 const STACK_LIMIT = 5;
@@ -216,6 +217,9 @@ const copyFocus = highlight || solucion || problema;
       <a href={resolvedCaseUrl} class="premium-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-brand-gradient px-4 py-2.5 text-center text-sm font-semibold text-white shadow-none sm:w-auto md:shadow-glow">
         {ctaLabel}
         <span aria-hidden="true" class="transition duration-300 group-hover:translate-x-1">→</span>
+      </a>
+      <a href={waLink(getProjectLeadMessage(title))} target="_blank" rel="noreferrer" class="inline-flex w-full max-w-full items-center justify-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-center text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70 sm:w-auto">
+        Quiero algo parecido <span aria-hidden="true">↗</span>
       </a>
       {demoUrl && (
         <a href={demoUrl} target="_blank" rel="noreferrer" class="inline-flex w-full max-w-full items-center justify-center gap-1.5 rounded-2xl border border-line bg-surface-glass px-4 py-2.5 text-center text-sm font-semibold text-cyan-electric transition hover:border-line-strong hover:bg-surface-800/70 sm:w-auto">
