@@ -21,6 +21,18 @@ export const DEMO_WHATSAPP_MESSAGE =
 export const AUDIT_WHATSAPP_MESSAGE =
   "Hola Diego, te paso mi Instagram, web o idea para que me recomiendes qué construir primero.\n\nRubro: ___\nLink actual: ___\nQuiero lograr: ___\nCreo que necesito: demo / landing / agenda / panel.";
 
+export const SELECTOR_DEMO_WHATSAPP_MESSAGE =
+  "Hola Diego, creo que necesito una demo para mi rubro. Mi negocio es: ___ y mi Instagram/web es: ___";
+
+export const SELECTOR_LANDING_WHATSAPP_MESSAGE =
+  "Hola Diego, quiero cotizar una landing. Mi negocio es: ___ y el servicio/oferta principal es: ___";
+
+export const SELECTOR_AGENDA_WHATSAPP_MESSAGE =
+  "Hola Diego, quiero revisar un flujo de WhatsApp/agenda. Hoy me escriben por: ___ y necesito que el cliente mande: ___";
+
+export const SELECTOR_PANEL_WHATSAPP_MESSAGE =
+  "Hola Diego, quiero consultar por un panel simple. Hoy manejo datos en: ___ y necesito ver/editar: ___";
+
 export function SERVICE_WHATSAPP_MESSAGE(planName: string) {
   return `Hola Diego, quiero consultar por ${planName}.\n\nMi negocio es: ___\nNecesito resolver: ___\nHoy tengo: Instagram / WhatsApp / web actual.`;
 }
