@@ -7,70 +7,69 @@ import { DEMO_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
 
 const principles = [
   {
-    title: 'Primero el objetivo comercial',
+    title: 'Diseño visual, pero con función',
     description:
-      'Antes de hablar de secciones o efectos, defino qué acción tiene que lograr la web: consulta, reserva, venta, validación o confianza.',
+      'La estética tiene que ayudar a leer servicios, elegir una opción y contactar. Si una animación no ayuda a eso, se queda afuera.',
   },
   {
-    title: 'Claridad antes que decoración',
+    title: 'Primero defino qué tiene que pasar',
     description:
-      'Una interfaz puede verse premium sin volverse confusa. Ordeno mensajes, CTAs y jerarquía para que el usuario entienda rápido qué hacer.',
+      'Puede ser una consulta con datos útiles, una reserva, un pedido, una demo para vender la idea o una tabla interna para dejar de usar planillas sueltas.',
   },
   {
-    title: 'Demos que se pueden mostrar',
+    title: 'Prefiero una versión navegable',
     description:
-      'Me interesa construir versiones concretas: una landing compartible, un flujo por WhatsApp, una agenda simulada o un panel simple que ayude a vender la idea.',
+      'Un link publicado permite probar el recorrido en celular, enviarlo por WhatsApp y corregir antes de sumar funciones grandes.',
   },
 ];
 
 const problems = [
-  'Negocios que tienen Instagram activo, pero ninguna web clara para convertir visitas en consultas.',
-  'Servicios que necesitan explicar valor, precios, pasos o reservas sin depender de mensajes repetidos.',
-  'Ideas que todavía no necesitan una app enorme, pero sí una demo seria para validar, presentar o vender.',
-  'Equipos chicos que necesitan ordenar contenido, leads o procesos con herramientas simples y mantenibles.',
+  'Quitar campos innecesarios de un formulario para que la consulta llegue con lo justo y útil.',
+  'Prearmar mensajes de WhatsApp con rubro, servicio y referencia para evitar idas y vueltas.',
+  'Separar servicios por intención: reservar, pedir presupuesto, consultar disponibilidad o ver trabajos.',
+  'Decidir si conviene un sitio estático, un panel liviano o una agenda externa antes de construir de más.',
+  'Usar una demo navegable antes de encarar un SaaS completo o un backend que todavía no hace falta.',
 ];
 
 const workflow = [
   {
     step: '01',
-    title: 'Diagnóstico y alcance',
+    title: 'Recibo contexto real',
     description:
-      'Reviso el negocio, la web o Instagram actual, el objetivo principal y qué fricción está frenando consultas o reservas.',
+      'Me pasás Instagram, web actual, rubro, oferta y referencias. Con eso detecto qué pantalla o flujo tendría más impacto primero.',
   },
   {
     step: '02',
-    title: 'Propuesta y estructura',
+    title: 'Defino el primer entregable',
     description:
-      'Defino qué conviene construir primero: demo comercial, landing, agenda, panel básico o una combinación simple.',
+      'Elijo si conviene demo, landing, agenda o panel. También marco qué queda afuera para no inflar el alcance.',
   },
   {
     step: '03',
-    title: 'Construcción por hitos',
+    title: 'Armo preview navegable',
     description:
-      'Trabajo con entregas revisables, repo ordenado, deploy activo y comunicación clara para evitar sorpresas al final.',
+      'Trabajo con entregas revisables, repo ordenado y un recorrido que se pueda abrir en celular antes del cierre final.',
   },
   {
     step: '04',
-    title: 'Lanzamiento y siguiente mejora',
+    title: 'Publico y dejo mejora definida',
     description:
-      'Dejo la web lista para compartir y revisamos qué ajustar después: copy, CTAs, servicios, formularios o nuevas funciones.',
+      'Subo el deploy, reviso enlaces y dejo escrito el siguiente ajuste: copy, CTA, servicios, formulario o función nueva.',
   },
 ];
 
 const stack = [
-  'Astro',
-  'Tailwind CSS',
-  'JavaScript / TypeScript',
-  'React cuando aporta valor',
-  'MDX y contenido editable',
-  'APIs / Firebase según necesidad',
-  'GitHub Pages, Vercel o Netlify',
+  'Astro/Tailwind para sitios estáticos rápidos',
+  'React cuando hay interacción real',
+  'Firebase o API cuando hay datos que guardar',
+  'MDX si el contenido necesita edición ordenada',
+  'Vercel/GitHub Pages para publicar y compartir',
   'SEO técnico básico y performance',
 ];
 ---
 <BaseLayout
   title="Sobre mí | Marin.dev"
-  description="Conocé cómo Diego Marin piensa y construye webs, demos comerciales y sistemas simples con foco en conversión, claridad y entrega real."
+  description="Conocé cómo Diego Marin piensa y construye webs, demos comerciales, agendas y paneles simples con decisiones prácticas de producto."
 >
   <section class="relative overflow-hidden py-16 md:py-24">
     <div class="pointer-events-none absolute left-1/2 top-10 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-electric/15 blur-3xl" aria-hidden="true"></div>
@@ -81,10 +80,10 @@ const stack = [
             Diego Marin · Marin.dev
           </p>
           <h1 class="break-words mt-6 text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl">
-            No construyo solo páginas: diseño demos y sistemas simples para vender con más claridad.
+            No hago webs para llenar espacio: armo páginas, demos y paneles chicos que se pueden usar, mostrar y mejorar.
           </h1>
           <p class="mt-6 max-w-2xl text-base leading-8 text-muted-soft sm:text-lg">
-            Trabajo en webs, landings, demos comerciales y herramientas livianas para negocios que necesitan convertir visitas en consultas, reservas o ventas. Mi foco está en ordenar el mensaje, reducir fricción y entregar algo real, compartible y mantenible.
+            Trabajo con landings, demos navegables, WhatsApp/agenda y paneles livianos. La decisión no empieza por la tecnología; empieza por qué dato, acción o recorrido necesita el negocio.
           </p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
@@ -108,7 +107,7 @@ const stack = [
           <div class="flex items-center justify-between gap-4 border-b border-line pb-5">
             <div>
               <p class="text-sm font-semibold text-slate-50">Forma de trabajo</p>
-              <p class="mt-1 text-sm text-muted">Producto, conversión y entrega</p>
+              <p class="mt-1 text-sm text-muted">Producto, recorrido y entrega</p>
             </div>
             <span class="rounded-full border border-brand-success/25 bg-brand-success/10 px-3 py-1 text-xs font-semibold text-brand-success">
               Deploy activo
@@ -131,7 +130,7 @@ const stack = [
             </div>
             <div class="rounded-2xl border border-line bg-gradient-to-r from-cyan-electric/10 via-blue-electric/10 to-violet-electric/10 p-4">
               <p class="text-sm font-semibold text-slate-50">Salida esperada</p>
-              <p class="mt-1 text-sm leading-6 text-muted-soft">Una experiencia clara, rápida y lista para compartir sin inflar el alcance ni esconder el proceso.</p>
+              <p class="mt-1 text-sm leading-6 text-muted-soft">Un deploy publicado, usable en celular y con el próximo ajuste definido sin inflar el alcance.</p>
             </div>
           </div>
         </GlowCard>
@@ -158,10 +157,10 @@ const stack = [
         <div class="min-w-0">
           <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.22em]">Cómo pienso los proyectos</p>
           <h2 class="break-words mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-4xl">
-            Una buena web no empieza en el diseño: empieza en la decisión que querés facilitar.
+            Una buena web empieza por las decisiones que le ahorran trabajo al negocio.
           </h2>
           <p class="mt-4 text-base leading-7 text-muted-soft">
-            Por eso trabajo con preguntas simples: qué vendés, quién necesita confiar en vos, qué objeción aparece antes de consultar y cuál es el próximo paso más fácil para el usuario.
+            Por eso miro detalles concretos: qué campos sobran, qué mensaje de WhatsApp conviene prearmar, cuándo separar servicios y cuándo una agenda externa alcanza.
           </p>
         </div>
         <div class="grid min-w-0 gap-4 sm:grid-cols-2">
@@ -180,7 +179,7 @@ const stack = [
       <div class="mb-8 min-w-0 max-w-3xl">
         <p class="text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.22em]">Forma de trabajo</p>
         <h2 class="break-words mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-4xl">
-          Hitos claros, repo ordenado, deploy visible y comunicación directa.
+          Contexto real, preview navegable, deploy publicado y siguiente mejora definida.
         </h2>
       </div>
       <div class="grid min-w-0 gap-4 md:grid-cols-2">
@@ -207,10 +206,10 @@ const stack = [
         <div class="min-w-0">
           <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.22em]">Stack técnico</p>
           <h2 class="break-words mt-4 text-3xl font-semibold tracking-tight text-slate-50 md:text-4xl">
-            La tecnología acompaña al objetivo, no al revés.
+            Elijo herramientas según lo que hay que publicar, probar o guardar.
           </h2>
           <p class="mt-4 text-base leading-7 text-muted-soft">
-            Uso herramientas rápidas y mantenibles para construir experiencias estáticas, livianas y fáciles de publicar. Si una dependencia no suma al negocio o al mantenimiento, prefiero no agregarla.
+            Astro/Tailwind me sirve para sitios rápidos; React entra cuando la interacción lo justifica; Firebase o una API solo cuando hay datos que guardar. Si una agenda externa resuelve el turno, no construyo backend por costumbre.
           </p>
         </div>
         <GlowCard class="p-6">
@@ -228,8 +227,8 @@ const stack = [
 
   <ContactCTA
     eyebrow="Hablemos de tu caso"
-    title="Mandame tu negocio, web o Instagram y vemos qué demo tendría más sentido."
-    description="Te puedo responder con una dirección concreta: qué mostrar primero, qué CTA usar y qué versión simple conviene construir para validar o empezar a recibir consultas."
+    title="Mandame tu Instagram, web o idea y te respondo qué construiría primero."
+    description="Te puedo responder con un primer entregable posible: demo, landing, agenda o panel, y con qué dejaría para una segunda mejora."
     primaryLabel="Mandame mi web o Instagram"
     primaryMessage={DEMO_WHATSAPP_MESSAGE}
     secondaryLabel="Ver servicios"
