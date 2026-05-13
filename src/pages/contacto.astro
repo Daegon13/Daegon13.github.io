@@ -206,7 +206,8 @@ const contactCards = [
 
           <div class="mt-4">
             <label for="mensaje" class="block text-sm font-medium text-slate-100">Mensaje libre</label>
-            <textarea id="mensaje" name="mensaje" rows="5" class="mt-2 w-full rounded-2xl border border-line bg-surface/75 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Contame qué vendés, qué querés conseguir o qué referencia querés imitar."></textarea>
+            <textarea id="mensaje" name="mensaje" rows="5" maxlength="240" class="mt-2 w-full rounded-2xl border border-line bg-surface/75 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Contame qué vendés, qué querés conseguir o qué referencia querés imitar."></textarea>
+            <p class="mt-2 text-xs leading-5 text-muted-soft">Al enviar, se abre WhatsApp con estos datos. El mensaje libre está limitado a 240 caracteres.</p>
           </div>
 
           <div class="mt-6 rounded-[1.5rem] border border-line bg-white/[0.04] p-4 sm:p-5">
@@ -242,8 +243,8 @@ const contactCards = [
             <button type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto">
               Mandar Instagram y rubro
             </button>
-            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={makeWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer" data-analytics-event="contact_whatsapp_submit" data-analytics-source="contact_page_fallback_link" data-analytics-cta-label="Mandar Instagram y rubro">
-              Mandar Instagram y rubro
+            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-center text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={makeWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer" data-analytics-event="contact_whatsapp_submit" data-analytics-source="contact_page_fallback_link" data-analytics-cta-label="Abrir WhatsApp sin formulario">
+              Abrir WhatsApp sin formulario
             </a>
           </div>
 
@@ -286,8 +287,10 @@ const contactCards = [
         presupuesto && presupuesto !== 'Todavía no lo sé' ? `Presupuesto: ${presupuesto}` : null,
       ].filter((line) => line !== null);
 
-      if (mensaje) {
-        lines.push(`Nota: ${mensaje}`);
+      const nota = mensaje.slice(0, 240);
+
+      if (nota) {
+        lines.push(`Nota: ${nota}`);
       }
 
       const text = lines.join(String.fromCharCode(10));
