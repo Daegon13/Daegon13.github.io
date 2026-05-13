@@ -13,13 +13,12 @@ export const WHATSAPP_NUMBER_E164 = "59897316092"; // UY (+598) + 97316092
 export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
 
 export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hola Diego, quiero mejorar mi web o Instagram. Mi negocio es: ___ y hoy necesito: demo / landing / agenda / panel.";
+  "Hola Diego, quiero saber qué conviene construir primero. Mi rubro es: ___ y mi Instagram/web es: ___.\n\nHoy necesito: más consultas / turnos / pedidos / mostrar una idea / manejar datos.";
 
 export const DEMO_WHATSAPP_MESSAGE =
   "Hola Diego, quiero una demo para mi negocio. Mi rubro es: ___ y hoy atiendo/vendo por: Instagram / WhatsApp / web actual.";
 
-export const AUDIT_WHATSAPP_MESSAGE =
-  "Hola Diego, te paso mi Instagram, web o idea para que me recomiendes qué construir primero.\n\nRubro: ___\nLink actual: ___\nQuiero lograr: ___\nCreo que necesito: demo / landing / agenda / panel.";
+export const AUDIT_WHATSAPP_MESSAGE = DEFAULT_WHATSAPP_MESSAGE;
 
 export const SELECTOR_DEMO_WHATSAPP_MESSAGE =
   "Hola Diego, creo que necesito una demo para mi rubro. Mi negocio es: ___ y mi Instagram/web es: ___";
