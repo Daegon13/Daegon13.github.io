@@ -9,8 +9,8 @@ import { waLink } from '../lib/contact';
 <section class="min-w-0 py-14 md:py-20">
   <SectionHeader
     eyebrow="Demos por rubro"
-    title="Una demo por rubro muestra más que una explicación abstracta."
-    description="Cada rubro necesita ver servicios, precios orientativos, reservas o WhatsApp como los usaría un cliente real."
+    title="Demos por rubro: cada una muestra un módulo distinto."
+    description="Veterinaria, barbería, gimnasio o tienda no piden el mismo recorrido: cambia el módulo, el dato y el mensaje."
     icon="layout"
   />
   <div class="mt-8 grid min-w-0 gap-5 md:grid-cols-2">
@@ -20,13 +20,13 @@ import { waLink } from '../lib/contact';
           <IconBubble icon={demo.icon ?? 'briefcase'} tone={demo.tone ?? 'cyan'} size="md" />
           <div class="min-w-0 flex-1">
             <p class="text-sm font-semibold text-cyan-electric">{demo.name}</p>
-            <h3 class="mt-2 break-words text-xl font-semibold tracking-tight text-slate-50">Demo comercial lista para mostrar</h3>
+            <h3 class="mt-2 break-words text-xl font-semibold tracking-tight text-slate-50">{demo.headline ?? 'Módulo navegable del rubro'}</h3>
           </div>
         </div>
 
         <div class="mt-5 grid min-w-0 gap-3 text-sm leading-6 text-muted-soft">
           <p class="min-w-0 break-words rounded-2xl border border-line bg-ink/25 p-3 md:bg-ink/35"><strong class="text-slate-50">Hoy:</strong> {demo.problem}</p>
-          <p class="min-w-0 break-words rounded-2xl border border-line bg-ink/25 p-3 md:bg-ink/35"><strong class="text-slate-50">Se ordena con:</strong> {demo.solution}</p>
+          <p class="min-w-0 break-words rounded-2xl border border-line bg-ink/25 p-3 md:bg-ink/35"><strong class="text-slate-50">Módulo:</strong> {demo.solution}</p>
         </div>
 
         <div class="mt-5 flex min-w-0 max-w-full flex-wrap gap-2" aria-label={`Funciones para ${demo.name}`}>
