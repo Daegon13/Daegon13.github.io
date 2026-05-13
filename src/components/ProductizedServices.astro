@@ -4,7 +4,7 @@ import GlowCard from './GlowCard.astro';
 import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
 import { productizedServices } from '../data/services';
-import { waLink, SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
+import { waLink, getServiceLeadMessage } from '../lib/contact';
 
 const serviceBadges = [
   { label: '3–5 días', icon: 'speed', tone: 'cyan' },
@@ -68,12 +68,12 @@ const serviceBadges = [
           </div>
         </div>
         <a
-          href={waLink(SERVICE_WHATSAPP_MESSAGE(service.name))}
+          href={waLink(getServiceLeadMessage(service.name))}
           target="_blank"
           rel="noopener noreferrer"
           class="premium-button mt-6 inline-flex w-full max-w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
         >
-          {service.cta}
+          Consultar este paquete
         </a>
       </GlowCard>
     ))}

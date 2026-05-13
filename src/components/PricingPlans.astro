@@ -6,7 +6,7 @@ import IconBubble from './IconBubble.astro';
 import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
 import { servicePlans as plans } from '../data/services';
-import { SERVICE_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
+import { getServiceLeadMessage, waLink } from '../lib/contact';
 
 const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
   name,
@@ -148,7 +148,7 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
         <div class="mt-auto pt-6">
           <p class="mb-3 text-xs font-medium text-muted-soft">Enfoque: {plan.comparison}</p>
           <a
-            href={waLink(SERVICE_WHATSAPP_MESSAGE(plan.name))}
+            href={waLink(getServiceLeadMessage(plan.name))}
             target="_blank"
             rel="noopener noreferrer"
             class={`inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-center text-sm font-semibold transition hover:-translate-y-0.5 ${
@@ -158,7 +158,7 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
             }`}
             aria-label={`Consultar el plan ${plan.name} por WhatsApp`}
           >
-            <span>{plan.cta}</span>
+            <span>Consultar este paquete</span>
             <Icon name="arrow" size="sm" />
           </a>
         </div>
