@@ -7,6 +7,7 @@ import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
 import { servicePlans as plans } from '../data/services';
 import { getServiceLeadMessage, waLink } from '../lib/contact';
+import { toAnalyticsSlug } from '../lib/analytics';
 
 const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
   name,
@@ -157,6 +158,10 @@ const chooserItems = plans.map(({ name, chooser, comparison, tone }) => ({
                 : 'border border-line bg-surface-glass text-slate-50 hover:border-line-strong hover:text-cyan-electric'
             }`}
             aria-label={`Consultar el plan ${plan.name} por WhatsApp`}
+            data-analytics-event="service_cta"
+            data-analytics-source="pricing_plans"
+            data-analytics-service-slug={toAnalyticsSlug(plan.name)}
+            data-analytics-cta-label="Consultar este paquete"
           >
             <span>Consultar este paquete</span>
             <Icon name="arrow" size="sm" />

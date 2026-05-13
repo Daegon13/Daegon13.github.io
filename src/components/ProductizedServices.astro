@@ -5,6 +5,7 @@ import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
 import { productizedServices } from '../data/services';
 import { waLink, getServiceLeadMessage } from '../lib/contact';
+import { toAnalyticsSlug } from '../lib/analytics';
 
 const serviceBadges = [
   { label: '3–5 días', icon: 'speed', tone: 'cyan' },
@@ -71,6 +72,10 @@ const serviceBadges = [
           href={waLink(getServiceLeadMessage(service.name))}
           target="_blank"
           rel="noopener noreferrer"
+          data-analytics-event="service_cta"
+          data-analytics-source="productized_services"
+          data-analytics-service-slug={toAnalyticsSlug(service.name)}
+          data-analytics-cta-label="Consultar este paquete"
           class="premium-button mt-6 inline-flex w-full max-w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
         >
           Consultar este paquete

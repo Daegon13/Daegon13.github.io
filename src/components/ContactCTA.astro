@@ -87,6 +87,9 @@ const contactMethods = [
             href={waLink(primaryMessage)}
             target="_blank"
             rel="noopener noreferrer"
+            data-analytics-event="contact_whatsapp_submit"
+            data-analytics-source="contact_cta"
+            data-analytics-cta-label={primaryLabel}
             class="premium-button inline-flex min-h-12 w-full max-w-full items-center justify-center gap-2 whitespace-normal rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold leading-5 text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto sm:min-w-64 sm:px-6"
           >
             <Icon name="message" size="sm" />
@@ -110,6 +113,9 @@ const contactMethods = [
               target={method.external ? '_blank' : undefined}
               rel={method.external ? 'noopener noreferrer' : undefined}
               class="group min-w-0 rounded-2xl border border-line bg-surface-glass p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:bg-surface-850/80"
+              data-analytics-event={method.label === 'WhatsApp' ? 'contact_whatsapp_submit' : undefined}
+              data-analytics-source="contact_cta_method"
+              data-analytics-cta-label={method.cta}
             >
               <span class={`inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br ${method.tone} text-cyan-100 ring-1 ring-white/10`}>
                 <Icon name={method.icon} size="sm" />
