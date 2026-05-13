@@ -13,15 +13,24 @@ export const WHATSAPP_NUMBER_E164 = "59897316092"; // UY (+598) + 97316092
 export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
 
 export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hola Diego, quiero una demo/web para mi negocio.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [landing / demo / agenda / panel / no sé todavía]\nLink de referencia: [Instagram o web]";
+  "Hola Diego, quiero mejorar mi web o Instagram. Mi negocio es: ___ y hoy necesito: demo / landing / agenda / panel.";
 
-export const DEMO_WHATSAPP_MESSAGE = DEFAULT_WHATSAPP_MESSAGE;
+export const DEMO_WHATSAPP_MESSAGE =
+  "Hola Diego, quiero una demo para mi negocio. Mi rubro es: ___ y hoy atiendo/vendo por: Instagram / WhatsApp / web actual.";
 
 export const AUDIT_WHATSAPP_MESSAGE =
-  "Hola Diego, quiero que revises mi web o Instagram.\n\nLink: [pegá acá tu web o Instagram]\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nPrincipal problema hoy: [breve]";
+  "Hola Diego, te paso mi Instagram, web o idea para que me recomiendes qué construir primero.\n\nRubro: ___\nLink actual: ___\nQuiero lograr: ___\nCreo que necesito: demo / landing / agenda / panel.";
 
 export function SERVICE_WHATSAPP_MESSAGE(planName: string) {
-  return `Hola Diego, quiero consultar este paquete: ${planName}.\n\nRubro: [rubro]\nObjetivo: [más consultas / reservas / ventas]\nHoy tengo: [Instagram / web / nada]\nMe interesa: [landing / demo / agenda / panel / no sé todavía]\nLink de referencia: [Instagram o web]`;
+  return `Hola Diego, quiero consultar por ${planName}.\n\nMi negocio es: ___\nNecesito resolver: ___\nHoy tengo: Instagram / WhatsApp / web actual.`;
+}
+
+export function PROJECT_WHATSAPP_MESSAGE(projectName: string) {
+  return `Hola Diego, vi el caso de ${projectName}. Quiero algo parecido para mi negocio.\n\nMi rubro es: ___.`;
+}
+
+export function VERTICAL_WHATSAPP_MESSAGE(rubro: string) {
+  return `Hola Diego, quiero una demo para ${rubro}.\n\nHoy atiendo/vendo por: Instagram / WhatsApp / web actual.`;
 }
 
 export function waLink(text?: string) {

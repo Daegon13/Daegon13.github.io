@@ -11,10 +11,10 @@ import {
 } from '../lib/contact';
 
 const {
-  eyebrow = 'Próximo paso',
+  eyebrow = 'Brief por WhatsApp',
   title = 'Pasame tu idea y vemos qué conviene construir primero',
-  description = 'Mandame tu Instagram, web actual o una explicación corta. Te digo qué camino conviene: landing, demo, web o sistema simple.',
-  primaryLabel = 'Enviar mensaje por WhatsApp',
+  description = 'Mandame tu Instagram, web actual o una explicación corta. Te respondo con una dirección posible: demo, landing, agenda o panel simple.',
+  primaryLabel = 'Enviar brief por WhatsApp',
   primaryMessage = AUDIT_WHATSAPP_MESSAGE,
   secondaryLabel = 'Ver proyectos',
   secondaryHref = '/proyectos',
@@ -29,8 +29,8 @@ const trustBadges = [
 const contactMethods = [
   {
     label: 'WhatsApp',
-    description: 'Para cotizar o pasarme tu idea.',
-    cta: 'Escribir',
+    description: 'Para mandar rubro, link y objetivo.',
+    cta: 'Enviar brief',
     href: waLink(primaryMessage),
     icon: 'message',
     external: true,
@@ -48,7 +48,7 @@ const contactMethods = [
   },
   EMAIL && {
     label: 'Email',
-    description: 'Propuestas o archivos.',
+    description: 'Archivos o seguimiento.',
     cta: 'Enviar email',
     href: `mailto:${EMAIL}`,
     icon: 'mail',
@@ -135,12 +135,12 @@ const contactMethods = [
 
           <div class="space-y-4 py-5">
             <div class="max-w-[86%] rounded-2xl rounded-tl-sm border border-line bg-surface-glass p-4 text-left">
-              <p class="text-sm leading-6 text-slate-100">Hola, tengo un negocio y quiero mejorar mi web…</p>
+              <p class="text-sm leading-6 text-slate-100">Hola, te paso mi Instagram y rubro…</p>
               <p class="mt-2 text-xs text-muted">Cliente · 10:24</p>
             </div>
             <div class="ml-auto max-w-[88%] rounded-2xl rounded-tr-sm border border-cyan-electric/20 bg-cyan-electric/10 p-4 text-left">
-              <p class="text-sm leading-6 text-cyan-50">Perfecto, pasame tu Instagram o web actual y te digo qué conviene.</p>
-              <p class="mt-2 text-xs text-cyan-100/70">Marin.dev · respuesta guiada</p>
+              <p class="text-sm leading-6 text-cyan-50">Perfecto, con eso te propongo demo, landing, agenda o panel.</p>
+              <p class="mt-2 text-xs text-cyan-100/70">Marin.dev · dirección inicial</p>
             </div>
           </div>
 
@@ -151,7 +151,7 @@ const contactMethods = [
             </div>
             <div class="rounded-2xl border border-line bg-surface-glass p-3">
               <p class="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">Salida</p>
-              <p class="mt-1 text-sm font-semibold text-slate-50">Primer entregable</p>
+              <p class="mt-1 text-sm font-semibold text-slate-50">Alcance sugerido</p>
             </div>
           </div>
         </div>
