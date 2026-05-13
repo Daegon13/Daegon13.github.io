@@ -10,6 +10,7 @@ import SocialProofStrip from '../components/SocialProofStrip.astro';
 import VerticalDemos from '../components/VerticalDemos.astro';
 import OutcomeGrid from '../components/OutcomeGrid.astro';
 import NeedSelector from '../components/NeedSelector.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 import ConversionFlow from '../components/ConversionFlow.astro';
 import { getCollection } from 'astro:content';
 import { DEFAULT_WHATSAPP_MESSAGE } from '../lib/contact';
@@ -36,6 +37,7 @@ const homeCases = destacados.length > 0 ? destacados : proyectos.slice(0, HOME_C
 
   <OutcomeGrid />
   <NeedSelector />
+  <BeforeAfter />
   <ConversionFlow />
 
   <FeaturedCases projects={homeCases} />
