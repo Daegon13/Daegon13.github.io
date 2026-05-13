@@ -22,6 +22,7 @@ const {
   businessType = '',
   resultLabel = '',
   highlight = '',
+  capacidad = '',
   visualTone = '',
   badges = [],
   status = '',
@@ -75,6 +76,7 @@ const businessLabel = businessType || sector || commercialType;
 const normalizeCopy = (value = '') => String(value).trim().replace(/\s+/g, ' ');
 const highlightCopy = normalizeCopy(highlight);
 const benefitOptions = [
+  { label: 'Demuestra', value: capacidad },
   { label: 'Qué permite', value: resultLabel },
   { label: 'Qué demuestra', value: impacto },
   { label: 'Resultado', value: resultado },

@@ -21,6 +21,7 @@ const proyectos = defineCollection({
     businessType: z.string().optional(),
     resultLabel: z.string().optional(),
     highlight: z.string().optional(),
+    capacidad: z.string().optional(),
     visualTone: z
       .enum(["cyan", "violet", "emerald", "amber", "rose", "neutral"])
       .optional(),
