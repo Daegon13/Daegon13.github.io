@@ -1,0 +1,96 @@
+---
+import GlowCard from './GlowCard.astro';
+import Icon from './Icon.astro';
+import IconBubble from './IconBubble.astro';
+import SectionHeader from './SectionHeader.astro';
+import VisualBadge from './VisualBadge.astro';
+import { DEFAULT_WHATSAPP_MESSAGE, waLink } from '../lib/contact';
+
+const comparisons = [
+  {
+    label: 'Instagram / servicios',
+    icon: 'layout',
+    tone: 'cyan',
+    before: 'Servicios en historias, precios por DM y respuestas repetidas.',
+    after: 'Link con servicios, precios orientativos, FAQ y WhatsApp preparado.',
+  },
+  {
+    label: 'Reservas / turnos',
+    icon: 'message',
+    tone: 'violet',
+    before: 'Mensajes incompletos: “hola, info”, sin servicio, fecha ni horario.',
+    after: 'Flujo con servicio, agenda o mensaje prearmado antes de abrir WhatsApp.',
+  },
+  {
+    label: 'Datos / operación',
+    icon: 'database',
+    tone: 'amber',
+    before: 'Productos, stock o leads en planillas que nadie revisa a tiempo.',
+    after: 'Panel simple con tabla, estados, filtros y acciones básicas.',
+  },
+];
+---
+<section class="relative min-w-0 border-t border-line/70 py-14 md:py-20">
+  <div class="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] lg:items-start">
+    <div class="min-w-0">
+      <SectionHeader
+        eyebrow="Antes / Después"
+        title="Lo que cambia cuando el negocio tiene un link útil"
+        description="Una buena web no tiene que explicar todo: tiene que mostrar lo necesario para que el cliente llegue mejor preparado."
+        icon="flow"
+      />
+
+      <div class="mt-6 rounded-3xl border border-line bg-surface-glass p-4 sm:p-5">
+        <p class="mobile-safe-text text-sm leading-6 text-muted-soft">
+          Te digo si conviene demo, landing, agenda o panel.
+        </p>
+        <a
+          href={waLink(DEFAULT_WHATSAPP_MESSAGE)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="premium-button mt-4 inline-flex w-full max-w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-electric to-blue-electric px-5 py-3 text-center text-sm font-semibold text-ink shadow-[0_16px_40px_rgba(34,211,238,0.16)] hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(59,130,246,0.22)] sm:w-fit"
+        >
+          Mandar Instagram y rubro
+          <Icon name="arrow" size="sm" />
+        </a>
+      </div>
+    </div>
+
+    <div class="grid min-w-0 gap-4">
+      {comparisons.map((item) => (
+        <GlowCard class="p-4 sm:p-5">
+          <div class="flex min-w-0 items-start gap-3 sm:gap-4">
+            <IconBubble icon={item.icon} tone={item.tone} size="sm" label={item.label} />
+
+            <div class="min-w-0 flex-1">
+              <div class="flex min-w-0 flex-wrap items-center gap-2">
+                <h3 class="mobile-safe-text break-words text-base font-semibold tracking-tight text-slate-50 sm:text-lg">
+                  {item.label}
+                </h3>
+                <VisualBadge label="Caso típico" tone={item.tone} compact />
+              </div>
+
+              <div class="mt-4 grid min-w-0 gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-stretch">
+                <div class="min-w-0 rounded-2xl border border-line bg-ink/45 p-4">
+                  <p class="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">Antes</p>
+                  <p class="mobile-safe-text mt-2 text-sm leading-6 text-slate-300">{item.before}</p>
+                </div>
+
+                <div class="flex items-center justify-center text-muted-soft md:px-1" aria-hidden="true">
+                  <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface-glass">
+                    <Icon name="arrow" size="sm" />
+                  </span>
+                </div>
+
+                <div class={`min-w-0 rounded-2xl border p-4 ${item.tone === 'violet' ? 'border-violet-electric/25 bg-violet-electric/10' : item.tone === 'amber' ? 'border-amber-300/25 bg-amber-300/10' : 'border-cyan-electric/25 bg-cyan-electric/10'}`}>
+                  <p class={`text-[0.68rem] font-semibold uppercase tracking-[0.16em] ${item.tone === 'violet' ? 'text-violet-100' : item.tone === 'amber' ? 'text-amber-100' : 'text-cyan-100'}`}>Después</p>
+                  <p class="mobile-safe-text mt-2 text-sm leading-6 text-slate-50">{item.after}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </GlowCard>
+      ))}
+    </div>
+  </div>
+</section>

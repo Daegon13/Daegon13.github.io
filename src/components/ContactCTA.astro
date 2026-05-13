@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
 import {
-  AUDIT_WHATSAPP_MESSAGE,
+  DEFAULT_WHATSAPP_MESSAGE,
   EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
@@ -14,8 +14,8 @@ const {
   eyebrow = 'Brief por WhatsApp',
   title = 'Pasame tu idea y vemos qué conviene construir primero',
   description = 'Mandame tu Instagram, web actual o una explicación corta. Te respondo con una dirección posible: demo, landing, agenda o panel simple.',
-  primaryLabel = 'Enviar brief por WhatsApp',
-  primaryMessage = AUDIT_WHATSAPP_MESSAGE,
+  primaryLabel = 'Mandar Instagram y rubro',
+  primaryMessage = DEFAULT_WHATSAPP_MESSAGE,
   secondaryLabel = 'Ver proyectos',
   secondaryHref = '/proyectos',
 } = Astro.props;
@@ -30,7 +30,7 @@ const contactMethods = [
   {
     label: 'WhatsApp',
     description: 'Para mandar rubro, link y objetivo.',
-    cta: 'Enviar brief',
+    cta: 'Mandar datos',
     href: waLink(primaryMessage),
     icon: 'message',
     external: true,
@@ -78,11 +78,18 @@ const contactMethods = [
           {trustBadges.map((badge) => <VisualBadge label={badge.label} icon={badge.icon} tone={badge.tone} />)}
         </div>
 
-        <div class="mt-8 flex min-w-0 max-w-full flex-col gap-3 sm:flex-row">
+        <p class="mt-5 max-w-xl text-sm leading-6 text-muted-soft">
+          No necesitás tener el alcance definido. Con tu rubro y link actual alcanza para orientarte.
+        </p>
+
+        <div class="mt-6 flex min-w-0 max-w-full flex-col gap-3 sm:flex-row">
           <a
             href={waLink(primaryMessage)}
             target="_blank"
             rel="noopener noreferrer"
+            data-analytics-event="contact_whatsapp_submit"
+            data-analytics-source="contact_cta"
+            data-analytics-cta-label={primaryLabel}
             class="premium-button inline-flex min-h-12 w-full max-w-full items-center justify-center gap-2 whitespace-normal rounded-2xl bg-brand-gradient px-5 py-3 text-center text-sm font-semibold leading-5 text-white shadow-glow hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto sm:min-w-64 sm:px-6"
           >
             <Icon name="message" size="sm" />
@@ -106,6 +113,9 @@ const contactMethods = [
               target={method.external ? '_blank' : undefined}
               rel={method.external ? 'noopener noreferrer' : undefined}
               class="group min-w-0 rounded-2xl border border-line bg-surface-glass p-4 text-left transition duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:bg-surface-850/80"
+              data-analytics-event={method.label === 'WhatsApp' ? 'contact_whatsapp_submit' : undefined}
+              data-analytics-source="contact_cta_method"
+              data-analytics-cta-label={method.cta}
             >
               <span class={`inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br ${method.tone} text-cyan-100 ring-1 ring-white/10`}>
                 <Icon name={method.icon} size="sm" />

@@ -12,28 +12,59 @@ export const INSTAGRAM_URL = "https://www.instagram.com/marin_dev_/";
 export const WHATSAPP_NUMBER_E164 = "59897316092"; // UY (+598) + 97316092
 export const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER_E164}`;
 
-export const DEFAULT_WHATSAPP_MESSAGE =
-  "Hola Diego, quiero mejorar mi web o Instagram. Mi negocio es: ___ y hoy necesito: demo / landing / agenda / panel.";
+const cleanContext = (value: string) => value.trim().replace(/\s+/g, " ");
 
-export const DEMO_WHATSAPP_MESSAGE =
-  "Hola Diego, quiero una demo para mi negocio. Mi rubro es: ___ y hoy atiendo/vendo por: Instagram / WhatsApp / web actual.";
+export function makeWhatsAppUrl(message = getGlobalLeadMessage()) {
+  const text = cleanContext(message);
+  return `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(text)}`;
+}
 
-export const AUDIT_WHATSAPP_MESSAGE =
-  "Hola Diego, te paso mi Instagram, web o idea para que me recomiendes qué construir primero.\n\nRubro: ___\nLink actual: ___\nQuiero lograr: ___\nCreo que necesito: demo / landing / agenda / panel.";
+export function getGlobalLeadMessage() {
+  return "Hola Diego, quiero saber qué conviene construir primero. Mi rubro es: ___ y mi Instagram/web es: ___";
+}
+
+export function getServiceLeadMessage(serviceName: string) {
+  const service = cleanContext(serviceName || "este paquete");
+  return `Hola Diego, quiero consultar por ${service}. Mi negocio es: ___ y hoy necesito resolver: ___`;
+}
+
+export function getVerticalLeadMessage(verticalName: string) {
+  const vertical = cleanContext(verticalName || "mi rubro");
+  return `Hola Diego, quiero una demo para ${vertical}. Mi Instagram/web es: ___`;
+}
+
+export function getProjectLeadMessage(projectName: string) {
+  const project = cleanContext(projectName || "un caso del portfolio");
+  return `Hola Diego, vi el caso ${project} y quiero algo parecido para mi negocio. Mi rubro es: ___`;
+}
+
+export const DEFAULT_WHATSAPP_MESSAGE = getGlobalLeadMessage();
+export const DEMO_WHATSAPP_MESSAGE = getGlobalLeadMessage();
+export const AUDIT_WHATSAPP_MESSAGE = getGlobalLeadMessage();
+
+export const SELECTOR_DEMO_WHATSAPP_MESSAGE = getServiceLeadMessage(
+  "Demo Comercial Express",
+);
+export const SELECTOR_LANDING_WHATSAPP_MESSAGE = getServiceLeadMessage(
+  "Landing de Conversión",
+);
+export const SELECTOR_AGENDA_WHATSAPP_MESSAGE = getServiceLeadMessage(
+  "Web con WhatsApp / Agenda",
+);
+export const SELECTOR_PANEL_WHATSAPP_MESSAGE = getServiceLeadMessage(
+  "Sistema simple / Panel Admin",
+);
 
 export function SERVICE_WHATSAPP_MESSAGE(planName: string) {
-  return `Hola Diego, quiero consultar por ${planName}.\n\nMi negocio es: ___\nNecesito resolver: ___\nHoy tengo: Instagram / WhatsApp / web actual.`;
+  return getServiceLeadMessage(planName);
 }
 
 export function PROJECT_WHATSAPP_MESSAGE(projectName: string) {
-  return `Hola Diego, vi el caso de ${projectName}. Quiero algo parecido para mi negocio.\n\nMi rubro es: ___.`;
+  return getProjectLeadMessage(projectName);
 }
 
 export function VERTICAL_WHATSAPP_MESSAGE(rubro: string) {
-  return `Hola Diego, quiero una demo para ${rubro}.\n\nHoy atiendo/vendo por: Instagram / WhatsApp / web actual.`;
+  return getVerticalLeadMessage(rubro);
 }
 
-export function waLink(text?: string) {
-  const msg = (text ?? DEFAULT_WHATSAPP_MESSAGE).trim();
-  return `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(msg)}`;
-}
+export const waLink = makeWhatsAppUrl;

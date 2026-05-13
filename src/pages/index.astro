@@ -9,9 +9,11 @@ import ProductizedServices from '../components/ProductizedServices.astro';
 import SocialProofStrip from '../components/SocialProofStrip.astro';
 import VerticalDemos from '../components/VerticalDemos.astro';
 import OutcomeGrid from '../components/OutcomeGrid.astro';
+import NeedSelector from '../components/NeedSelector.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 import ConversionFlow from '../components/ConversionFlow.astro';
 import { getCollection } from 'astro:content';
-import { DEMO_WHATSAPP_MESSAGE } from '../lib/contact';
+import { DEFAULT_WHATSAPP_MESSAGE } from '../lib/contact';
 
 let proyectos = await getCollection('proyectos');
 proyectos = proyectos.sort((a, b) => {
@@ -34,6 +36,8 @@ const homeCases = destacados.length > 0 ? destacados : proyectos.slice(0, HOME_C
   <SocialProofStrip />
 
   <OutcomeGrid />
+  <NeedSelector />
+  <BeforeAfter />
   <ConversionFlow />
 
   <FeaturedCases projects={homeCases} />
@@ -45,8 +49,8 @@ const homeCases = destacados.length > 0 ? destacados : proyectos.slice(0, HOME_C
     eyebrow="Listo para empezar"
     title="Mandame tu Instagram o web y te digo qué conviene construir primero."
     description="Puede ser una demo, landing, agenda o panel: elegimos el primer entregable según tus servicios, precios, horarios y datos para cotizar."
-    primaryLabel="Quiero una demo para mi negocio"
-    primaryMessage={DEMO_WHATSAPP_MESSAGE}
+    primaryLabel="Mandar Instagram y rubro"
+    primaryMessage={DEFAULT_WHATSAPP_MESSAGE}
     secondaryLabel="Ver demos por rubro"
     secondaryHref="#casos"
   />

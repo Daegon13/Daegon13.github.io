@@ -4,7 +4,8 @@ import GlowCard from './GlowCard.astro';
 import SectionHeader from './SectionHeader.astro';
 import VisualBadge from './VisualBadge.astro';
 import { productizedServices } from '../data/services';
-import { waLink, SERVICE_WHATSAPP_MESSAGE } from '../lib/contact';
+import { waLink, getServiceLeadMessage } from '../lib/contact';
+import { toAnalyticsSlug } from '../lib/analytics';
 
 const serviceBadges = [
   { label: '3–5 días', icon: 'speed', tone: 'cyan' },
@@ -43,17 +44,41 @@ const serviceBadges = [
             </li>
           ))}
         </ul>
-        <div class="mt-5 space-y-3 rounded-2xl border border-line bg-ink/35 p-4 text-xs leading-5 text-muted-soft">
-          <p><span class="font-semibold text-slate-200">Necesito:</span> {service.clientInput.slice(0, 2).join(' · ')}</p>
-          <p><span class="font-semibold text-slate-200">No incluye:</span> {service.notIncluded.slice(0, 2).join(' · ')}</p>
+        <div class="mt-5 grid gap-3 text-xs leading-5 text-muted-soft sm:grid-cols-2 xl:grid-cols-1">
+          <div class="rounded-2xl border border-brand-success/20 bg-brand-success/5 p-4">
+            <p class="font-semibold uppercase tracking-[0.12em] text-brand-success">Conviene si</p>
+            <ul class="mt-2 space-y-1.5">
+              {service.goodFit.slice(0, 2).map((item) => (
+                <li class="flex min-w-0 gap-2">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-success" aria-hidden="true"></span>
+                  <span class="min-w-0 break-words">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-amber-300/20 bg-amber-300/5 p-4">
+            <p class="font-semibold uppercase tracking-[0.12em] text-amber-200">No conviene si</p>
+            <ul class="mt-2 space-y-1.5">
+              {service.badFit.slice(0, 2).map((item) => (
+                <li class="flex min-w-0 gap-2">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-200/80" aria-hidden="true"></span>
+                  <span class="min-w-0 break-words">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <a
-          href={waLink(SERVICE_WHATSAPP_MESSAGE(service.name))}
+          href={waLink(getServiceLeadMessage(service.name))}
           target="_blank"
           rel="noopener noreferrer"
+          data-analytics-event="service_cta"
+          data-analytics-source="productized_services"
+          data-analytics-service-slug={toAnalyticsSlug(service.name)}
+          data-analytics-cta-label="Consultar este paquete"
           class="premium-button mt-6 inline-flex w-full max-w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric"
         >
-          {service.cta}
+          Consultar este paquete
         </a>
       </GlowCard>
     ))}

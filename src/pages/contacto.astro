@@ -8,14 +8,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Container from "../components/Container.astro";
 import GlowCard from "../components/GlowCard.astro";
 import {
-  AUDIT_WHATSAPP_MESSAGE,
+  DEFAULT_WHATSAPP_MESSAGE,
   EMAIL,
   GITHUB_URL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   LINKEDIN_URL,
   WHATSAPP_BASE_URL,
-  WHATSAPP_NUMBER_E164,
+  makeWhatsAppUrl,
   waLink,
 } from "../lib/contact";
 
@@ -49,11 +49,25 @@ const budgetRanges = [
   "Más de USD 1000",
 ];
 
+const responseItems = [
+  "Qué conviene construir primero: demo, landing, agenda o panel.",
+  "Qué incluiría la primera versión.",
+  "Rango estimado y posibles hitos.",
+  "Qué necesito de vos para empezar.",
+];
+
+const responseBadges = [
+  "Alcance inicial",
+  "Rango estimado",
+  "Primer hito",
+  "Datos necesarios",
+];
+
 const contactCards = [
   {
     label: "WhatsApp directo",
-    value: "Enviar brief guiado",
-    href: waLink(AUDIT_WHATSAPP_MESSAGE),
+    value: "Mandar Instagram y rubro",
+    href: waLink(DEFAULT_WHATSAPP_MESSAGE),
   },
   {
     label: "Instagram",
@@ -116,7 +130,7 @@ const contactCards = [
             <p class="text-sm font-semibold text-slate-50">Canales directos</p>
             <div class="mt-4 space-y-3">
               {contactCards.map((card) => (
-                <a class="group/contact flex min-w-0 items-center justify-between gap-4 rounded-2xl border border-line bg-white/[0.04] px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-cyan-electric/10" href={card.href} target={card.href.startsWith("http") ? "_blank" : undefined} rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+                <a class="group/contact flex min-w-0 items-center justify-between gap-4 rounded-2xl border border-line bg-white/[0.04] px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:border-cyan-electric/40 hover:bg-cyan-electric/10" href={card.href} target={card.href.startsWith("http") ? "_blank" : undefined} rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined} data-analytics-event={card.label === "WhatsApp directo" ? "contact_whatsapp_submit" : undefined} data-analytics-source="contact_page_channel" data-analytics-cta-label={card.value}>
                   <span class="min-w-0">
                     <span class="block break-words font-medium text-slate-100">{card.label}</span>
                     <span class="mt-0.5 block text-muted-soft">{card.value}</span>
@@ -128,7 +142,7 @@ const contactCards = [
           </GlowCard>
         </aside>
 
-        <form id="contacto" class="min-w-0 rounded-[2rem] border border-line bg-ink/70 p-5 shadow-premium backdrop-blur md:p-7" aria-describedby="contacto-ayuda">
+        <form id="contacto" class="min-w-0 rounded-[2rem] border border-line bg-ink/70 p-5 shadow-premium backdrop-blur md:p-7" aria-describedby="contacto-ayuda" data-analytics-submit-event="contact_whatsapp_submit" data-analytics-source="contact_page_form" data-analytics-cta-label="Mandar Instagram y rubro">
           <div class="flex min-w-0 flex-col gap-3 border-b border-line pb-5 sm:flex-row sm:items-start sm:justify-between">
             <div class="min-w-0">
               <p class="break-words text-sm font-semibold uppercase tracking-[0.1em] text-cyan-electric sm:tracking-[0.18em]">Armá el mensaje</p>
@@ -192,7 +206,33 @@ const contactCards = [
 
           <div class="mt-4">
             <label for="mensaje" class="block text-sm font-medium text-slate-100">Mensaje libre</label>
-            <textarea id="mensaje" name="mensaje" rows="5" class="mt-2 w-full rounded-2xl border border-line bg-surface/75 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Contame qué vendés, qué querés conseguir o qué referencia querés imitar."></textarea>
+            <textarea id="mensaje" name="mensaje" rows="5" maxlength="240" class="mt-2 w-full rounded-2xl border border-line bg-surface/75 px-4 py-3 text-slate-50 outline-none transition placeholder:text-muted focus:border-cyan-electric/60 focus:ring-2 focus:ring-cyan-electric/20" placeholder="Contame qué vendés, qué querés conseguir o qué referencia querés imitar."></textarea>
+            <p class="mt-2 text-xs leading-5 text-muted-soft">Al enviar, se abre WhatsApp con estos datos. El mensaje libre está limitado a 240 caracteres.</p>
+          </div>
+
+          <div class="mt-6 rounded-[1.5rem] border border-line bg-white/[0.04] p-4 sm:p-5">
+            <div class="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div class="min-w-0">
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-electric">Después del mensaje</p>
+                <h3 class="mt-2 break-words text-lg font-semibold tracking-tight text-slate-50">Te respondo con algo útil, no con un presupuesto al aire</h3>
+              </div>
+              <div class="flex min-w-0 flex-wrap gap-2 sm:max-w-xs sm:justify-end">
+                {responseBadges.map((badge) => (
+                  <span class="rounded-full border border-cyan-electric/20 bg-cyan-electric/10 px-2.5 py-1 text-[0.68rem] font-semibold text-cyan-100">
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <ul class="mt-4 grid gap-2 text-sm leading-6 text-muted-soft sm:grid-cols-2">
+              {responseItems.map((item) => (
+                <li class="flex min-w-0 gap-2">
+                  <span class="mt-2 size-1.5 shrink-0 rounded-full bg-cyan-electric shadow-[0_0_0.75rem_rgba(34,211,238,0.55)]" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div class="mt-6 rounded-2xl border border-cyan-electric/20 bg-cyan-electric/10 p-4 text-sm leading-6 text-cyan-50">
@@ -201,10 +241,10 @@ const contactCards = [
 
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <button type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-premium-hover sm:w-auto">
-              Enviar brief por WhatsApp
+              Mandar Instagram y rubro
             </button>
-            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={WHATSAPP_BASE_URL} target="_blank" rel="noopener noreferrer">
-              Abrir WhatsApp directo
+            <a class="inline-flex w-full items-center justify-center rounded-2xl border border-line bg-white/[0.04] px-6 py-3 text-center text-sm font-semibold text-slate-100 transition hover:border-cyan-electric/40 hover:bg-white/[0.07] sm:w-auto" href={makeWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer" data-analytics-event="contact_whatsapp_submit" data-analytics-source="contact_page_fallback_link" data-analytics-cta-label="Abrir WhatsApp sin formulario">
+              Abrir WhatsApp sin formulario
             </a>
           </div>
 
@@ -221,7 +261,7 @@ const contactCards = [
     </section>
   </Container>
 
-  <script define:vars={{ WHATSAPP_NUMBER_E164 }}>
+  <script define:vars={{ WHATSAPP_BASE_URL }}>
     const form = document.getElementById('contacto');
 
     form?.addEventListener('submit', (e) => {
@@ -238,25 +278,23 @@ const contactCards = [
       const mensaje = String(data.get('mensaje') || '').trim();
 
       const lines = [
-        `Hola Diego, te mando datos de mi proyecto para que me recomiendes qué construir primero.`,
-        '',
+        `Hola Diego, quiero saber qué conviene construir primero.`,
+        `Mi rubro es: ${rubro || '___'} y mi Instagram/web es: ${referencia || '___'}`,
+        objetivo ? `Objetivo: ${objetivo}` : null,
+        interes ? `Me interesa: ${interes}` : null,
         nombre ? `Nombre: ${nombre}` : null,
         email ? `Email: ${email}` : null,
-        `Rubro: ${rubro || '[rubro]'}`,
-        `Link actual: ${referencia || '[Instagram, web o referencia]'}`,
-        `Qué quiero lograr: ${objetivo || '[más consultas / reservas / ventas / sistema interno / otro]'}`,
-        `Servicio que creo necesitar: ${interes || '[demo / landing / agenda / panel / no sé todavía]'}`,
         presupuesto && presupuesto !== 'Todavía no lo sé' ? `Presupuesto: ${presupuesto}` : null,
       ].filter((line) => line !== null);
 
-      if (mensaje) {
-        lines.push('', `Mensaje libre: ${mensaje}`);
+      const nota = mensaje.slice(0, 240);
+
+      if (nota) {
+        lines.push(`Nota: ${nota}`);
       }
 
-      lines.push('', 'Quedo atento a tu dirección: demo, landing, agenda o panel simple.');
-
       const text = lines.join(String.fromCharCode(10));
-      const href = `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${encodeURIComponent(text)}`;
+      const href = `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(text)}`;
       window.open(href, '_blank', 'noopener,noreferrer');
     });
   </script>

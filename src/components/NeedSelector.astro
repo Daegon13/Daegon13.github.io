@@ -1,0 +1,109 @@
+---
+import GlowCard from './GlowCard.astro';
+import IconBubble from './IconBubble.astro';
+import SectionHeader from './SectionHeader.astro';
+import VisualBadge from './VisualBadge.astro';
+import { getServiceLeadMessage, waLink } from '../lib/contact';
+import { toAnalyticsSlug } from '../lib/analytics';
+
+const options = [
+  {
+    situation: 'Tengo solo Instagram o una idea',
+    recommended: 'Demo Comercial Express',
+    explanation:
+      'Sirve para mostrar una versión navegable del negocio antes de invertir en una web o sistema completo.',
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Demo Comercial Express'),
+    icon: 'rocket',
+    tone: 'cyan',
+  },
+  {
+    situation: 'Ya sé qué servicio quiero vender',
+    recommended: 'Landing de Conversión',
+    explanation:
+      'Sirve para presentar una oferta, explicar el servicio, responder dudas y llevar al cliente a WhatsApp.',
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Landing de Conversión'),
+    icon: 'target',
+    tone: 'emerald',
+  },
+  {
+    situation: 'Me llegan mensajes incompletos',
+    recommended: 'Web con WhatsApp / Agenda',
+    explanation:
+      'Sirve cuando necesitás que el cliente elija servicio, horario, rubro o datos antes de escribir.',
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Web con WhatsApp / Agenda'),
+    icon: 'message',
+    tone: 'violet',
+  },
+  {
+    situation: 'Uso planillas o datos sueltos',
+    recommended: 'Sistema simple / Panel Admin',
+    explanation:
+      'Sirve para ver, editar o revisar datos básicos como productos, stock, leads, turnos o estados.',
+    cta: 'Consultar este paquete',
+    message: getServiceLeadMessage('Sistema simple / Panel Admin'),
+    icon: 'database',
+    tone: 'amber',
+  },
+];
+---
+
+<section id="selector-necesidad" class="relative min-w-0 scroll-mt-24 overflow-hidden border-t border-line/70 py-14 md:py-20">
+  <div class="absolute -left-24 top-16 -z-10 hidden h-56 w-56 rounded-full bg-blue-electric/10 blur-3xl md:block" aria-hidden="true"></div>
+  <div class="absolute -right-28 bottom-10 -z-10 hidden h-52 w-52 rounded-full bg-cyan-electric/10 blur-3xl md:block" aria-hidden="true"></div>
+
+  <div class="flex min-w-0 flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+    <SectionHeader
+      eyebrow="Elegí por situación"
+      title="No necesitás saber qué pedir"
+      description="Marcá el caso que más se parece a tu negocio y te llevo al tipo de solución que conviene revisar primero."
+      icon="help"
+    />
+    <a
+      href="/servicios"
+      class="premium-button inline-flex w-full max-w-full items-center justify-center rounded-2xl border border-line bg-surface-glass px-5 py-3 text-center text-sm font-semibold text-slate-50 hover:-translate-y-0.5 hover:border-line-strong hover:text-cyan-electric sm:w-fit"
+    >
+      Ver servicios completos
+    </a>
+  </div>
+
+  <div class="mt-8 grid min-w-0 gap-4 md:grid-cols-2 xl:gap-5">
+    {
+      options.map((option) => (
+        <GlowCard class="h-full p-5 sm:p-6">
+          <div class="flex min-w-0 items-start justify-between gap-4">
+            <IconBubble icon={option.icon} tone={option.tone} label={option.recommended} />
+            <VisualBadge label="Recomendado" tone={option.tone} compact />
+          </div>
+
+          <div class="mt-5 min-w-0">
+            <p class="mobile-safe-text text-sm font-semibold uppercase tracking-[0.12em] text-muted-soft">
+              {option.situation}
+            </p>
+            <h3 class="mobile-safe-text mt-2 break-words text-xl font-semibold tracking-tight text-slate-50">
+              {option.recommended}
+            </h3>
+            <p class="mobile-safe-text mt-3 text-sm leading-6 text-muted-soft">
+              {option.explanation}
+            </p>
+          </div>
+
+          <a
+            href={waLink(option.message)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-analytics-event="need_selector_cta"
+            data-analytics-source="need_selector"
+            data-analytics-service-slug={toAnalyticsSlug(option.recommended)}
+            data-analytics-cta-label={option.cta}
+            class="premium-button mt-5 inline-flex w-full max-w-full items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-electric to-blue-electric px-5 py-3 text-center text-sm font-semibold text-ink shadow-[0_16px_40px_rgba(34,211,238,0.16)] hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(59,130,246,0.22)] sm:w-fit"
+          >
+            {option.cta}
+          </a>
+        </GlowCard>
+      ))
+    }
+  </div>
+</section>
