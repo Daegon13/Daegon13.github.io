@@ -7,13 +7,13 @@ export const capabilityStrip = [
   },
   {
     title: "WhatsApp preparado",
-    description: "Texto inicial con contexto.",
+    description: "Mensaje inicial con rubro y objetivo.",
     icon: "message",
     tone: "emerald",
   },
   {
     title: "Agenda / reservas",
-    description: "Turnos y pedidos en un link.",
+    description: "Agenda, pedidos y WhatsApp en un mismo recorrido.",
     icon: "layout",
     tone: "cyan",
   },
@@ -32,7 +32,7 @@ export const capabilityStrip = [
 ];
 
 export const heroSignals = [
-  { label: "Web publicada", value: "deploy activo" },
-  { label: "WhatsApp listo", value: "consulta al momento" },
+  { label: "Link publicado", value: "deploy activo" },
+  { label: "WhatsApp listo", value: "mensaje con contexto" },
   { label: "Paso a paso", value: "alcance definido" },
 ];
