@@ -55,6 +55,7 @@ const proyectos = (await getCollection('proyectos')).sort(byCommercialPriority);
           businessType={p.data.businessType}
           resultLabel={p.data.resultLabel}
           highlight={p.data.highlight}
+          capacidad={p.data.capacidad}
           visualTone={p.data.visualTone}
           badges={p.data.badges}
           status={p.data.status}
