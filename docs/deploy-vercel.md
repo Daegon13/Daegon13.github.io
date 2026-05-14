@@ -5,7 +5,7 @@ Esta guía prepara Marin.dev para publicarse también en Vercel sin apagar el de
 ## Estrategia
 
 - **Vercel** puede importar este repo y compilarlo como un sitio Astro estático.
-- **GitHub Pages debe seguir activo** como fallback legacy porque el sitio público actual es `https://daegon13.github.io/` y proyectos o demos anteriores pueden estar enlazados con URLs de `daegon13.github.io`.
+- **GitHub Pages puede seguir activo** como fallback legacy porque proyectos, demos o enlaces anteriores todavía pueden apuntar a `https://daegon13.github.io/`. La URL canónica de producción para indexación es Vercel.
 - No hace falta migrar framework, agregar SSR ni instalar un adapter de Vercel mientras el sitio siga siendo estático.
 - No se deben romper ni reescribir links antiguos durante esta etapa: Vercel se suma como canal de deploy, no reemplaza GitHub Pages todavía.
 
@@ -32,15 +32,13 @@ Vercel instalará las dependencias desde `package-lock.json` y ejecutará el bui
 
 ## Variables de entorno
 
-No hay variables de entorno obligatorias para compilar el sitio.
-
-Opcionalmente, si más adelante se quiere que canonical, Open Graph y sitemap apunten a un dominio nuevo, configurar en Vercel:
+Para producción en Vercel, configurar la URL canónica activa:
 
 ```txt
-PUBLIC_SITE_URL=https://tu-dominio.com
+PUBLIC_SITE_URL=https://marin-dev.vercel.app
 ```
 
-Si `PUBLIC_SITE_URL` no existe, Astro usa como fallback `https://daegon13.github.io`, lo que mantiene la compatibilidad con el deploy actual de GitHub Pages.
+Si `PUBLIC_SITE_URL` no existe, Astro usa como fallback `https://marin-dev.vercel.app`. Esta variable controla canonical, Open Graph, JSON-LD, robots.txt y sitemap. Después de cambiarla en Vercel, ejecutar un nuevo deploy para regenerar la salida estática.
 
 ## Compatibilidad con GitHub Pages
 

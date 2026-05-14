@@ -47,8 +47,8 @@ No inventar métricas: si no hay resultado medible, usar un impacto cualitativo.
 - El SEO base vive en `src/layouts/BaseLayout.astro`.
 - Cada página debe pasar `title`, `description`, `url` e `image` cuando necesite valores específicos.
 - La imagen Open Graph por defecto es `public/og-default.png`.
-- `astro.config.mjs` define `site: 'https://daegon13.github.io'` para canonical y sitemap.
-- `public/robots.txt` apunta al sitemap generado por `@astrojs/sitemap`.
+- `astro.config.mjs` define `site` desde `PUBLIC_SITE_URL` con fallback a `https://marin-dev.vercel.app` para canonical y sitemap.
+- `src/pages/robots.txt.ts` genera `robots.txt` con el sitemap canónico del sitio.
 
 ## Deploy
 
