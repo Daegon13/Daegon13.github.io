@@ -5,8 +5,6 @@ import {
   LINKEDIN_URL,
   SITE_URL,
 } from "../lib/contact";
-import { faqs } from "../data/faqs";
-import { productizedServices } from "../data/services";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 
@@ -27,9 +25,10 @@ const {
   ogType = "website",
   ogTitle = title,
   ogDescription = description,
+  structuredData = [],
 } = Astro.props;
 
-const site = Astro.site?.toString() ?? SITE_URL;
+const site = SITE_URL;
 const rawPagePath =
   typeof url === "string" && url
     ? url.startsWith("http")
@@ -48,67 +47,63 @@ const ogImage = image.startsWith("http") ? image : new URL(image, site).href;
 const logoUrl = new URL("/og-default.png", site).href;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
-const professionalServiceJsonLd = {
+const removeEmpty = (value: unknown): unknown => {
+  if (Array.isArray(value)) {
+    const items = value
+      .map(removeEmpty)
+      .filter((item): item is NonNullable<typeof item> => item !== undefined);
+    return items.length > 0 ? items : undefined;
+  }
+
+  if (value && typeof value === "object") {
+    const entries = Object.entries(value)
+      .map(([key, item]) => [key, removeEmpty(item)])
+      .filter(([, item]) => item !== undefined && item !== "");
+
+    return entries.length > 0 ? Object.fromEntries(entries) : undefined;
+  }
+
+  return value === undefined || value === null || value === ""
+    ? undefined
+    : value;
+};
+
+const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Marin.dev",
+  "@type": "Organization",
+  name: "MarinDev",
+  alternateName: "Marin.dev",
   url: site,
-  image: logoUrl,
   logo: logoUrl,
+  description: defaultDescription,
   founder: {
     "@type": "Person",
     name: "Diego Marin",
     url: site,
   },
-  areaServed: ["Uruguay", "Remoto"],
-  description: defaultDescription,
   sameAs: [GITHUB_URL, LINKEDIN_URL, INSTAGRAM_URL],
-};
-
-const serviceJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Demos web, landings y sistemas simples orientados a conversión",
-  serviceType: "Diseño y desarrollo web comercial",
-  provider: {
-    "@type": "ProfessionalService",
-    name: "Marin.dev",
-    url: site,
-  },
-  areaServed: "Uruguay y remoto",
-  description:
-    "Diseño y desarrollo de demos comerciales, landings de conversión, agendas, integraciones con WhatsApp y paneles simples para negocios reales.",
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Servicios productizados Marin.dev",
-    itemListElement: productizedServices.map((service) => ({
-      "@type": "Offer",
-      name: service.name,
-      description: service.description,
-    })),
-  },
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Marin.dev",
+  name: "MarinDev",
   url: site,
+  description: defaultDescription,
   inLanguage: "es-UY",
+  publisher: {
+    "@type": "Organization",
+    name: "MarinDev",
+    url: site,
+  },
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.a,
-    },
-  })),
-};
+const pageStructuredData = Array.isArray(structuredData)
+  ? structuredData
+  : [structuredData];
+const jsonLdItems = [websiteJsonLd, organizationJsonLd, ...pageStructuredData]
+  .map(removeEmpty)
+  .filter(Boolean);
 ---
 <html lang="es" class="dark scroll-smooth">
   <head>
@@ -140,11 +135,10 @@ const faqJsonLd = {
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content="Marin.dev: demos web y sistemas simples para negocios" />
 
-    <!-- JSON-LD: identidad, sitio y servicios -->
-    <script type="application/ld+json" set:html={JSON.stringify(professionalServiceJsonLd)} />
-    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
-    <script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+    <!-- JSON-LD: identidad del sitio y datos estructurados de página -->
+    {jsonLdItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
 
     <link rel="icon" href="/favicon.svg" />
   </head>
