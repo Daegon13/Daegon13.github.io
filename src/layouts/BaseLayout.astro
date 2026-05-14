@@ -43,6 +43,7 @@ const normalizeCanonicalPath = (path: string) => {
 const canonical = new URL(normalizeCanonicalPath(rawPagePath), site).href;
 const ogImage = image.startsWith("http") ? image : new URL(image, site).href;
 const logoUrl = new URL("/og-default.png", site).href;
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 const professionalServiceJsonLd = {
   "@context": "https://schema.org",
@@ -114,6 +115,7 @@ const faqJsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
 
     <!-- Canonical -->
     <link rel="canonical" href={canonical} />
