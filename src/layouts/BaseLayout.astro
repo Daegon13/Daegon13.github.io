@@ -24,6 +24,9 @@ const {
   image = "/og-default.png",
   url = "",
   noindex = false,
+  ogType = "website",
+  ogTitle = title,
+  ogDescription = description,
 } = Astro.props;
 
 const site = Astro.site?.toString() ?? SITE_URL;
@@ -121,19 +124,19 @@ const faqJsonLd = {
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Marin.dev" />
     <meta property="og:locale" content="es_UY" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:alt" content="Marin.dev: demos web y sistemas simples para negocios" />
     <meta property="og:url" content={canonical} />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content="Marin.dev: demos web y sistemas simples para negocios" />
 
