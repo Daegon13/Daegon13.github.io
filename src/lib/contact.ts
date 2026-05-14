@@ -1,6 +1,7 @@
 // src/lib/contact.ts
 // Contact constants + helpers (no extra deps)
-export const SITE_URL = "https://daegon13.github.io";
+export const SITE_URL =
+  import.meta.env.PUBLIC_SITE_URL ?? "https://marin-dev.vercel.app";
 export const EMAIL = "damgmarin13@gmail.com";
 
 export const LINKEDIN_URL =
