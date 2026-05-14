@@ -41,6 +41,9 @@ const {
 } = proyecto.data;
 
 const previewImage = image || thumbnail || cover;
+const cleanMetaText = (value = "") => value.replace(/\s+/g, " ").trim();
+const metaDescription = cleanMetaText(resumen || impacto || capacidad || solucion);
+const projectSeoTitle = `${title} — MarinDev`;
 
 const { Content } = await proyecto.render();
 const statusLabels = {
@@ -56,7 +59,7 @@ const statusTone = {
 const whatsappText = getProjectLeadMessage(title);
 const analyticsProjectSlug = toAnalyticsSlug(proyecto.slug || title);
 ---
-<BaseLayout title={`${title} | Caso Marin.dev`} description={resumen} image={previewImage} url={`/proyectos/${proyecto.slug}`}>
+<BaseLayout title={projectSeoTitle} description={metaDescription} image={previewImage} url={`/proyectos/${proyecto.slug}`} ogType="article" ogTitle={projectSeoTitle} ogDescription={metaDescription}>
   <Container class="py-12 sm:py-16">
     <article class="min-w-0">
       <header class="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-center">
